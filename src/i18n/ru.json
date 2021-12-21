@@ -1,0 +1,13 @@
+{
+  "header.signIn": "Войти",
+  "header.signUp": "Зарегистрироваться",
+  "header.buttonOkSignIn": "Войти",
+  "header.buttonOkSignUp": "Зарегистрироваться",
+  "header.buttonCancelSignIn": "Отмена",
+  "header.buttonCancelSignUp": "Отмена",
+  "header.inputLogin": "Логин",
+  "header.inputPassword": "Пароль",
+
+  "body.search": "Поиск города...",
+  "body.searchButton": "Поиск"
+}

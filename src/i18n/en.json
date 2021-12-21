@@ -1,0 +1,13 @@
+{
+  "header.signIn": "Sign in",
+  "header.signUp": "Sign up",
+  "header.buttonOkSignIn": "Sign in",
+  "header.buttonOkSignUp": "Sign up",
+  "header.buttonCancelSignIn": "Cancel",
+  "header.buttonCancelSignUp": "Cancel",
+  "header.inputLogin": "Login",
+  "header.inputPassword": "Password",
+
+  "body.search": "Search city...",
+  "body.searchButton": "Search"
+}

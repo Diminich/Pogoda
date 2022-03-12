@@ -1,14 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
-
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     classNameButton: string;
     text: string;
-    setIsModalVisibleModalLogin: Dispatch<SetStateAction<boolean>>;
+    onClick: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({classNameButton, text, setIsModalVisibleModalLogin}) => {
+const Button: React.FC<ButtonProps> = ({classNameButton, text, onClick}) => {
     return (
-        <button className={classNameButton} onClick={() => setIsModalVisibleModalLogin(true)}>{text}</button>
+        <button className={classNameButton} onClick={() => onClick()}>{text}</button>
     )
 }
 

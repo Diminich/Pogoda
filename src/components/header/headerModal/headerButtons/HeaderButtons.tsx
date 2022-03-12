@@ -13,8 +13,8 @@ const HeaderButtons: React.FC<HeaderButtonsProps> = ({ intl, setIsModalVisibleMo
 
     return (
         <div className={styles.wrapperLogin}>
-            <Button classNameButton={styles.button} setIsModalVisibleModalLogin={setIsModalVisibleModalLoginSignIn} text={intl.formatMessage({ id: 'header.signIn' })} />
-            <Button classNameButton={styles.button} setIsModalVisibleModalLogin={setIsModalVisibleModalLoginSignUp} text={intl.formatMessage({ id: 'header.signUp' })} />
+            <Button classNameButton={styles.button} onClick={() => setIsModalVisibleModalLoginSignIn(true)} text={intl.formatMessage({ id: 'header.signIn' })} />
+            <Button classNameButton={styles.button} onClick={() => setIsModalVisibleModalLoginSignUp(true)} text={intl.formatMessage({ id: 'header.signUp' })} />
         </div>
 
     )

@@ -2,7 +2,7 @@ import styles from './header.module.scss';
 import { Select } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppStateType } from '../../redux/redux-store';
-import { action } from '../../redux/header-reducer';
+import { actionHeader } from '../../redux/header-reducer';
 import HeaderModal from './headerModal/HeaderModal';
 const { Option } = Select;
 
@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     const dispath = useDispatch();
     const currentLanguage = useSelector<AppStateType, string>(state => state.headerReducerPage.currentLanguage);
     const setCurrentLanguage = (value: string) => {
-        dispath(action.setLanguage(value))
+        dispath(actionHeader.setLanguage(value))
     }
     
     return (

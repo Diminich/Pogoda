@@ -9,5 +9,6 @@
   "header.inputPassword": "Password",
 
   "body.search": "Search city...",
-  "body.searchButton": "Search"
+  "body.searchButton": "Search",
+  "body.error": "City not found"
 }

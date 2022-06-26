@@ -1,48 +1,54 @@
 import styles from './searchInput.module.scss';
 import { useIntl } from "react-intl";
 import { Input } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestCityCoord } from "../../../redux/bodySearchCity-reducer";
+import { requestCityWeatherData } from "../../../redux/bodySearchCity-reducer";
 import { AppStateType } from '../../../redux/redux-store';
 import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
+import RenderSearchInput from './renderSearchInput/RenderSearchInput';
 
 const SearchInput: React.FC = () => {
-    const [searchCityName, setSearchCityName] = useState('');
-    const currentLanguage = useSelector<AppStateType, string>(state => state.headerReducerPage.currentLanguage);
-    const forecastWether = useSelector<AppStateType, string>(state => state.bodySearchCityPage.forecastWether);
+    // const [activeError, setActiveError] = useState<boolean>(false);
+    const cityName = useSelector<AppStateType, string>(state => state.bodySearchCityPage.cityName);
     const error = useSelector<AppStateType, number>(state => state.bodySearchCityPage.error);
+    const isActiveError = useSelector<AppStateType, boolean>(state => state.bodySearchCityPage.isActiveError);
     const isLoading = useSelector<AppStateType, boolean>(state => state.bodySearchCityPage.isLoading);
-    
     const dispatch = useDispatch();
     const intl = useIntl();
+
     const { Search } = Input;
 
     useEffect(() => {
-        if (searchCityName.length > 0) {
-            dispatch(requestCityCoord(searchCityName));
-        }
-    }, [searchCityName, currentLanguage, dispatch, forecastWether]);
 
-    const onSearchCity = (cityName: string) => {
-        setSearchCityName(cityName);
-        dispatch(actionBodySearchCity.isLoading(true));
+        if (isLoading) {
+            dispatch(requestCityWeatherData());
+        }
+    }, [isLoading, dispatch]);
+
+    const onSearchCity = () => {
+        if (cityName) {
+            dispatch(actionBodySearchCity.isLoading(true));
+        }
+    }
+
+    const changeNameCity = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(actionBodySearchCity.setCityName(e.currentTarget.value));
     }
 
     return (
-        <>
-            <Search
-                className={styles.searchInput}
-                bordered={false}
-                placeholder={intl.formatMessage({ id: 'body.search' })}
-                enterButton={intl.formatMessage({ id: 'body.searchButton' })}
-                size='middle'
-                allowClear
-                loading={isLoading}
-                onSearch={onSearchCity}
-            />
-            <span className={styles.errorMessage}>{error === 404 && intl.formatMessage({ id: 'body.error' })}</span>
-        </>
+        <div className={styles.wrapperSearchInput}>
+            <RenderSearchInput
+                classNameRenderSearchInput={styles}
+                intl={intl}
+                Search={Search}
+                changeNameCity={changeNameCity}
+                cityName={cityName}
+                isLoading={isLoading}
+                onSearchCity={onSearchCity}
+                isActiveError={isActiveError}
+                error={error} />
+        </div>
     )
 }
 

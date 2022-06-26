@@ -1,26 +1,28 @@
+.wrapperLogin {
+  height: 100%;
+  width: 26%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
-  .wrapperLogin {
-    height: 100%;
-    width: 26%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.button {
+  height: 70%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  outline: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  transition: all 0.5s;
+  cursor: pointer;
+
+  &.button:hover {
+    color: red;
+    border-color: red;
   }
-
-  .button {
-    height: 80%;
-    width: 40%;
-    font-weight: bold;
-    outline: none;
-    color: white;
-    border: 1px solid white;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0);
-    transition: all 0.5s;
-    cursor: pointer;
-
-    &.button:hover {
-      color: red;
-      border-color: red;
-    }
-  }
+}

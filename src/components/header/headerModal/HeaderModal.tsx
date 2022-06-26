@@ -6,9 +6,10 @@ const HeaderModal: React.FC = () => {
     const intl = useIntl();
     const [isModalVisibleModalLoginSignIn, setIsModalVisibleModalLoginSignIn] = useState(false);
     const [isModalVisibleModalLoginSignUp, setIsModalVisibleModalLoginSignUp] = useState(false);
+
     return (
         <>
-            <HeaderButtons intl={intl} setIsModalVisibleModalLoginSignIn={setIsModalVisibleModalLoginSignIn} setIsModalVisibleModalLoginSignUp={setIsModalVisibleModalLoginSignUp}/>
+            <HeaderButtons intl={intl} setIsModalVisibleModalLoginSignIn={setIsModalVisibleModalLoginSignIn} setIsModalVisibleModalLoginSignUp={setIsModalVisibleModalLoginSignUp} />
             <ModalLogin
                 titleModal={intl.formatMessage({ id: 'header.signIn' })}
                 textButtonOk={intl.formatMessage({ id: 'header.buttonOkSignIn' })}

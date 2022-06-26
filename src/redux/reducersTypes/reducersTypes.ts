@@ -16,22 +16,68 @@ type TranslateLanguage = {
 };
 
 export type InitialStateBodySearchCityType = {
-  cityCoord: CitySearchNameType | null;
-  cityDataHourly: Array<cityDataHourlyType | undefined>;
-  // cityDataToday: Array<cityDataHourlyType | undefined>;
-  // cityDataTomorrow: Array<cityDataHourlyType | undefined>;
-  cityDataDaily: cityDataDailyType[];
+  cityName: string;
+  citySearchCoords: CitySearchCoordsType | null;
+  cityCurrentWeatherData: CityCurrentWeatherData[];
+  cityHourlyWeatherData: CityHourlyWeatherData[];
+  cityDailyWeatherData: CityDailyWeatherData[];
+  isActiveError: boolean;
   error: number;
   isLoading: boolean;
-  forecastWether: string;
+  forecastWeather: string;
 };
 
-export type CitySearchNameType = {
+export type CitySearchCoordsType = {
   lat: number;
   lon: number;
 };
 
-export type cityDataHourlyType = {
+export type WeatherType = {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+};
+
+export type TempType = {
+  day: number;
+  min: number;
+  max: number;
+  night: number;
+  eve: number;
+  morn: number;
+};
+
+type RainType = {
+  "1h": number
+};
+
+export type CityCurrentWeatherData = {
+  dt: number,
+  sunrise: number,
+  sunset: number,
+  temp: number,
+  feels_like: number,
+  pressure: number,
+  humidity: number,
+  dew_point: number,
+  uvi: number,
+  clouds: number,
+  visibility: number,
+  wind_speed: number,
+  wind_deg: number,
+  weather: WeatherType[];
+  rain: RainType;
+  day: number;
+  min: number;
+  max: number;
+  night: number;
+  eve: number;
+  morn: number;
+  pop: number;
+};
+
+export type CityHourlyWeatherData = {
   dt: number;
   temp: number;
   feels_like: number;
@@ -44,51 +90,32 @@ export type cityDataHourlyType = {
   wind_speed: number;
   wind_deg: number;
   wind_gust: number;
-  weather: [
-    {
-      id: number;
-      main: string;
-      description: string;
-      icon: string;
-    }
-  ];
+  weather: WeatherType[];
   pop: number;
 };
 
-export type cityDataDailyType = {
+type Feels_likeType = {
+  day: number;
+  night: number;
+  eve: number;
+  morn: number;
+};
+
+export type CityDailyWeatherData = {
   dt: number;
   sunrise: number;
   sunset: number;
   moonrise: number;
   moonset: number;
   moon_phase: number;
-  temp: {
-    day: number;
-    min: number;
-    max: number;
-    night: number;
-    eve: number;
-    morn: number;
-  };
-  feels_like: {
-    day: number;
-    night: number;
-    eve: number;
-    morn: number;
-  };
+  temp: TempType;
+  feels_like: Feels_likeType;
   pressure: number;
   humidity: number;
   dew_point: number;
   wind_speed: number;
   wind_deg: number;
-  weather: [
-    {
-      id: number;
-      main: string;
-      description: string;
-      icon: string;
-    }
-  ];
+  weather: WeatherType[];
   clouds: number;
   pop: number;
   rain: number;

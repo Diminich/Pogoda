@@ -10,5 +10,13 @@
 
   "body.search": "Поиск города...",
   "body.searchButton": "Поиск",
-  "body.error": "Город не найден"
+  "body.error": "Город не найден",
+
+  "body.today": "Сегодня",
+  "body.tomorrow": "Завтра",
+  "body.daily": "Ежедневно",
+
+  "body.day": "Днем",
+  "body.night": "Ночью",
+  "body.feelsLike": "Ощущается как"
 }

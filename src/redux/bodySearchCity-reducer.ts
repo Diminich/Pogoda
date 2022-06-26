@@ -1,29 +1,34 @@
 import { Dispatch } from "redux";
-import { cityApi } from "../API/api";
+import { cityApi } from "../Api/Api";
 import {
-  cityDataHourlyType,
-  cityDataDailyType,
-  CitySearchNameType,
+  CityHourlyWeatherData,
+  CityDailyWeatherData,
+  CitySearchCoordsType,
+  CityCurrentWeatherData,
   InitialStateBodySearchCityType,
 } from "./reducersTypes/reducersTypes";
 import { AppStateType, InferActionTypes } from "./redux-store";
 
-const SET_CITY_СOORD = "SET_CITY_СOORD";
+const SET_CITY_NAME = "SET_CITY_NAME";
+const SET_CITY_SEARCH_COORDS = "SET_CITY_SEARCH_COORDS";
+const SET_CITY_CURRENT_WEATHER_DATA = "SET_CITY_CURRENT_WEATHER_DATA";
 const SET_CITY_DATA_HOURLY = "SET_CITY_DATA_HOURLY";
 const SET_CITY_DATA_DAILY = "SET_CITY_DATA_DAILY";
+const IS_ACTIVE_ERROR = "IS_ACTIVE_ERROR";
 const SET_ERROR = "SET_ERROR";
 const IS_LOADING = "IS_LOADING";
-const SET_FORECAST_WETHER = "SET_FORECAST_WETHER";
+const SET_FORECAST_WEATHER = "SET_FORECAST_WEATHER";
 
 const initialState: InitialStateBodySearchCityType = {
-  cityCoord: null,
-  cityDataHourly: [],
-  // cityDataToday: [],
-  // cityDataTomorrow: [],
-  cityDataDaily: [],
+  cityName: '',
+  citySearchCoords: null,
+  cityCurrentWeatherData: [],
+  cityHourlyWeatherData: [],
+  cityDailyWeatherData: [],
+  isActiveError: false,
   error: 0,
   isLoading: false,
-  forecastWether: "today",
+  forecastWeather: 'Today',
 };
 
 type InitialStateType = typeof initialState;
@@ -35,58 +40,67 @@ const bodySearchCityReducer = (
   actionBodySearchCity: ActionTypes
 ): InitialStateType => {
   switch (actionBodySearchCity.type) {
-    case SET_CITY_СOORD:
+    case SET_CITY_NAME: {
       return {
         ...state,
-        cityCoord: actionBodySearchCity.cityCoord,
+        cityName: actionBodySearchCity.cityName
       };
+    }
+
+    case SET_CITY_SEARCH_COORDS: {
+      return {
+        ...state,
+        citySearchCoords: actionBodySearchCity.citySearchCoords
+      };
+    }
+
+    case SET_CITY_CURRENT_WEATHER_DATA: {
+      return {
+        ...state,
+        cityCurrentWeatherData: [{ ...actionBodySearchCity.cityCurrentWeatherData, ...state.cityDailyWeatherData.find((el) => el)!.temp }],
+
+      };
+    }
 
     case SET_CITY_DATA_HOURLY: {
       return {
         ...state,
-        cityDataHourly: actionBodySearchCity.cityDataHourly
-        // cityDataToday: actionBodySearchCity.cityDataHourly.filter(
-        //   (el, index) => {
-        //     if (index < 24) {
-        //       return el;
-        //     }
-        //   }
-        // ),
-        // cityDataTomorrow: actionBodySearchCity.cityDataHourly.filter(
-        //   (el, index) => {
-        //     if (index > 23) {
-        //       return el;
-        //     }
-        //   }
-        // ),
+        cityHourlyWeatherData: actionBodySearchCity.cityHourlyWeatherData.filter((el, index) => index !== 0 && el)
       };
     }
 
     case SET_CITY_DATA_DAILY: {
       return {
         ...state,
-        cityDataDaily: actionBodySearchCity.cityDataDaily,
+        cityDailyWeatherData: actionBodySearchCity.cityDailyWeatherData
       };
     }
 
     case SET_ERROR: {
       return {
         ...state,
-        error: actionBodySearchCity.setError,
+        error: actionBodySearchCity.setError
+      };
+    }
+
+    case IS_ACTIVE_ERROR: {
+      return {
+        ...state,
+        isActiveError: actionBodySearchCity.isActiveError
       };
     }
 
     case IS_LOADING: {
       return {
         ...state,
-        isLoading: actionBodySearchCity.isLoading,
+        isLoading: actionBodySearchCity.isLoading
       };
     }
 
-    case SET_FORECAST_WETHER: {
+    case SET_FORECAST_WEATHER: {
       return {
         ...state,
-        forecastWether: actionBodySearchCity.setForecastWether,
+        forecastWeather: actionBodySearchCity.setForecastWeather
       };
     }
 
@@ -96,69 +110,79 @@ const bodySearchCityReducer = (
 };
 
 export const actionBodySearchCity = {
-  setCityCoord: (cityCoord: CitySearchNameType) =>
-    ({
-      type: SET_CITY_СOORD,
-      cityCoord,
-    } as const),
+  setCityName: (cityName: string) =>
+  ({
+    type: SET_CITY_NAME,
+    cityName,
+  } as const),
 
-  setCityDataHourly: (cityDataHourly: cityDataHourlyType[]) =>
-    ({
-      type: SET_CITY_DATA_HOURLY,
-      cityDataHourly,
-    } as const),
+  setCitySearchCoords: (citySearchCoords: CitySearchCoordsType) =>
+  ({
+    type: SET_CITY_SEARCH_COORDS,
+    citySearchCoords,
+  } as const),
 
-  setCityDataDaily: (cityDataDaily: cityDataDailyType[]) =>
-    ({
-      type: SET_CITY_DATA_DAILY,
-      cityDataDaily,
-    } as const),
+  setCityCurrentWeatherData: (cityCurrentWeatherData: CityCurrentWeatherData) =>
+  ({
+    type: SET_CITY_CURRENT_WEATHER_DATA,
+    cityCurrentWeatherData,
+  } as const),
+
+  setCityHourlyWeatherData: (cityHourlyWeatherData: CityHourlyWeatherData[]) =>
+  ({
+    type: SET_CITY_DATA_HOURLY,
+    cityHourlyWeatherData,
+  } as const),
+
+  setCityDailyWeatherData: (cityDailyWeatherData: CityDailyWeatherData[]) =>
+  ({
+    type: SET_CITY_DATA_DAILY,
+    cityDailyWeatherData,
+  } as const),
+
+  isActiveError: (isActiveError: boolean) =>
+  ({
+    type: IS_ACTIVE_ERROR,
+    isActiveError,
+  } as const),
 
   setError: (setError: number) =>
-    ({
-      type: SET_ERROR,
-      setError,
-    } as const),
+  ({
+    type: SET_ERROR,
+    setError,
+  } as const),
 
   isLoading: (isLoading: boolean) =>
-    ({
-      type: IS_LOADING,
-      isLoading,
-    } as const),
+  ({
+    type: IS_LOADING,
+    isLoading,
+  } as const),
 
-  setForecastWether: (setForecastWether: string) =>
-    ({
-      type: SET_FORECAST_WETHER,
-      setForecastWether,
-    } as const),
+  setForecastWeather: (setForecastWeather: string) =>
+  ({
+    type: SET_FORECAST_WEATHER,
+    setForecastWeather,
+  } as const),
 };
 
-export const requestCityCoord = (nameCity: string) => {
+export const requestCityWeatherData = () => {
   return async (dispatch: Dispatch, getState: () => AppStateType) => {
     try {
-      const cityCoord = await cityApi.getCityCoord(nameCity);
-      dispatch(actionBodySearchCity.setCityCoord(cityCoord.data.coord));
-      const getStateBodySearchCityPage = getState().bodySearchCityPage;
-      const { lat, lon } = getStateBodySearchCityPage.cityCoord || {};
+      const currentWetherData = await cityApi.getCityCurrentWeatherData(getState().bodySearchCityPage.cityName);
+      dispatch(actionBodySearchCity.setCitySearchCoords(currentWetherData.data.coord));
+      const { lat, lon } = getState().bodySearchCityPage.citySearchCoords || {};
       const languages = getState().headerReducerPage.currentLanguage;
-      const forecastWether =
-        getStateBodySearchCityPage.forecastWether === "tomorrow" ||
-        getStateBodySearchCityPage.forecastWether === "today"
-          ? "daily"
-          : "hourly";
       const cityData = await cityApi.getCityHoursData(
         lat,
         lon,
-        languages,
-        forecastWether
+        languages
       );
-      forecastWether === "daily"
-        ? dispatch(actionBodySearchCity.setCityDataHourly(cityData.data.hourly))
-        : dispatch(actionBodySearchCity.setCityDataDaily(cityData.data.daily));
+      dispatch(actionBodySearchCity.setCityHourlyWeatherData(cityData.data.hourly));
+      dispatch(actionBodySearchCity.setCityDailyWeatherData(cityData.data.daily));
+      dispatch(actionBodySearchCity.setCityCurrentWeatherData(cityData.data.current));
       dispatch(actionBodySearchCity.isLoading(false));
       dispatch(actionBodySearchCity.setError(0));
     } catch (error: any) {
-      // console.log(JSON.stringify(error));
       const statusCode = Number(error.message.match(/\d+/));
       dispatch(actionBodySearchCity.isLoading(false));
       dispatch(actionBodySearchCity.setError(statusCode));

@@ -10,5 +10,13 @@
 
   "body.search": "Search city...",
   "body.searchButton": "Search",
-  "body.error": "City not found"
+  "body.error": "City not found",
+
+  "body.today": "Today",
+  "body.tomorrow": "Tomorrow",
+  "body.daily": "Daily",
+
+  "body.day": "Day",
+  "body.night": "Night",
+  "body.feelsLike": "Feels like"
 }

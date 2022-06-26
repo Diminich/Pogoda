@@ -1,14 +1,16 @@
 import styles from './body.module.scss';
-import ByttonsToggleWether from './byttonsToggleWether/ByttonsToggleWether';
-import DataWether from './dataWether/DataWether';
+import ByttonsToggleWeather from './byttonsToggleWeather/ByttonsToggleWeather';
 import SearchInput from './serachInput/SearchInput';
+import WeatherData from './weatherData/WeatherData';
+import CurrentWeatherData from './weatherData/сurrentWetherData/CurrentWetherData';
 
 const Body: React.FC = () => {
     return (
         <div className={styles.wrapeprBody}>
             <SearchInput />
-            <ByttonsToggleWether />
-            <DataWether />
+            <ByttonsToggleWeather />
+            <CurrentWeatherData />
+            <WeatherData />
         </div>
     )
 }

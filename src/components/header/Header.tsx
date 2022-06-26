@@ -4,15 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppStateType } from '../../redux/redux-store';
 import { actionHeader } from '../../redux/header-reducer';
 import HeaderModal from './headerModal/HeaderModal';
+import { requestCityWeatherData } from '../../redux/bodySearchCity-reducer';
 const { Option } = Select;
 
 const Header: React.FC = () => {
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
     const currentLanguage = useSelector<AppStateType, string>(state => state.headerReducerPage.currentLanguage);
     const setCurrentLanguage = (value: string) => {
-        dispath(actionHeader.setLanguage(value))
+        dispatch(actionHeader.setLanguage(value));
+        dispatch(requestCityWeatherData());
     }
-    
+
     return (
         <div className={styles.wrapperHeader}>
             <Select defaultValue={currentLanguage} showArrow={false} bordered={false}
@@ -21,7 +23,7 @@ const Header: React.FC = () => {
                 <Option value="ru">RU</Option>
                 <Option value="en">EN</Option>
             </Select>
-           <HeaderModal />
+            <HeaderModal />
         </div>
     );
 }

@@ -1,4 +1,3 @@
-import styles from './hourlyWeatherData.module.scss';
 import moment from 'moment';
 import { CityHourlyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
 import RenderHorlyWeatherData from '../renderWetherData/renderHourlyWeatherData/RenderHourlyWeatherData';
@@ -21,7 +20,6 @@ const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeatherData, 
                     return (
                         <RenderHorlyWeatherData
                             spanId={index}
-                            classNameRenderWeatherData={styles}
                             weather={weather}
                             refactorTemp={refactorTemp}
                             timeUTC={timeUTC} />
@@ -30,7 +28,6 @@ const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeatherData, 
                     return (
                         <RenderHorlyWeatherData
                             spanId={index}
-                            classNameRenderWeatherData={styles}
                             weather={weather}
                             refactorTemp={refactorTemp}
                             timeUTC={timeUTC} />

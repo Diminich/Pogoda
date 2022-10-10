@@ -1,13 +1,11 @@
-import { Input } from "antd";
 import { SearchProps } from "antd/lib/input";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 import { IntlShape } from "react-intl";
 import RenderSearchInputError from "./RenderSearchInputError";
 
 interface RenderSearchInputProps {
-    classNameRenderSearchInput: { readonly [key: string]: string; };
     intl: IntlShape;
-    Search: ForwardRefExoticComponent<SearchProps & RefAttributes<Input>>;
+    Search: ForwardRefExoticComponent<SearchProps>;
     onSearchCity: () => void;
     cityName: string;
     isLoading: boolean;
@@ -16,12 +14,11 @@ interface RenderSearchInputProps {
     error: number;
 }
 
-const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ classNameRenderSearchInput, intl, Search, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, error }) => {
-    const styles = classNameRenderSearchInput;
+const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, Search, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, error }) => {
     return (
         <>
             <Search
-                className={isActiveError ? styles.searchInputError : styles.searchInput}
+                className={isActiveError ? 'searchInputError' : 'searchInput'}
                 bordered={false}
                 allowClear={true}
                 placeholder={intl.formatMessage({ id: 'body.search' })}
@@ -32,7 +29,7 @@ const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ classNameRenderSe
                 loading={isLoading}
                 onSearch={onSearchCity}
             />
-            <RenderSearchInputError classNameRenderSearchInputError={styles} error={error} intl={intl} />
+            <RenderSearchInputError error={error} intl={intl} />
         </>
     )
 }

@@ -1,4 +1,4 @@
-import styles from './modalLogin.module.scss';
+// import styles from './modalLogin.module.scss';
 import { Modal } from 'antd';
 import { Dispatch, SetStateAction } from 'react';
 import { useIntl } from "react-intl";
@@ -49,12 +49,12 @@ const ModalLogin: React.FC<ModalLoginProps> = ({ titleModal, textButtonOk, textB
             maskClosable={false}
             closable={false}
         >
-            <div className={styles.wrapperInputsLogin}>
+            <div className='wrapperInputsLogin'>
                 <input {...register('loginUser', { required: true, validate: { loginUser: str => str === 'Admin' } })}
-                    defaultValue='Admin' placeholder={intl.formatMessage({ id: 'header.inputLogin' })} className={styles.inputLogin} />
+                    defaultValue='Admin' placeholder={intl.formatMessage({ id: 'header.inputLogin' })} className='inputLogin' />
                 <input {...register('passwordUser', { required: true, validate: { passwordUser: str => str === '12345678' } })}
-                    defaultValue='12345678' placeholder={intl.formatMessage({ id: 'header.inputPassword' })} type='password' className={styles.inputPassword} />
-                {errors.passwordUser || errors.loginUser ? <span className={styles.errorMessage}>Имя пользователя или пароль введены неверно</span> : <></>}
+                    defaultValue='12345678' placeholder={intl.formatMessage({ id: 'header.inputPassword' })} type='password' className='inputPassword' />
+                {errors.passwordUser || errors.loginUser ? <span className='errorMessage'>Имя пользователя или пароль введены неверно</span> : <></>}
             </div>
         </Modal >
     );

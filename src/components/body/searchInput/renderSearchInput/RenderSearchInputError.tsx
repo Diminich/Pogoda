@@ -4,20 +4,18 @@ import { actionBodySearchCity } from "../../../../redux/bodySearchCity-reducer";
 import Span from "../../../htmlTags/Span";
 
 interface RenderSearchInputErrorProps {
-    classNameRenderSearchInputError: { readonly [key: string]: string; };
     error: number;
     intl: IntlShape;
 }
 
-const RenderSearchInputError: React.FC<RenderSearchInputErrorProps> = ({ classNameRenderSearchInputError, error, intl }) => {
-    const styles = classNameRenderSearchInputError;
+const RenderSearchInputError: React.FC<RenderSearchInputErrorProps> = ({ error, intl }) => {
     const dispatch = useDispatch();
 
     switch (error) {
         case 404: {
             dispatch(actionBodySearchCity.isActiveError(true));
             return (
-                <Span classNameSpan={styles.errorMessage} text={intl.formatMessage({ id: 'body.error' })} />
+                <Span classNameSpan='errorMessage' text={intl.formatMessage({ id: 'body.error' })} />
             )
         }
 

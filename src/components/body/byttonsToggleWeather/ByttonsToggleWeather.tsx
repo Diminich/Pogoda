@@ -1,4 +1,3 @@
-import styles from './byttonsToggleWeather.module.scss';
 import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
 import { useDispatch } from 'react-redux';
 import Span from '../../htmlTags/Span';
@@ -18,12 +17,12 @@ const ByttonsToggleWeather: React.FC = () => {
     }
 
     return (
-        <div className={styles.wrapperButtonsToggleWeather}>
+        <div className='wrapperButtonsToggleWeather'>
             {NameButtonsToggleWether().map(({ nameActiveButton, textButton }, index) => {
                 return (
                     <Span
                         key={index}
-                        classNameSpan={nameActiveButton === activeButton ? styles.activeButtonsToggleWeather : styles.buttonsToggleWeather}
+                        classNameSpan={nameActiveButton === activeButton ? 'activeButtonsToggleWeather' : 'buttonsToggleWeather'}
                         text={textButton}
                         onClickSpan={() => onClickButton(nameActiveButton)} />
                 )

@@ -1,4 +1,3 @@
-import styles from './searchInput.module.scss';
 import { useIntl } from "react-intl";
 import { Input } from 'antd';
 import { useEffect } from 'react';
@@ -37,9 +36,8 @@ const SearchInput: React.FC = () => {
     }
 
     return (
-        <div className={styles.wrapperSearchInput}>
+        <div className='wrapperSearchInput'>
             <RenderSearchInput
-                classNameRenderSearchInput={styles}
                 intl={intl}
                 Search={Search}
                 changeNameCity={changeNameCity}

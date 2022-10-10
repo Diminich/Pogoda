@@ -13,20 +13,18 @@ interface RenderWetherDataProps {
     timeUTC: string;
 }
 
-const RenderWetherData: React.FC<RenderWetherDataProps> = ({ spanId, weather, classNameRenderWeatherData, forecastWether, daylyTempMax, daylyTempMin, refactorTemp, timeUTC }) => {
+const RenderWetherData: React.FC<RenderWetherDataProps> = ({ spanId, weather, forecastWether, daylyTempMax, daylyTempMin, refactorTemp, timeUTC }) => {
 
     if (forecastWether !== 'Daily') {
         return <RenderHorlyWetherData
             spanId={spanId}
             weather={weather}
-            classNameRenderWeatherData={classNameRenderWeatherData}
             refactorTemp={refactorTemp}
             timeUTC={timeUTC} />
     } else {
         return <RenderDailyWetherData
             spanId={spanId}
             weather={weather}
-            classNameRenderWeatherData={classNameRenderWeatherData}
             daylyTempMax={daylyTempMax}
             daylyTempMin={daylyTempMin}
             timeUTC={timeUTC} />

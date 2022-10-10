@@ -1,4 +1,4 @@
-import styles from './weatherData.module.scss';
+// import styles from './weatherData.module.scss';
 import { useSelector } from 'react-redux';
 import { CityHourlyWeatherData, CityDailyWeatherData } from '../../../redux/reducersTypes/reducersTypes';
 import { AppStateType } from '../../../redux/redux-store';
@@ -14,28 +14,28 @@ const WeatherData: React.FC = () => {
     if (forecastWeather === 'Today' || forecastWeather === 'Tomorrow') {
         if (hourlyWeatherData.length !== 0) {
             return (
-                <div className={styles.wrapeprWeatherData}>
+                <div className='wrapeprWeatherData'>
                     <HourlyWeatherData hourlyWeatherData={hourlyWeatherData} forecastWeather={forecastWeather} />
                 </div>
             )
         } else {
             return (
-                <div className={styles.wrapeprWeatherData}>
-                    <span className={styles.noData}>Нет данных</span>
+                <div className='wrapeprWeatherData'>
+                    <span className='noData'>Нет данных</span>
                 </div>
             )
         }
     } else {
         if (dailyWeatherData.length !== 0) {
             return (
-                <div className={styles.wrapeprWeatherData}>
+                <div className='wrapeprWeatherData'>
                     <DailyWeatherData dailyWeatherData={dailyWeatherData} currentLanguage={currentLanguage} />
                 </div>
             )
         } else {
             return (
-                <div className={styles.wrapeprWeatherData}>
-                    <span className={styles.noData}>Нет данных</span>
+                <div className='wrapeprWeatherData'>
+                    <span className='noData'>Нет данных</span>
                 </div>
             )
         }

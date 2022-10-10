@@ -7,13 +7,11 @@ import Span from '../../../../htmlTags/Span';
 interface RenderCurrentWetherDataProps {
     currentWeatherData: CityCurrentWeatherData[];
     currentLanguage: string;
-    classNameRenderCurrentData: { readonly [key: string]: string; };
 }
 
-const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = ({ currentWeatherData, currentLanguage, classNameRenderCurrentData }) => {
+const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = ({ currentWeatherData, currentLanguage }) => {
     moment.locale(currentLanguage);
     const intl = useIntl();
-    const styles = classNameRenderCurrentData;
     return (
         <>
             {currentWeatherData.map(({ dt, max, min, temp, feels_like, weather }, index) => {
@@ -25,28 +23,28 @@ const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = ({ curr
 
                 return (
                     <>
-                        <div key={index} className={styles.wrapeprRenderCurrentWeatherData}>
+                        <div key={index} className='wrapeprRenderCurrentWeatherData'>
                             {timeUTC}
                             <div>
                                 <Span text={`${intl.formatMessage({ id: 'body.day' })} ${refactorMaxTemp}`} />&deg;&#8593;
                                 {' · '}
                                 <Span text={`${intl.formatMessage({ id: 'body.night' })} ${refactorMinTemp}`} />&deg;&#8595;
                             </div>
-                            <div className={styles.wrapperCurrentTemp}>
+                            <div className='wrapperCurrentTemp'>
                                 {refactorCurrentTemp}&#8451;
                             </div>
                             <div>
                                 <Span text={`${intl.formatMessage({ id: 'body.feelsLike' })} ${refactorАeelsTemp}`} />&deg;
                             </div>
                         </div>
-                        <div className={styles.wrapeprRenderCurrentIconData}>
+                        <div className='wrapeprRenderCurrentIconData'>
                             {weather.map(({ id, icon, description }) => {
                                 return (
                                     <>
-                                        <div className={styles.werapperIconWether}>
-                                            <img key={id} className={styles.iconWether} src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
+                                        <div className='werapperIconWether'>
+                                            <img key={id} className='iconWether' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
                                         </div>
-                                        <Span classNameSpan={styles.descriptionWitherText} text={description} />
+                                        <Span classNameSpan='descriptionWitherText' text={description} />
                                     </>
                                 )
                             })}

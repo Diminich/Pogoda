@@ -17,12 +17,12 @@ const ByttonsToggleWeather: React.FC = () => {
     }
 
     return (
-        <div className='wrapperButtonsToggleWeather'>
+        <div className='buttonsToggleWeather'>
             {NameButtonsToggleWether().map(({ nameActiveButton, textButton }, index) => {
                 return (
                     <Span
                         key={index}
-                        classNameSpan={nameActiveButton === activeButton ? 'activeButtonsToggleWeather' : 'buttonsToggleWeather'}
+                        classNameSpan={nameActiveButton === activeButton ? 'buttonsToggleWeather__active' : 'buttonsToggleWeather__default'}
                         text={textButton}
                         onClickSpan={() => onClickButton(nameActiveButton)} />
                 )

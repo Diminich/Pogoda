@@ -1,4 +1,4 @@
-.wrapperSearchInput {
+.searchInput {
   height: 15%;
   width: 100%;
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: center;
   position: relative;
 
-  .searchInput {
+  &__input {
     width: 50% !important;
     background-color: white;
     border-radius: 20px;
@@ -27,12 +27,12 @@
     }
   }
 
-  .searchInputError {
-    @extend .searchInput;
+  &__inputError {
+    @extend .searchInput__input;
     border: 1px solid red;
   }
 
-  .errorMessage {
+  &__errorMessage {
     color: red;
     position: absolute;
     top: 30%;

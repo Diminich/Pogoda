@@ -36,7 +36,7 @@ const SearchInput: React.FC = () => {
     }
 
     return (
-        <div className='wrapperSearchInput'>
+        <div className='searchInput'>
             <RenderSearchInput
                 intl={intl}
                 Search={Search}

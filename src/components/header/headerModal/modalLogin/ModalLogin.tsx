@@ -1,9 +1,8 @@
-// import styles from './modalLogin.module.scss';
 import { Modal } from 'antd';
 import { Dispatch, SetStateAction } from 'react';
 import { useIntl } from "react-intl";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 interface ModalLoginProps {
     titleModal: string;
@@ -26,7 +25,7 @@ const ModalLogin: React.FC<ModalLoginProps> = ({ titleModal, textButtonOk, textB
         formState: { errors }
     } = useForm<InitialValuesLogin>();
 
-    const onSubmit: SubmitHandler<InitialValuesLogin> = () => {
+    const onSubmit = () => {
         setIsModalVisibleModalLogin(false);
     };
 
@@ -49,12 +48,12 @@ const ModalLogin: React.FC<ModalLoginProps> = ({ titleModal, textButtonOk, textB
             maskClosable={false}
             closable={false}
         >
-            <div className='wrapperInputsLogin'>
-                <input {...register('loginUser', { required: true, validate: { loginUser: str => str === 'Admin' } })}
-                    defaultValue='Admin' placeholder={intl.formatMessage({ id: 'header.inputLogin' })} className='inputLogin' />
-                <input {...register('passwordUser', { required: true, validate: { passwordUser: str => str === '12345678' } })}
-                    defaultValue='12345678' placeholder={intl.formatMessage({ id: 'header.inputPassword' })} type='password' className='inputPassword' />
-                {errors.passwordUser || errors.loginUser ? <span className='errorMessage'>Имя пользователя или пароль введены неверно</span> : <></>}
+            <div className='modalLogin'>
+                <input {...register('loginUser', { required: true, validate: { loginUser: (str: string) => str === 'Admin' } })}
+                    defaultValue='Admin' placeholder={intl.formatMessage({ id: 'header.inputLogin' })} className='modalLogin__input' />
+                <input {...register('passwordUser', { required: true, validate: { passwordUser: (str: string) => str === '12345678' } })}
+                    defaultValue='12345678' placeholder={intl.formatMessage({ id: 'header.inputPassword' })} type='password' className='modalLogin__input' />
+                {errors.passwordUser || errors.loginUser ? <span className='modalLogin__errorMessage'>Имя пользователя или пароль введены неверно</span> : <></>}
             </div>
         </Modal >
     );

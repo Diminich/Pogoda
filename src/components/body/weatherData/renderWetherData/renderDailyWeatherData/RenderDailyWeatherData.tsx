@@ -13,15 +13,15 @@ interface RenderDailyWetherDataProps {
 const RenderDailyWeatherData: React.FC<RenderDailyWetherDataProps> = ({ spanId, weather, daylyTempMax, daylyTempMin, timeUTC }) => {
    
     return (
-        <div key={spanId} className='wrapperWeatherDataDaily'>
-            <div className='wrapperDailyTemp'>
+        <div key={spanId} className='weatherDataDaily'>
+            <div className='weatherDataDaily__dailyTemp'>
                 <div><Span text={daylyTempMax} />&deg;</div>
                 <div><Span text={daylyTempMin} />&deg;</div>
             </div>
             {weather.map(({ id, icon }) => {
                 return (
-                    <div className='wrapperWeatherDataDailyIcon'>
-                        <img key={id} className='icon' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
+                    <div className='weatherDataDaily__weatherDataDailyIcon'>
+                        <img key={id} className='weatherDataDaily__icon' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
                         <Span text={timeUTC} />
                     </div>
                 )

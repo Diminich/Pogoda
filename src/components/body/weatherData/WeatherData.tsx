@@ -14,28 +14,28 @@ const WeatherData: React.FC = () => {
     if (forecastWeather === 'Today' || forecastWeather === 'Tomorrow') {
         if (hourlyWeatherData.length !== 0) {
             return (
-                <div className='wrapeprWeatherData'>
+                <div className='weatherData'>
                     <HourlyWeatherData hourlyWeatherData={hourlyWeatherData} forecastWeather={forecastWeather} />
                 </div>
             )
         } else {
             return (
-                <div className='wrapeprWeatherData'>
-                    <span className='noData'>Нет данных</span>
+                <div className='weatherData'>
+                    <span className='weatherData__noData'>Нет данных</span>
                 </div>
             )
         }
     } else {
         if (dailyWeatherData.length !== 0) {
             return (
-                <div className='wrapeprWeatherData'>
+                <div className='weatherData'>
                     <DailyWeatherData dailyWeatherData={dailyWeatherData} currentLanguage={currentLanguage} />
                 </div>
             )
         } else {
             return (
-                <div className='wrapeprWeatherData'>
-                    <span className='noData'>Нет данных</span>
+                <div className='weatherData'>
+                    <span className='weatherData__noData'>Нет данных</span>
                 </div>
             )
         }

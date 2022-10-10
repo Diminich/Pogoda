@@ -15,9 +15,9 @@ const Header: React.FC = () => {
     }
 
     return (
-        <div className='wrapperHeader'>
+        <div className='header'>
             <Select defaultValue={currentLanguage} showArrow={false} bordered={false}
-                className='select'
+                className='header__select'
                 onChange={setCurrentLanguage}>
                 <Option value="ru">RU</Option>
                 <Option value="en">EN</Option>

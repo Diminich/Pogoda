@@ -1,4 +1,4 @@
-.wrapperWeatherDataHorley {
+.weatherDataHorley {
   height: 100%;
   width: 100%;
   display: flex;
@@ -7,7 +7,7 @@
   justify-content: space-around;
   color: white;
 
-  .wrapperWeatherDataHorleyIcon {
+  &__icon {
     height: 50%;
   }
 }

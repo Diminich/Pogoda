@@ -2,7 +2,7 @@
 @import './dailyWetherData/dailyWetherData.scss';
 @import './currentWetherData/currentWetherData.scss';
 
-.wrapeprWeatherData {
+.weatherData {
   height: 25%;
   width: 100%;
   border-top: 2px solid white;
@@ -10,7 +10,7 @@
   align-items: center;
   overflow: auto;
 
-  .noData {
+  &__noData {
     height: 100%;
     width: 100%;
     display: flex;

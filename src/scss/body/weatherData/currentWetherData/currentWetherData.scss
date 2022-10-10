@@ -1,19 +1,19 @@
-.wrapeprCurrentWeatherData {
+.currentWeatherData {
   height: 100%;
   width: 80%;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
 
-  .wrapeprRenderCurrentWeatherData {
-    @extend .wrapeprCurrentWeatherData;
+  &__renderCurrentWeatherData {
+    @extend .currentWeatherData;
     height: 50%;
     width: 50%;
     flex-direction: column;
     justify-content: space-around;
     color: white;
 
-    .wrapperCurrentTemp {
+    &__wrapperCurrentTemp {
       height: 30%;
       width: 25%;
       display: flex;
@@ -23,21 +23,22 @@
     }
   }
 
-  .wrapeprRenderCurrentIconData {
-    @extend .wrapeprRenderCurrentWeatherData;
+  &__renderCurrentIconData {
+    @extend .currentWeatherData__renderCurrentWeatherData;
     align-items: flex-end;
     justify-content: space-between;
 
-    .werapperIconWether {
+    &__wrapperIconWether {
       width: 30%;
       height: 100%;
-      .iconWether {
+
+      &__iconWether {
         height: 100%;
         width: 100%;
       }
     }
 
-    .descriptionWitherText {
+    &__descriptionWitherText {
       width: 30%;
       display: flex;
       justify-content: center;

@@ -1,5 +1,5 @@
 import { SearchProps } from "antd/lib/input";
-import { ForwardRefExoticComponent, RefAttributes } from "react";
+import { ForwardRefExoticComponent } from "react";
 import { IntlShape } from "react-intl";
 import RenderSearchInputError from "./RenderSearchInputError";
 
@@ -18,7 +18,7 @@ const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, Search, onS
     return (
         <>
             <Search
-                className={isActiveError ? 'searchInputError' : 'searchInput'}
+                className={isActiveError ? 'searchInput__inputError' : 'searchInput__input'}
                 bordered={false}
                 allowClear={true}
                 placeholder={intl.formatMessage({ id: 'body.search' })}

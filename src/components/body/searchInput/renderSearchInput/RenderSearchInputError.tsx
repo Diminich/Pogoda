@@ -15,7 +15,7 @@ const RenderSearchInputError: React.FC<RenderSearchInputErrorProps> = ({ error, 
         case 404: {
             dispatch(actionBodySearchCity.isActiveError(true));
             return (
-                <Span classNameSpan='errorMessage' text={intl.formatMessage({ id: 'body.error' })} />
+                <Span classNameSpan='searchInput__errorMessage' text={intl.formatMessage({ id: 'body.error' })} />
             )
         }
 

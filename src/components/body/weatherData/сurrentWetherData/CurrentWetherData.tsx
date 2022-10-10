@@ -8,7 +8,7 @@ const CurrentWeatherData: React.FC = () => {
     const currentLanguage = useSelector<AppStateType, string>(state => state.headerReducerPage.currentLanguage);
 
     return (
-        <div className='wrapeprCurrentWeatherData'>
+        <div className='currentWeatherData'>
             <RenderCurrentWeatherData
                 currentWeatherData={currentWeatherData}
                 currentLanguage={currentLanguage} />

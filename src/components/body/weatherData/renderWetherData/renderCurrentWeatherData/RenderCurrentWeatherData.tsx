@@ -23,28 +23,28 @@ const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = ({ curr
 
                 return (
                     <>
-                        <div key={index} className='wrapeprRenderCurrentWeatherData'>
+                        <div key={index} className='currentWeatherData__renderCurrentWeatherData'>
                             {timeUTC}
                             <div>
                                 <Span text={`${intl.formatMessage({ id: 'body.day' })} ${refactorMaxTemp}`} />&deg;&#8593;
                                 {' · '}
                                 <Span text={`${intl.formatMessage({ id: 'body.night' })} ${refactorMinTemp}`} />&deg;&#8595;
                             </div>
-                            <div className='wrapperCurrentTemp'>
+                            <div className='currentWeatherData__currentTemp'>
                                 {refactorCurrentTemp}&#8451;
                             </div>
                             <div>
                                 <Span text={`${intl.formatMessage({ id: 'body.feelsLike' })} ${refactorАeelsTemp}`} />&deg;
                             </div>
                         </div>
-                        <div className='wrapeprRenderCurrentIconData'>
+                        <div className='currentWeatherData__renderCurrentIconData'>
                             {weather.map(({ id, icon, description }) => {
                                 return (
                                     <>
-                                        <div className='werapperIconWether'>
-                                            <img key={id} className='iconWether' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
+                                        <div className='currentWeatherData__wrapperIconWether'>
+                                            <img key={id} className='currentWeatherData__iconWether' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
                                         </div>
-                                        <Span classNameSpan='descriptionWitherText' text={description} />
+                                        <Span classNameSpan='currentWeatherData__descriptionWitherText' text={description} />
                                     </>
                                 )
                             })}

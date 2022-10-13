@@ -1,5 +1,4 @@
 import { useIntl } from "react-intl";
-import { Input } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestCityWeatherData } from "../../../redux/bodySearchCity-reducer";
@@ -16,8 +15,6 @@ const SearchInput: React.FC = () => {
     const dispatch = useDispatch();
     const intl = useIntl();
 
-    const { Search } = Input;
-
     useEffect(() => {
 
         if (isLoading) {
@@ -31,7 +28,9 @@ const SearchInput: React.FC = () => {
         }
     }
 
-    const changeNameCity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const changeNameCity = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        console.log('e: ', e.currentTarget.value);
+        
         dispatch(actionBodySearchCity.setCityName(e.currentTarget.value));
     }
 
@@ -39,7 +38,6 @@ const SearchInput: React.FC = () => {
         <div className='searchInput'>
             <RenderSearchInput
                 intl={intl}
-                Search={Search}
                 changeNameCity={changeNameCity}
                 cityName={cityName}
                 isLoading={isLoading}

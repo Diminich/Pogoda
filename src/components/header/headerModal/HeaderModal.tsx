@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useIntl } from "react-intl";
-import HeaderButtons from './headerButtons/HeaderButtons';
-import ModalLogin from "./modalLogin/ModalLogin";
-const HeaderModal: React.FC = () => {
+import { HeaderButtons } from './headerButtons/HeaderButtons';
+import { ModalLogin } from "./modalLogin/ModalLogin";
+
+export const HeaderModal: React.FC = () => {
     const intl = useIntl();
     const [isModalVisibleModalLoginSignIn, setIsModalVisibleModalLoginSignIn] = useState(false);
     const [isModalVisibleModalLoginSignUp, setIsModalVisibleModalLoginSignUp] = useState(false);
@@ -24,6 +25,4 @@ const HeaderModal: React.FC = () => {
                 setIsModalVisibleModalLogin={setIsModalVisibleModalLoginSignUp} />
         </>
     )
-}
-
-export default HeaderModal;
+};

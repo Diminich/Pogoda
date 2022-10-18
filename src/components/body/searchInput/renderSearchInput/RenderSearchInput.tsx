@@ -1,6 +1,6 @@
-import { Box } from '@mui/material';
-import { TextField } from '@mui/material';
 import { IntlShape } from "react-intl";
+import { SearchButton, SearchInput } from '../../../styled/searchInputStyled';
+import { i18nFuction } from "../../../utils";
 
 interface RenderSearchInputProps {
     intl: IntlShape;
@@ -12,54 +12,27 @@ interface RenderSearchInputProps {
     error: number;
 }
 
-const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, error }) => {
-
-    const textField = {
-        borderColor: 'black',
-        bgcolor: 'white',
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-        '& label.Mui-focused': {
-            color: 'black'
-        },
-        '& .MuiOutlinedInput-root': {
-            ' &.Mui-focused fieldset': {
-                borderColor: 'black'
-            }
-        }
-    }
-
+export const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, error }) => {
     return (
-        <Box
-            component="form"
-            sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-        >
-            <TextField
-                sx={textField}
-                id="outlined-search"
-                inputProps={{ type: 'search' }}
-                placeholder={intl.formatMessage({ id: 'body.search' })}
+        <>
+            <SearchInput
+                autoComplete="off"
+                focused={false}
+                error={isActiveError}
+                placeholder={i18nFuction(intl, 'body.search')}
                 value={cityName}
                 onChange={(e) => changeNameCity(e)}
-                type="search" />
-        </Box>
-        // {/* <Search
-        //     // className={isActiveError ? 'searchInput__inputError' : 'searchInput__input'}
-        //     bordered={false}
-        //     allowClear={true}
-        //     placeholder={
-        //     enterButton={intl.formatMessage({ id: 'body.searchButton' })}
-        //     size='middle'
-        //     onChange={(e) => changeNameCity(e)}
-        //     value={cityName}
-        //     loading={isLoading}
-        //     onSearch={onSearchCity}
-        // />
-        // <RenderSearchInputError error={error} intl={intl} /> */}
-    )
-}
+                helperText={isActiveError && i18nFuction(intl, 'body.error')}
+            />
+            <SearchButton
+                onClick={onSearchCity}
+                loading={isLoading}
+                loadingPosition="center"
+                variant="contained"
+            >
+                {i18nFuction(intl, 'body.searchButton')}
+            </SearchButton>
 
-export default RenderSearchInput;
+        </>
+    )
+};

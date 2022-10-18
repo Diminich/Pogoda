@@ -1,5 +1,5 @@
 import { WeatherType } from "../../../../../redux/reducersTypes/reducersTypes";
-import Span from "../../../../htmlTags/Span";
+import { Span } from "../../../../htmlTags/Span";
 
 
 interface RenderDailyWetherDataProps {
@@ -10,8 +10,8 @@ interface RenderDailyWetherDataProps {
     timeUTC: string;
 }
 
-const RenderDailyWeatherData: React.FC<RenderDailyWetherDataProps> = ({ spanId, weather, daylyTempMax, daylyTempMin, timeUTC }) => {
-   
+export const RenderDailyWeatherData: React.FC<RenderDailyWetherDataProps> = ({ spanId, weather, daylyTempMax, daylyTempMin, timeUTC }) => {
+
     return (
         <div key={spanId} className='weatherDataDaily'>
             <div className='weatherDataDaily__dailyTemp'>
@@ -30,6 +30,4 @@ const RenderDailyWeatherData: React.FC<RenderDailyWetherDataProps> = ({ spanId, 
 
         </div>
     )
-}
-
-export default RenderDailyWeatherData;
+};

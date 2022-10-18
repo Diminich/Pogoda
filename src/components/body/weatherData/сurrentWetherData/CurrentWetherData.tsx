@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import { CityCurrentWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
 import { AppStateType } from '../../../../redux/redux-store';
-import RenderCurrentWeatherData from '../renderWetherData/renderCurrentWeatherData/RenderCurrentWeatherData';
+import { RenderCurrentWeatherData } from '../renderWetherData/renderCurrentWeatherData/RenderCurrentWeatherData';
 
-const CurrentWeatherData: React.FC = () => {
+export const CurrentWeatherData: React.FC = () => {
     const currentWeatherData = useSelector<AppStateType, CityCurrentWeatherData[]>(state => state.bodySearchCityPage.cityCurrentWeatherData);
     const currentLanguage = useSelector<AppStateType, string>(state => state.headerReducerPage.currentLanguage);
 
@@ -14,6 +14,4 @@ const CurrentWeatherData: React.FC = () => {
                 currentLanguage={currentLanguage} />
         </div>
     )
-}
-
-export default CurrentWeatherData;
+};

@@ -1,11 +1,10 @@
-// import styles from './weatherData.module.scss';
 import { useSelector } from 'react-redux';
 import { CityHourlyWeatherData, CityDailyWeatherData } from '../../../redux/reducersTypes/reducersTypes';
 import { AppStateType } from '../../../redux/redux-store';
-import HourlyWeatherData from './hourlyWetherData/HourlyWeatherData';
-import DailyWeatherData from './dailyWetherData/DailyWetherData';
+import { HourlyWetherData } from './hourlyWetherData/HourlyWeatherData';
+import { DailyWetherData } from './dailyWetherData/DailyWetherData';
 
-const WeatherData: React.FC = () => {
+export const WeatherData: React.FC = () => {
     const hourlyWeatherData = useSelector<AppStateType, CityHourlyWeatherData[]>(state => state.bodySearchCityPage.cityHourlyWeatherData);
     const dailyWeatherData = useSelector<AppStateType, CityDailyWeatherData[]>(state => state.bodySearchCityPage.cityDailyWeatherData);
     const forecastWeather = useSelector<AppStateType, string>(state => state.bodySearchCityPage.forecastWeather);
@@ -15,7 +14,7 @@ const WeatherData: React.FC = () => {
         if (hourlyWeatherData.length !== 0) {
             return (
                 <div className='weatherData'>
-                    <HourlyWeatherData hourlyWeatherData={hourlyWeatherData} forecastWeather={forecastWeather} />
+                    <HourlyWetherData hourlyWeatherData={hourlyWeatherData} forecastWeather={forecastWeather} />
                 </div>
             )
         } else {
@@ -29,7 +28,7 @@ const WeatherData: React.FC = () => {
         if (dailyWeatherData.length !== 0) {
             return (
                 <div className='weatherData'>
-                    <DailyWeatherData dailyWeatherData={dailyWeatherData} currentLanguage={currentLanguage} />
+                    <DailyWetherData dailyWeatherData={dailyWeatherData} currentLanguage={currentLanguage} />
                 </div>
             )
         } else {
@@ -40,6 +39,4 @@ const WeatherData: React.FC = () => {
             )
         }
     }
-}
-
-export default WeatherData;
+};

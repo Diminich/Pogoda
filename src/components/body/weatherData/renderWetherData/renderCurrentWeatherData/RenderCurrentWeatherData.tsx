@@ -2,14 +2,15 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import { useIntl } from 'react-intl';
 import { CityCurrentWeatherData } from '../../../../../redux/reducersTypes/reducersTypes';
-import Span from '../../../../htmlTags/Span';
+import { Span } from '../../../../htmlTags/Span';
+import { i18nFuction } from '../../../../utils';
 
 interface RenderCurrentWetherDataProps {
     currentWeatherData: CityCurrentWeatherData[];
     currentLanguage: string;
 }
 
-const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = ({ currentWeatherData, currentLanguage }) => {
+export const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = ({ currentWeatherData, currentLanguage }) => {
     moment.locale(currentLanguage);
     const intl = useIntl();
     return (
@@ -26,15 +27,15 @@ const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = ({ curr
                         <div key={index} className='currentWeatherData__renderCurrentWeatherData'>
                             {timeUTC}
                             <div>
-                                <Span text={`${intl.formatMessage({ id: 'body.day' })} ${refactorMaxTemp}`} />&deg;&#8593;
+                                <Span text={`${i18nFuction(intl, 'body.day')} ${refactorMaxTemp}`} />&deg;&#8593;
                                 {' · '}
-                                <Span text={`${intl.formatMessage({ id: 'body.night' })} ${refactorMinTemp}`} />&deg;&#8595;
+                                <Span text={`${i18nFuction(intl, 'body.night')} ${refactorMinTemp}`} />&deg;&#8595;
                             </div>
                             <div className='currentWeatherData__currentTemp'>
                                 {refactorCurrentTemp}&#8451;
                             </div>
                             <div>
-                                <Span text={`${intl.formatMessage({ id: 'body.feelsLike' })} ${refactorАeelsTemp}`} />&deg;
+                                <Span text={`${i18nFuction(intl, 'body.feelsLike')} ${refactorАeelsTemp}`} />&deg;
                             </div>
                         </div>
                         <div className='currentWeatherData__renderCurrentIconData'>
@@ -54,6 +55,4 @@ const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = ({ curr
             })}
         </>
     )
-}
-
-export default RenderCurrentWeatherData;
+};

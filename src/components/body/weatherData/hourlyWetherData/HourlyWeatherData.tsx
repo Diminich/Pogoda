@@ -1,13 +1,13 @@
 import moment from 'moment';
 import { CityHourlyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
-import RenderHorlyWeatherData from '../renderWetherData/renderHourlyWeatherData/RenderHourlyWeatherData';
+import { RenderHorlyWeatherData } from '../renderWetherData/renderHourlyWeatherData/RenderHourlyWeatherData';
 
 interface HourlyWetherDataProps {
     hourlyWeatherData: CityHourlyWeatherData[];
     forecastWeather: string;
 }
 
-const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeatherData, forecastWeather }) => {
+export const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeatherData, forecastWeather }) => {
     let endFirstDayIndex = hourlyWeatherData.findIndex(({ dt }) => moment(dt * 1000).format('HH:mm') === '06:00');
     const endSecondDayIndex = hourlyWeatherData.slice(++endFirstDayIndex).findIndex((time) => moment(time!.dt * 1000).format('HH:mm') === '06:00');
 
@@ -16,6 +16,7 @@ const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeatherData, 
             {hourlyWeatherData.map(({ dt, temp, weather }, index) => {
                 const timeUTC = moment(dt * 1000).format('HH:mm');
                 const refactorTemp = Math.round(temp);
+                
                 if (index < endFirstDayIndex && forecastWeather === 'Today') {
                     return (
                         <RenderHorlyWeatherData
@@ -36,6 +37,4 @@ const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeatherData, 
             })}
         </>
     )
-}
-
-export default HourlyWetherData;
+};

@@ -1,10 +1,13 @@
-@import 'weatherData/weatherData.scss';
-@import 'searchInput/searchInput.scss';
-@import 'byttonsToggleWeather/byttonsToggleWeather.scss';
+@import "weatherData/weatherData.scss";
+@import "searchInput/searchInput.scss";
+@import "byttonsToggleWeather/byttonsToggleWeather.scss";
+@import "../mixins";
 
 .Body {
-  height: calc(100% - 60px);
+  height: $body-height;
   width: 100%;
+  position: absolute;
+  top: $header-height;
   display: flex;
   flex-direction: column;
   align-items: center;

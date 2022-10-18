@@ -1,5 +1,5 @@
 import { WeatherType } from "../../../../../redux/reducersTypes/reducersTypes";
-import Span from "../../../../htmlTags/Span";
+import { Span } from "../../../../htmlTags/Span";
 
 
 interface RenderHorlyWeatherDataProps {
@@ -9,7 +9,7 @@ interface RenderHorlyWeatherDataProps {
     timeUTC: string;
 }
 
-const RenderHorlyWeatherData: React.FC<RenderHorlyWeatherDataProps> = ({ spanId, weather, refactorTemp, timeUTC }) => {
+export const RenderHorlyWeatherData: React.FC<RenderHorlyWeatherDataProps> = ({ spanId, weather, refactorTemp, timeUTC }) => {
     return (
         <div key={spanId} className='weatherDataHorley'>
             <div>
@@ -19,6 +19,4 @@ const RenderHorlyWeatherData: React.FC<RenderHorlyWeatherDataProps> = ({ spanId,
             <Span text={timeUTC} />
         </div>
     )
-}
-
-export default RenderHorlyWeatherData;
+};

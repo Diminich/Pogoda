@@ -1,6 +1,6 @@
-import RoutesComponents from './routes/RoutesComponents';
-import Header from './components/header/Header';
-import Body from './components/body/Body';
+import { RoutesComponents } from './routes/RoutesComponents';
+import { Header } from './components/header/Header';
+import { Body } from './components/body/Body';
 import 'antd/dist/antd.css';
 import './scss/index.scss';
 import { IntlProvider } from 'react-intl';

@@ -1,10 +1,10 @@
 import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
 import { useDispatch } from 'react-redux';
-import Span from '../../htmlTags/Span';
+import { Span } from '../../htmlTags/Span';
 import { useEffect, useState } from 'react';
 import { NameButtonsToggleWether } from '../../constant';
 
-const ByttonsToggleWeather: React.FC = () => {
+export const ByttonsToggleWeather: React.FC = () => {
     const [activeButton, setActiveButton] = useState<string>('Today');
     const dispatch = useDispatch();
 
@@ -29,6 +29,4 @@ const ByttonsToggleWeather: React.FC = () => {
             })}
         </div>
     )
-}
-
-export default ByttonsToggleWeather;
+};

@@ -1,13 +1,13 @@
 import moment from 'moment';
 import { CityHourlyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
-import { RenderHorlyWeatherData } from '../renderWetherData/renderHourlyWeatherData/RenderHourlyWeatherData';
+import { RenderTomorrowWeatherData } from './renderTomorrowWeatherData/RenderTomorrowWeatherData';
 
-interface HourlyWetherDataProps {
+interface TomorrowWetherDataProps {
     hourlyWeatherData: CityHourlyWeatherData[];
     forecastWeather: string;
 }
 
-export const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeatherData, forecastWeather }) => {
+export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({ hourlyWeatherData, forecastWeather }) => {
     let endFirstDayIndex = hourlyWeatherData.findIndex(({ dt }) => moment(dt * 1000).format('HH:mm') === '06:00');
     const endSecondDayIndex = hourlyWeatherData.slice(++endFirstDayIndex).findIndex((time) => moment(time!.dt * 1000).format('HH:mm') === '06:00');
 
@@ -16,10 +16,10 @@ export const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeathe
             {hourlyWeatherData.map(({ dt, temp, weather }, index) => {
                 const timeUTC = moment(dt * 1000).format('HH:mm');
                 const refactorTemp = Math.round(temp);
-                
+
                 if (index < endFirstDayIndex && forecastWeather === 'Today') {
                     return (
-                        <RenderHorlyWeatherData
+                        <RenderTomorrowWeatherData
                             spanId={index}
                             weather={weather}
                             refactorTemp={refactorTemp}
@@ -27,7 +27,7 @@ export const HourlyWetherData: React.FC<HourlyWetherDataProps> = ({ hourlyWeathe
                     )
                 } else if (index >= endFirstDayIndex && index <= (endSecondDayIndex + endFirstDayIndex) && forecastWeather === 'Tomorrow') {
                     return (
-                        <RenderHorlyWeatherData
+                        <RenderTomorrowWeatherData
                             spanId={index}
                             weather={weather}
                             refactorTemp={refactorTemp}

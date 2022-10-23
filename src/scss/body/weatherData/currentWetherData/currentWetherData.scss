@@ -1,47 +1,70 @@
 .currentWeatherData {
   height: 100%;
-  width: 80%;
+  width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
 
   &__renderCurrentWeatherData {
     @extend .currentWeatherData;
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 30%;
     flex-direction: column;
     justify-content: space-around;
     color: white;
 
-    &__wrapperCurrentTemp {
-      height: 30%;
-      width: 25%;
+    .time {
+      color: black;
+      font-weight: 400;
+      font-size: x-large;
+    }
+
+    .tempDay {
+      @extend .time;
+      color: white;
+    }
+
+    .braillePattern {
+      @extend .tempDay;
+      font-size: medium;
+      margin-left: 3px;
+    }
+
+    .wrapperCurrentTemp {
+      height: 35%;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: xxx-large;
+
+      .currentTemp {
+        @extend .tempDay;
+        font-weight: 600;
+        font-size: 80px;
+      }
+
+      .specialCharactersCurrentTemp {
+        font-size: 55px;
+      }
+    }
+
+    .feelsLike {
+      @extend .tempDay;
     }
   }
 
   &__renderCurrentIconData {
     @extend .currentWeatherData__renderCurrentWeatherData;
-    align-items: flex-end;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
 
-    &__wrapperIconWether {
-      width: 30%;
-      height: 100%;
-
-      &__iconWether {
-        height: 100%;
-        width: 100%;
-      }
+    .iconWether {
+      height: 40%;
+      width: 40%;
+      margin-top: 5%;
     }
 
-    &__descriptionWitherText {
-      width: 30%;
-      display: flex;
-      justify-content: center;
+    .descriptionWetherText {
+      font-weight: 400;
+      font-size: x-large;
+      margin-top: 15%;
     }
   }
 }

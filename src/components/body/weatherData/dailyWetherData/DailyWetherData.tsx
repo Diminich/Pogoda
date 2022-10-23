@@ -1,7 +1,7 @@
 import moment from 'moment';
 import 'moment/locale/ru';
 import { CityDailyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
-import { RenderDailyWeatherData } from '../renderWetherData/renderDailyWeatherData/RenderDailyWeatherData';
+import { RenderDailyWeatherData } from './renderDailyWeatherData/RenderDailyWeatherData';
 
 interface DailyWetherDataProps {
     dailyWeatherData: CityDailyWeatherData[];

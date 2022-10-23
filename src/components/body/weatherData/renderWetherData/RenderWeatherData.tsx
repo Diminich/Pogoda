@@ -1,7 +1,6 @@
 import { WeatherType } from "../../../../redux/reducersTypes/reducersTypes";
-import { RenderHorlyWeatherData } from "./renderHourlyWeatherData/RenderHourlyWeatherData";
-import { RenderDailyWeatherData } from "./renderDailyWeatherData/RenderDailyWeatherData";
-
+import { RenderDailyWeatherData } from "../dailyWetherData/renderDailyWeatherData/RenderDailyWeatherData";
+import { RenderTomorrowWeatherData } from "../tomorrowWetherData/renderTomorrowWeatherData/RenderTomorrowWeatherData";
 interface RenderWetherDataProps {
     spanId: number;
     weather: WeatherType[];
@@ -16,7 +15,7 @@ interface RenderWetherDataProps {
 const RenderWetherData: React.FC<RenderWetherDataProps> = ({ spanId, weather, forecastWether, daylyTempMax, daylyTempMin, refactorTemp, timeUTC }) => {
 
     if (forecastWether !== 'Daily') {
-        return <RenderHorlyWeatherData
+        return <RenderTomorrowWeatherData
             spanId={spanId}
             weather={weather}
             refactorTemp={refactorTemp}

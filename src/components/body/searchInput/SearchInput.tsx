@@ -1,5 +1,5 @@
 import { useIntl } from "react-intl";
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect, KeyboardEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestCityWeatherData } from "../../../redux/bodySearchCity-reducer";
 import { AppStateType } from '../../../redux/redux-store';
@@ -27,7 +27,13 @@ export const SearchInput: React.FC = () => {
         }
     };
 
-    const changeNameCity = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const pressEnter = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Enter') {
+            dispatch(actionBodySearchCity.isLoading(true));
+        }
+    };
+
+    const changeNameCity = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         dispatch(actionBodySearchCity.setCityName(e.currentTarget.value));
     };
 
@@ -42,7 +48,7 @@ export const SearchInput: React.FC = () => {
                 isLoading={isLoading}
                 onSearchCity={onSearchCity}
                 isActiveError={isActiveError}
-                error={error} />
+                pressEnter={pressEnter} />
         </div>
     )
 };

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { CityHourlyWeatherData, CityDailyWeatherData } from '../../../redux/reducersTypes/reducersTypes';
 import { AppStateType } from '../../../redux/redux-store';
-import { HourlyWetherData } from './hourlyWetherData/HourlyWeatherData';
+import { TomorrowWetherData } from './tomorrowWetherData/TomorrowWeatherData';
 import { DailyWetherData } from './dailyWetherData/DailyWetherData';
 
 export const WeatherData: React.FC = () => {
@@ -14,7 +14,7 @@ export const WeatherData: React.FC = () => {
         if (hourlyWeatherData.length !== 0) {
             return (
                 <div className='weatherData'>
-                    <HourlyWetherData hourlyWeatherData={hourlyWeatherData} forecastWeather={forecastWeather} />
+                    <TomorrowWetherData hourlyWeatherData={hourlyWeatherData} forecastWeather={forecastWeather} />
                 </div>
             )
         } else {

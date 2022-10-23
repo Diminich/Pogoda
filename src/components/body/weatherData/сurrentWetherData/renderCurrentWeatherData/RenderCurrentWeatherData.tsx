@@ -25,27 +25,24 @@ export const RenderCurrentWeatherData: React.FC<RenderCurrentWetherDataProps> = 
                 return (
                     <>
                         <div key={index} className='currentWeatherData__renderCurrentWeatherData'>
-                            {timeUTC}
+                            <Span classNameSpan='time' text={timeUTC} />
                             <div>
-                                <Span text={`${i18nFuction(intl, 'body.day')} ${refactorMaxTemp}`} />&deg;&#8593;
-                                {' · '}
-                                <Span text={`${i18nFuction(intl, 'body.night')} ${refactorMinTemp}`} />&deg;&#8595;
+                                <Span classNameSpan='tempDay' text={`${i18nFuction(intl, 'body.day')} ${refactorMaxTemp}`} specialCharacters={'\u00b0'} />
+                                <Span classNameSpan='braillePattern' specialCharacters={'\u2802'} />
+                                <Span classNameSpan='tempDay' text={`${i18nFuction(intl, 'body.night')} ${refactorMinTemp}`} specialCharacters={'\u00b0'} />
                             </div>
-                            <div className='currentWeatherData__currentTemp'>
-                                {refactorCurrentTemp}&#8451;
+                            <div className='wrapperCurrentTemp'>
+                                <Span classNameSpan='currentTemp' text={refactorCurrentTemp} />
+                                <Span classNameSpan='specialCharactersCurrentTemp' specialCharacters={'\u2103'} />
                             </div>
-                            <div>
-                                <Span text={`${i18nFuction(intl, 'body.feelsLike')} ${refactorАeelsTemp}`} />&deg;
-                            </div>
+                            <Span classNameSpan='feelsLike' text={`${i18nFuction(intl, 'body.feelsLike')} ${refactorАeelsTemp}`} specialCharacters={'\u00b0'} />
                         </div>
                         <div className='currentWeatherData__renderCurrentIconData'>
                             {weather.map(({ id, icon, description }) => {
                                 return (
                                     <>
-                                        <div className='currentWeatherData__wrapperIconWether'>
-                                            <img key={id} className='currentWeatherData__iconWether' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
-                                        </div>
-                                        <Span classNameSpan='currentWeatherData__descriptionWitherText' text={description} />
+                                        <img key={id} className='iconWether' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
+                                        <Span classNameSpan='descriptionWetherText' text={description} />
                                     </>
                                 )
                             })}

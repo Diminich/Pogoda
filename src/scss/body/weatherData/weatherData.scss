@@ -1,9 +1,9 @@
-@import './hourlyWetherData/hourlyWeatherData.scss';
-@import './dailyWetherData/dailyWetherData.scss';
-@import './currentWetherData/currentWetherData.scss';
+@import "./hourlyWetherData/hourlyWeatherData.scss";
+@import "./dailyWetherData/dailyWetherData.scss";
+@import "./currentWetherData/currentWetherData.scss";
 
 .weatherData {
-  height: 25%;
+  height: 40%;
   width: 100%;
   border-top: 2px solid white;
   display: flex;

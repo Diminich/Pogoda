@@ -1,12 +1,16 @@
-.wrapeprWeatherData {
-  height: 25%;
+@import "./hourlyWetherData/hourlyWeatherData.scss";
+@import "./dailyWetherData/dailyWetherData.scss";
+@import "./currentWetherData/currentWetherData.scss";
+
+.weatherData {
+  height: 40%;
   width: 100%;
   border-top: 2px solid white;
   display: flex;
   align-items: center;
   overflow: auto;
 
-  .noData {
+  &__noData {
     height: 100%;
     width: 100%;
     display: flex;

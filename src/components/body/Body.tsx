@@ -1,18 +1,15 @@
-import styles from './body.module.scss';
-import ByttonsToggleWeather from './byttonsToggleWeather/ByttonsToggleWeather';
-import SearchInput from './serachInput/SearchInput';
-import WeatherData from './weatherData/WeatherData';
-import CurrentWeatherData from './weatherData/сurrentWetherData/CurrentWetherData';
+import { ByttonsToggleWeather } from './byttonsToggleWeather/ByttonsToggleWeather';
+import { SearchInput } from './searchInput/SearchInput';
+import { WeatherData } from './weatherData/WeatherData';
+import { CurrentWeatherData } from './weatherData/сurrentWetherData/CurrentWetherData';
 
-const Body: React.FC = () => {
+export const Body: React.FC = () => {
     return (
-        <div className={styles.wrapeprBody}>
+        <div className='Body'>
             <SearchInput />
             <ByttonsToggleWeather />
             <CurrentWeatherData />
             <WeatherData />
         </div>
     )
-}
-
-export default Body;
+};

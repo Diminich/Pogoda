@@ -4,11 +4,9 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
 }
 
 
-const Input: React.FC<InputProps> = ({ classNameInput, placeholderText }) => {
+export const Input: React.FC<InputProps> = ({ classNameInput, placeholderText }) => {
 
     return (
         <input className={classNameInput} placeholder={placeholderText} />
     )
-}
-
-export default Input;
+};

@@ -1,15 +1,13 @@
-import styles from './searchInput.module.scss';
 import { useIntl } from "react-intl";
-import { Input } from 'antd';
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect, KeyboardEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestCityWeatherData } from "../../../redux/bodySearchCity-reducer";
 import { AppStateType } from '../../../redux/redux-store';
 import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
-import RenderSearchInput from './renderSearchInput/RenderSearchInput';
+import { searchInputError } from "./searchInputError";
+import { RenderSearchInput } from "./renderSearchInput/RenderSearchInput";
 
-const SearchInput: React.FC = () => {
-    // const [activeError, setActiveError] = useState<boolean>(false);
+export const SearchInput: React.FC = () => {
     const cityName = useSelector<AppStateType, string>(state => state.bodySearchCityPage.cityName);
     const error = useSelector<AppStateType, number>(state => state.bodySearchCityPage.error);
     const isActiveError = useSelector<AppStateType, boolean>(state => state.bodySearchCityPage.isActiveError);
@@ -17,10 +15,7 @@ const SearchInput: React.FC = () => {
     const dispatch = useDispatch();
     const intl = useIntl();
 
-    const { Search } = Input;
-
     useEffect(() => {
-
         if (isLoading) {
             dispatch(requestCityWeatherData());
         }
@@ -30,26 +25,30 @@ const SearchInput: React.FC = () => {
         if (cityName) {
             dispatch(actionBodySearchCity.isLoading(true));
         }
-    }
+    };
 
-    const changeNameCity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const pressEnter = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Enter') {
+            dispatch(actionBodySearchCity.isLoading(true));
+        }
+    };
+
+    const changeNameCity = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         dispatch(actionBodySearchCity.setCityName(e.currentTarget.value));
-    }
+    };
+
+    searchInputError(dispatch, error);
 
     return (
-        <div className={styles.wrapperSearchInput}>
+        <div className='searchInput'>
             <RenderSearchInput
-                classNameRenderSearchInput={styles}
                 intl={intl}
-                Search={Search}
                 changeNameCity={changeNameCity}
                 cityName={cityName}
                 isLoading={isLoading}
                 onSearchCity={onSearchCity}
                 isActiveError={isActiveError}
-                error={error} />
+                pressEnter={pressEnter} />
         </div>
     )
-}
-
-export default SearchInput;
+};

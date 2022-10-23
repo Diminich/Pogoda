@@ -1,11 +1,10 @@
-import styles from './byttonsToggleWeather.module.scss';
 import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
 import { useDispatch } from 'react-redux';
-import Span from '../../htmlTags/Span';
+import { Span } from '../../htmlTags/Span';
 import { useEffect, useState } from 'react';
 import { NameButtonsToggleWether } from '../../constant';
 
-const ByttonsToggleWeather: React.FC = () => {
+export const ByttonsToggleWeather: React.FC = () => {
     const [activeButton, setActiveButton] = useState<string>('Today');
     const dispatch = useDispatch();
 
@@ -18,18 +17,16 @@ const ByttonsToggleWeather: React.FC = () => {
     }
 
     return (
-        <div className={styles.wrapperButtonsToggleWeather}>
+        <div className='buttonsToggleWeather'>
             {NameButtonsToggleWether().map(({ nameActiveButton, textButton }, index) => {
                 return (
                     <Span
                         key={index}
-                        classNameSpan={nameActiveButton === activeButton ? styles.activeButtonsToggleWeather : styles.buttonsToggleWeather}
+                        classNameSpan={nameActiveButton === activeButton ? 'buttonsToggleWeather__active' : 'buttonsToggleWeather__default'}
                         text={textButton}
                         onClickSpan={() => onClickButton(nameActiveButton)} />
                 )
             })}
         </div>
     )
-}
-
-export default ByttonsToggleWeather;
+};

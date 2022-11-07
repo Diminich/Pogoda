@@ -1,0 +1,23 @@
+.footerWetherData {
+  height: 40%;
+  width: 100%;
+  border-top: 2px solid white;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+
+  &__renderFooterWetherData {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    margin-left: 20px;
+
+    .icon {
+      height: 50%;
+    }
+  }
+}

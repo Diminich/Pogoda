@@ -24,7 +24,6 @@ export type InitialStateBodySearchCityType = {
   isActiveError: boolean;
   error: number;
   isLoading: boolean;
-  forecastWeather: string;
 };
 
 export type CitySearchCoordsType = {

@@ -1,6 +1,5 @@
-import moment from 'moment';
-import 'moment/locale/ru';
 import { CityDailyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
+import { formatCalendar, formatTime } from '../../../utils';
 import { RenderDailyWeatherData } from './renderDailyWeatherData/RenderDailyWeatherData';
 
 interface DailyWetherDataProps {
@@ -9,22 +8,24 @@ interface DailyWetherDataProps {
 }
 
 export const DailyWetherData: React.FC<DailyWetherDataProps> = ({ dailyWeatherData, currentLanguage }) => {
-    moment.locale(currentLanguage);
     return (
-        <>
+        <div className='weatherDataDaily'>
             {dailyWeatherData.map(({ dt, temp, weather, }, index) => {
-                const timeUTC = moment(dt * 1000).format(`DD MMMM`);
-                const refactorTempMax = Math.round(temp.max);
-                const refactorTempMin = Math.round(temp.min);
+                const [{ description, icon }] = weather;
+                const timeUTC = index === 0 ? formatCalendar() : formatTime(dt, 'dddd, MMMM D', currentLanguage);
+                const refactorTempDay = Math.round(temp.day);
+                const refactorTempNight = Math.round(temp.night);
+
                 return (
                     <RenderDailyWeatherData
-                        spanId={index}
-                        weather={weather}
-                        daylyTempMax={refactorTempMax}
-                        daylyTempMin={refactorTempMin}
+                        id={index}
+                        description={description}
+                        icon={icon}
+                        refactorTempDay={refactorTempDay}
+                        refactorTempNight={refactorTempNight}
                         timeUTC={timeUTC} />
                 )
             })}
-        </>
+        </div>
     )
 };

@@ -1,0 +1,55 @@
+.tomorrowWetherData {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  &__wrapperRenderTomorrowWetherData {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    .renderTomorrowWeatherData {
+      @extend .tomorrowWetherData;
+      height: 45%;
+      width: 30%;
+      flex-direction: column;
+      justify-content: space-around;
+      color: white;
+    }
+
+    .time {
+      color: black;
+      font-weight: 400;
+      font-size: x-large;
+    }
+    .tempDay {
+      @extend .time;
+      color: white;
+    }
+    .braillePattern {
+      @extend .tempDay;
+      font-size: medium;
+      margin-left: 3px;
+    }
+    .descriptoin {
+      font-weight: 500;
+      font-size: xx-large;
+    }
+  }
+
+  .renderTomorrowIconData {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+
+    .iconWether {
+      height: 50%;
+      width: 35%;
+    }
+  }
+}

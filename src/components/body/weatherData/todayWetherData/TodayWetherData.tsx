@@ -20,21 +20,11 @@ export const TodayWeatherData: React.FC<TodayWetherDataProps> = ({ todayWeatherD
                 {todayWeatherData.map(({ dt, day, night, temp, feels_like, weather }, index) => {
                     const [{ description, icon }] = weather;
                     const timeUTC = formatTime(dt, 'MMMM, HH:mm', currentLanguage);
-                    const refactorTemp = refactorParams(day, night, temp, feels_like);
-                    debugger
-                    // const refactorDayTemp = Math.round(day);
-                    // const refactorNightTemp = Math.round(night);
-                    // const refactorTodayTemp = Math.round(temp);
-                    // const refactorАeelsTemp = Math.round(feels_like);
-                    console.log('refactorTemp: ', refactorTemp);
+                    const refactorTemp = refactorParams({ 'day': day, 'night': night, 'currentTemp': temp, 'feels_like': feels_like });
 
                     return <RenderTodayWeatherData
                         timeUTC={timeUTC}
-                        // refactorTemp={refactorTemp}
-                        // refactorDayTemp={refactorDayTemp}
-                        // refactorNightTemp={refactorNightTemp}
-                        // refactorTodayTemp={refactorTodayTemp}
-                        // refactorАeelsTemp={refactorАeelsTemp}
+                        refactorTemp={refactorTemp}
                         description={description}
                         icon={icon}
                         index={index}

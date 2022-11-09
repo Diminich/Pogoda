@@ -1,5 +1,5 @@
 import { CityHourlyWeatherData } from "../../../../redux/reducersTypes/reducersTypes";
-import { formatTime } from "../../../utils";
+import { formatTime, refactorParams } from "../../../utils";
 import { RenderFooterWeatherData } from "./renderFooterWetherData/RenderFooterWetherData";
 
 interface FooterWetherDataProps {
@@ -16,7 +16,8 @@ const FooterWetherData: React.FC<FooterWetherDataProps> = ({ weatherData, path }
             {weatherData.map(({ dt, temp, weather }, index) => {
                 const [{ icon }] = weather;
                 const timeUTC = formatTime(dt, 'HH:mm');
-                const refactorTemp = Math.round(temp);
+                const refactorTemp = refactorParams({ 'temp': temp });
+
                 if (index < endFirstDayIndex && path === 'today') {
                     return <RenderFooterWeatherData
                         spanId={index}

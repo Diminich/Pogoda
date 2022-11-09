@@ -1,6 +1,6 @@
 import { useIntl } from 'react-intl';
 import { CityDailyWeatherData, CityHourlyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
-import { formatTime } from '../../../utils';
+import { formatTime, refactorParams } from '../../../utils';
 import FooterWetherData from '../footerWetherData/FooterWetherData';
 import { RenderTomorrowWeatherData } from './renderTomorrowWeatherData/RenderTomorrowWeatherData';
 
@@ -20,13 +20,11 @@ export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({ tomorrow
                 {tomorrowWetherData.slice(1, 2).map(({ dt, temp, weather }, index) => {
                     const [{ description, icon }] = weather;
                     const timeUTC = formatTime(dt, 'dddd, MMMM D', currentLanguage);
-                    const refactorDayTemp = Math.round(temp.day);
-                    const refactorNightTemp = Math.round(temp.night);
+                    const refactorTemp = refactorParams({ 'day': temp.day, 'night': temp.night });
 
                     return <RenderTomorrowWeatherData
                         timeUTC={timeUTC}
-                        refactorDayTemp={refactorDayTemp}
-                        refactorNightTemp={refactorNightTemp}
+                        refactorTemp={refactorTemp}
                         description={description}
                         icon={icon}
                         intl={intl}

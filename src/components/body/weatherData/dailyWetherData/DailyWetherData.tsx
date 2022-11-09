@@ -1,5 +1,5 @@
 import { CityDailyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
-import { formatCalendar, formatTime } from '../../../utils';
+import { formatCalendar, formatTime, refactorParams } from '../../../utils';
 import { RenderDailyWeatherData } from './renderDailyWeatherData/RenderDailyWeatherData';
 
 interface DailyWetherDataProps {
@@ -13,16 +13,14 @@ export const DailyWetherData: React.FC<DailyWetherDataProps> = ({ dailyWeatherDa
             {dailyWeatherData.map(({ dt, temp, weather, }, index) => {
                 const [{ description, icon }] = weather;
                 const timeUTC = index === 0 ? formatCalendar() : formatTime(dt, 'dddd, MMMM D', currentLanguage);
-                const refactorTempDay = Math.round(temp.day);
-                const refactorTempNight = Math.round(temp.night);
+                const refactorTemp = refactorParams({ 'day': temp.day, 'night': temp.night });
 
                 return (
                     <RenderDailyWeatherData
                         id={index}
                         description={description}
                         icon={icon}
-                        refactorTempDay={refactorTempDay}
-                        refactorTempNight={refactorTempNight}
+                        refactorTemp={refactorTemp}
                         timeUTC={timeUTC} />
                 )
             })}

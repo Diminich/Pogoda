@@ -1,40 +1,38 @@
-import moment from 'moment';
-import { CityHourlyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
+import { useIntl } from 'react-intl';
+import { CityDailyWeatherData, CityHourlyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
+import { formatTime, refactorParams } from '../../../utils';
+import FooterWetherData from '../footerWetherData/FooterWetherData';
 import { RenderTomorrowWeatherData } from './renderTomorrowWeatherData/RenderTomorrowWeatherData';
 
 interface TomorrowWetherDataProps {
-    hourlyWeatherData: CityHourlyWeatherData[];
-    forecastWeather: string;
+    tomorrowWetherData: CityDailyWeatherData[];
+    footerWetherData: CityHourlyWeatherData[];
+    path: string;
+    currentLanguage: string;
 }
 
-export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({ hourlyWeatherData, forecastWeather }) => {
-    let endFirstDayIndex = hourlyWeatherData.findIndex(({ dt }) => moment(dt * 1000).format('HH:mm') === '06:00');
-    const endSecondDayIndex = hourlyWeatherData.slice(++endFirstDayIndex).findIndex((time) => moment(time!.dt * 1000).format('HH:mm') === '06:00');
+export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({ tomorrowWetherData, footerWetherData, path, currentLanguage }) => {
+    const intl = useIntl();
 
     return (
-        <>
-            {hourlyWeatherData.map(({ dt, temp, weather }, index) => {
-                const timeUTC = moment(dt * 1000).format('HH:mm');
-                const refactorTemp = Math.round(temp);
+        <div className='tomorrowWetherData'>
+            <div className='tomorrowWetherData__wrapperRenderTomorrowWetherData'>
+                {tomorrowWetherData.slice(1, 2).map(({ dt, temp, weather }, index) => {
+                    const [{ description, icon }] = weather;
+                    const timeUTC = formatTime(dt, 'dddd, MMMM D', currentLanguage);
+                    const refactorTemp = refactorParams({ 'day': temp.day, 'night': temp.night });
 
-                if (index < endFirstDayIndex && forecastWeather === 'Today') {
-                    return (
-                        <RenderTomorrowWeatherData
-                            spanId={index}
-                            weather={weather}
-                            refactorTemp={refactorTemp}
-                            timeUTC={timeUTC} />
-                    )
-                } else if (index >= endFirstDayIndex && index <= (endSecondDayIndex + endFirstDayIndex) && forecastWeather === 'Tomorrow') {
-                    return (
-                        <RenderTomorrowWeatherData
-                            spanId={index}
-                            weather={weather}
-                            refactorTemp={refactorTemp}
-                            timeUTC={timeUTC} />
-                    )
-                }
-            })}
-        </>
+                    return <RenderTomorrowWeatherData
+                        timeUTC={timeUTC}
+                        refactorTemp={refactorTemp}
+                        description={description}
+                        icon={icon}
+                        intl={intl}
+                        index={index}
+                    />
+                })}
+            </div>
+            <FooterWetherData weatherData={footerWetherData} path={path} />
+        </div>
     )
 };

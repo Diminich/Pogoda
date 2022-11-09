@@ -1,0 +1,78 @@
+.todayWeatherData {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  &__wrapperRenderTodayWetherData {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    .renderTodayWeatherData {
+      @extend .todayWeatherData;
+      height: 100%;
+      width: 30%;
+      flex-direction: column;
+      justify-content: space-around;
+      color: white;
+
+      .time {
+        color: black;
+        font-weight: 400;
+        font-size: x-large;
+      }
+
+      .tempDay {
+        @extend .time;
+        color: white;
+      }
+
+      .braillePattern {
+        @extend .tempDay;
+        font-size: medium;
+        margin-left: 3px;
+      }
+
+      .wrapperTodayTemp {
+        height: 35%;
+        display: flex;
+
+        .todayTemp {
+          @extend .tempDay;
+          font-weight: 600;
+          font-size: 80px;
+        }
+
+        .specialCharactersTodayTemp {
+          font-size: 55px;
+        }
+      }
+
+      .feelsLike {
+        @extend .tempDay;
+      }
+    }
+
+    .renderTodayIconData {
+      @extend .renderTodayWeatherData;
+      align-items: center;
+      justify-content: flex-start;
+
+      .iconWether {
+        height: 50%;
+        width: 35%;
+        margin-top: 5%;
+      }
+
+      .descriptionWetherText {
+        font-weight: 400;
+        font-size: x-large;
+        margin-top: 15%;
+      }
+    }
+  }
+}

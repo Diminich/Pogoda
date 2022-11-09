@@ -1,13 +1,13 @@
 interface SpanProps extends React.HTMLAttributes<HTMLSpanElement> {
-    classNameSpan?: string;
+    className?: string;
     specialCharacters?: string;
     text?: string | number;
     onClickSpan?: () => void;
 }
 
-export const Span: React.FC<SpanProps> = ({ classNameSpan, text, onClickSpan, specialCharacters = null }) => {
+export const Span: React.FC<SpanProps> = ({ className, text, onClickSpan, specialCharacters = null }) => {
     return (
-        <span className={classNameSpan} onClick={onClickSpan}>
+        <span className={className} onClick={onClickSpan}>
             {text}{specialCharacters}
         </span>
     )

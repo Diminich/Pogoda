@@ -17,7 +17,6 @@ const SET_CITY_DATA_DAILY = "SET_CITY_DATA_DAILY";
 const IS_ACTIVE_ERROR = "IS_ACTIVE_ERROR";
 const SET_ERROR = "SET_ERROR";
 const IS_LOADING = "IS_LOADING";
-const SET_FORECAST_WEATHER = "SET_FORECAST_WEATHER";
 
 const initialState: InitialStateBodySearchCityType = {
   cityName: '',
@@ -27,8 +26,7 @@ const initialState: InitialStateBodySearchCityType = {
   cityDailyWeatherData: [],
   isActiveError: false,
   error: 0,
-  isLoading: false,
-  forecastWeather: 'Today',
+  isLoading: false
 };
 
 type InitialStateType = typeof initialState;
@@ -57,22 +55,21 @@ const bodySearchCityReducer = (
     case SET_CITY_CURRENT_WEATHER_DATA: {
       return {
         ...state,
-        cityCurrentWeatherData: [{ ...actionBodySearchCity.cityCurrentWeatherData, ...state.cityDailyWeatherData.find((el) => el)!.temp }],
-
+        cityCurrentWeatherData: [{ ...actionBodySearchCity.cityCurrentWeatherData, ...state.cityDailyWeatherData.find((el) => el)!.temp }]
       };
     }
 
     case SET_CITY_DATA_HOURLY: {
       return {
         ...state,
-        cityHourlyWeatherData: actionBodySearchCity.cityHourlyWeatherData.filter((el, index) => index !== 0 && el)
+        cityHourlyWeatherData: [...actionBodySearchCity.cityHourlyWeatherData.slice(1)]
       };
     }
 
     case SET_CITY_DATA_DAILY: {
       return {
         ...state,
-        cityDailyWeatherData: actionBodySearchCity.cityDailyWeatherData
+        cityDailyWeatherData: actionBodySearchCity.cityDailyWeatherData.slice(0, -1)
       };
     }
 
@@ -94,13 +91,6 @@ const bodySearchCityReducer = (
       return {
         ...state,
         isLoading: actionBodySearchCity.isLoading
-      };
-    }
-
-    case SET_FORECAST_WEATHER: {
-      return {
-        ...state,
-        forecastWeather: actionBodySearchCity.setForecastWeather
       };
     }
 
@@ -156,12 +146,6 @@ export const actionBodySearchCity = {
   ({
     type: IS_LOADING,
     isLoading,
-  } as const),
-
-  setForecastWeather: (setForecastWeather: string) =>
-  ({
-    type: SET_FORECAST_WEATHER,
-    setForecastWeather,
   } as const),
 };
 

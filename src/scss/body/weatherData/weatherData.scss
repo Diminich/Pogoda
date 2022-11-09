@@ -1,23 +1,4 @@
-@import "./hourlyWetherData/hourlyWeatherData.scss";
+@import "./tomorrowWetherData//tomorrowWeatherData.scss";
 @import "./dailyWetherData/dailyWetherData.scss";
-@import "./currentWetherData/currentWetherData.scss";
-
-.weatherData {
-  height: 40%;
-  width: 100%;
-  border-top: 2px solid white;
-  display: flex;
-  align-items: center;
-  overflow: auto;
-
-  &__noData {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: xx-large;
-  }
-}
+@import "./todayWetherData/todayWetherData.scss";
+@import "./footerWetherData/footerWetherData.scss";

@@ -1,30 +1,15 @@
-import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
-import { useDispatch } from 'react-redux';
-import { Span } from '../../htmlTags/Span';
-import { useEffect, useState } from 'react';
-import { NameButtonsToggleWether } from '../../constant';
+import { NameButtonsToggleWether } from '../../constants';
+import { useParams } from 'react-router-dom';
+import { RenderByttonsToggleWeather } from './renderByttonsToggleWeather/RenderByttonsToggleWeather';
 
 export const ByttonsToggleWeather: React.FC = () => {
-    const [activeButton, setActiveButton] = useState<string>('Today');
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(actionBodySearchCity.setForecastWeather(activeButton));
-    }, [activeButton, dispatch])
-
-    const onClickButton = (nameActiveButton: string) => {
-        setActiveButton(nameActiveButton)
-    }
+    const { pathId = '' } = useParams();
 
     return (
         <div className='buttonsToggleWeather'>
-            {NameButtonsToggleWether().map(({ nameActiveButton, textButton }, index) => {
+            {NameButtonsToggleWether().map(({ nameButton, path, textButton }, index) => {
                 return (
-                    <Span
-                        key={index}
-                        classNameSpan={nameActiveButton === activeButton ? 'buttonsToggleWeather__active' : 'buttonsToggleWeather__default'}
-                        text={textButton}
-                        onClickSpan={() => onClickButton(nameActiveButton)} />
+                    <RenderByttonsToggleWeather nameButton={nameButton} path={path} pathId={pathId} textButton={textButton} index={index} />
                 )
             })}
         </div>

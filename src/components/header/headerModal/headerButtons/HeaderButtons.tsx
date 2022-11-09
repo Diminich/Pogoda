@@ -17,8 +17,8 @@ export const HeaderButtons: React.FC<HeaderButtonsProps> = ({ intl, setIsModalVi
         // // </BurgerMenu>
         // // {/* </div> */}
         <div className='headerButton'>
-            <Span classNameSpan='headerButton__button' onClickSpan={() => setIsModalVisibleModalLoginSignIn(true)} text={intl.formatMessage({ id: 'header.signIn' })} />
-            <Span classNameSpan='headerButton__button' onClickSpan={() => setIsModalVisibleModalLoginSignUp(true)} text={intl.formatMessage({ id: 'header.signUp' })} />
+            <Span className='headerButton__button' onClickSpan={() => setIsModalVisibleModalLoginSignIn(true)} text={intl.formatMessage({ id: 'header.signIn' })} />
+            <Span className='headerButton__button' onClickSpan={() => setIsModalVisibleModalLoginSignUp(true)} text={intl.formatMessage({ id: 'header.signUp' })} />
         </div>
 
     )

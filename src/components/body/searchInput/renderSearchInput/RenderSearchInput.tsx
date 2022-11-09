@@ -28,6 +28,7 @@ export const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, onSe
             />
             <SearchButton
                 onClick={onSearchCity}
+                disabled={cityName === ''}
                 loading={isLoading}
                 loadingPosition="center"
                 variant="contained"

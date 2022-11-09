@@ -1,33 +1,29 @@
-import { WeatherType } from "../../../../../redux/reducersTypes/reducersTypes";
 import { Span } from "../../../../htmlTags/Span";
 
 
 interface RenderDailyWetherDataProps {
-    spanId: number;
-    weather: WeatherType[];
-    daylyTempMax: number;
-    daylyTempMin: number;
+    id: number;
+    description: string;
+    icon: string;
+    refactorTemp: { [key: string]: number };
     timeUTC: string;
 }
 
-export const RenderDailyWeatherData: React.FC<RenderDailyWetherDataProps> = ({ spanId, weather, daylyTempMax, daylyTempMin, timeUTC }) => {
+export const RenderDailyWeatherData: React.FC<RenderDailyWetherDataProps> = ({ id, description, icon, refactorTemp, timeUTC }) => {
 
     return (
-        <div key={spanId} className='weatherDataDaily'>
-            <div className='weatherDataDaily__dailyTemp'>
-                <div><Span text={daylyTempMax} />&deg;</div>
-                <div><Span text={daylyTempMin} />&deg;</div>
+        <div key={id} className='collWetherData'>
+            <div className="wrpperTimeDescription">
+                <Span className="time" text={timeUTC} />
+                <Span className="description" text={description} />
             </div>
-            {weather.map(({ id, icon }) => {
-                return (
-                    <div className='weatherDataDaily__weatherDataDailyIcon'>
-                        <img key={id} className='weatherDataDaily__icon' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
-                        <Span text={timeUTC} />
-                    </div>
-                )
-            }
-            )}
-
+            <div className="wrapperIconTemp">
+                <img className='iconWether' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt='iconWether' />
+                <div className="wrapperTempDay">
+                    <Span className="tempDay" text={refactorTemp.day} specialCharacters={'\u00b0'} />
+                    <Span className="tempNight" text={refactorTemp.night} specialCharacters={'\u00b0'} />
+                </div>
+            </div>
         </div>
     )
 };

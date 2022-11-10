@@ -1,16 +1,19 @@
-import { Span } from '../../../../htmlTags/Span';
-import { i18nFuction } from '../../../../utils';
+import { useIntl } from "react-intl";
+import { CityCurrentWeatherData } from "../../../../../redux/reducersTypes/reducersTypes";
+import { Span } from "../../../../htmlTags/Span";
+import { formatTime, i18nFuction, refactorParams } from "../../../../utils";
 
-interface RenderTodayWetherDataProps {
-    timeUTC: string;
-    refactorTemp: { [key: string]: number };
-    description: string;
-    icon: string;
+interface todayWeatherDetaelsProps {
+    details: CityCurrentWeatherData;
     index: number;
-    intl: any;
+    currentLanguage: string;
 }
 
-export const RenderTodayWeatherData: React.FC<RenderTodayWetherDataProps> = ({ timeUTC, refactorTemp, description, icon, index, intl }) => {
+export const TodayWeatherDetails: React.FC<todayWeatherDetaelsProps> = ({ details, index, currentLanguage }) => {
+    const intl = useIntl();
+    const [{ description, icon }] = details.weather;
+    const timeUTC = formatTime(details.dt, 'MMMM, HH:mm', currentLanguage);
+    const refactorTemp = refactorParams({ 'day': details.day, 'night': details.night, 'currentTemp': details.temp, 'feels_like': details.feels_like });
 
     return (
         <>

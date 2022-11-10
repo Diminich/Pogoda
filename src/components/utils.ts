@@ -20,5 +20,6 @@ export const refactorParams = ({ ...params }) => {
     for (const key in params) {
         refactorTemp[key] = Math.round(params[key]);
     }
+    
     return refactorTemp;
 };

@@ -1,38 +1,21 @@
-import { useIntl } from 'react-intl';
 import { CityDailyWeatherData, CityHourlyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
-import { formatTime, refactorParams } from '../../../utils';
-import FooterWetherData from '../footerWetherData/FooterWetherData';
-import { RenderTomorrowWeatherData } from './renderTomorrowWeatherData/RenderTomorrowWeatherData';
+import { TodayWeatherByHourles } from '../todayWeatherByHourles/TodayWeatherByHouers';
+import { TomorrowWeatherDetails } from './tomorrowWeatherDetails/TomorrowWeatherDetails';
 
 interface TomorrowWetherDataProps {
-    tomorrowWetherData: CityDailyWeatherData[];
-    footerWetherData: CityHourlyWeatherData[];
-    path: string;
+    dailyWeatherData: CityDailyWeatherData[];
+    hourlyWetherData: CityHourlyWeatherData[];
+    pathId: string;
     currentLanguage: string;
 }
 
-export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({ tomorrowWetherData, footerWetherData, path, currentLanguage }) => {
-    const intl = useIntl();
-
+export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({ dailyWeatherData, hourlyWetherData, pathId, currentLanguage }) => {
     return (
         <div className='tomorrowWetherData'>
             <div className='tomorrowWetherData__wrapperRenderTomorrowWetherData'>
-                {tomorrowWetherData.slice(1, 2).map(({ dt, temp, weather }, index) => {
-                    const [{ description, icon }] = weather;
-                    const timeUTC = formatTime(dt, 'dddd, MMMM D', currentLanguage);
-                    const refactorTemp = refactorParams({ 'day': temp.day, 'night': temp.night });
-
-                    return <RenderTomorrowWeatherData
-                        timeUTC={timeUTC}
-                        refactorTemp={refactorTemp}
-                        description={description}
-                        icon={icon}
-                        intl={intl}
-                        index={index}
-                    />
-                })}
+                {dailyWeatherData.slice(1, 2).map((weatherDetails, index) => <TomorrowWeatherDetails details={weatherDetails} index={index} currentLanguage={currentLanguage} />)}
             </div>
-            <FooterWetherData weatherData={footerWetherData} path={path} />
+            <TodayWeatherByHourles weatherData={hourlyWetherData} path={pathId} />
         </div>
     )
 };

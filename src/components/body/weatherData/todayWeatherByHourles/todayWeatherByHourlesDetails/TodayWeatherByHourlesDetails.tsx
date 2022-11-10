@@ -1,14 +1,14 @@
 import { Span } from "../../../../htmlTags/Span";
 
 
-interface RenderFooterWeatherDataProps {
+interface TodayWeatherByHourlesDetailsProps {
     spanId: number;
     icon: string;
     refactorTemp: { [key: string]: number };
     timeUTC: string;
 }
 
-export const RenderFooterWeatherData: React.FC<RenderFooterWeatherDataProps> = ({ spanId, icon, refactorTemp, timeUTC }) => {
+export const TodayWeatherByHourlesDetails: React.FC<TodayWeatherByHourlesDetailsProps> = ({ spanId, icon, refactorTemp, timeUTC }) => {
     return (
         <div key={spanId} className='footerWetherData__renderFooterWetherData'>
             <Span text={refactorTemp.temp} specialCharacters={'\u00b0'} />

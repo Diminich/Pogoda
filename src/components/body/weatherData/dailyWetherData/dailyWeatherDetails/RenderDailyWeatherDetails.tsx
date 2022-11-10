@@ -1,18 +1,21 @@
+import { CityDailyWeatherData } from "../../../../../redux/reducersTypes/reducersTypes";
 import { Span } from "../../../../htmlTags/Span";
+import { formatCalendar, formatTime, refactorParams } from "../../../../utils";
 
 
-interface RenderDailyWetherDataProps {
-    id: number;
-    description: string;
-    icon: string;
-    refactorTemp: { [key: string]: number };
-    timeUTC: string;
+interface RenderDailyWeatherDetailsProps {
+    details: CityDailyWeatherData;
+    index: number;
+    currentLanguage: string;
 }
 
-export const RenderDailyWeatherData: React.FC<RenderDailyWetherDataProps> = ({ id, description, icon, refactorTemp, timeUTC }) => {
+export const RenderDailyWeatherDetails: React.FC<RenderDailyWeatherDetailsProps> = ({ details, index, currentLanguage }) => {
+    const [{ description, icon }] = details.weather;
+    const timeUTC = index === 0 ? formatCalendar() : formatTime(details.dt, 'dddd, MMMM D', currentLanguage);
+    const refactorTemp = refactorParams({ 'day': details.temp.day, 'night': details.temp.night });
 
     return (
-        <div key={id} className='collWetherData'>
+        <div key={index} className='collWetherData'>
             <div className="wrpperTimeDescription">
                 <Span className="time" text={timeUTC} />
                 <Span className="description" text={description} />

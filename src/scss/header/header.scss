@@ -1,6 +1,6 @@
-@import 'modalLogin/modalLogin.scss';
-@import 'headerButtons/headerButtons.scss';
-@import '../mixins';
+@import "modalLogin/modalLogin.scss";
+@import "headerButtons/headerButtons.scss";
+@import "../mixins";
 
 .header {
   height: $header-height;
@@ -11,34 +11,5 @@
   top: 0px;
   right: 0px;
   left: 0px;
-
-  &__select {
-    height: 63%;
-    color: white;
-    margin-left: 20px;
-    border: 1px solid white;
-    border-radius: 5px;
-    transition: 0.5s;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-      color: red;
-      border-color: red;
-
-      :global(.ant-select-selection-item) {
-        color: red !important;
-      }
-    }
-
-    &:global(.ant-select-open) {
-      border-color: red !important;
-
-      :global(.ant-select-selection-item) {
-        color: red !important;
-      }
-    }
-  }
+  padding-left: 15px;
 }

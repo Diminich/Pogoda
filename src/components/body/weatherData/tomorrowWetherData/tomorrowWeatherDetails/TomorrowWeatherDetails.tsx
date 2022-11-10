@@ -1,19 +1,20 @@
-import { IntlShape } from "react-intl";
+import { useIntl } from "react-intl";
+import { CityDailyWeatherData } from "../../../../../redux/reducersTypes/reducersTypes";
 import { Span } from "../../../../htmlTags/Span";
-import { i18nFuction } from "../../../../utils";
+import { formatTime, i18nFuction, refactorParams } from "../../../../utils";
 
 
-interface RenderTomorrowWeatherDataProps {
-    timeUTC: string;
-    refactorTemp: { [key: string]: number };
-    description: string
-    icon: string;
-    intl: IntlShape;
+interface TomorrowWeatherDetailsProps {
+    details: CityDailyWeatherData;
     index: number;
+    currentLanguage: string;
 }
 
-export const RenderTomorrowWeatherData: React.FC<RenderTomorrowWeatherDataProps> = ({ timeUTC, refactorTemp, description, icon, intl, index }) => {
-
+export const TomorrowWeatherDetails: React.FC<TomorrowWeatherDetailsProps> = ({ details, index, currentLanguage }) => {
+    const intl = useIntl();
+    const [{ description, icon }] = details.weather;
+    const timeUTC = formatTime(details.dt, 'dddd, MMMM D', currentLanguage);
+    const refactorTemp = refactorParams({ 'day': details.temp.day, 'night': details.temp.night });
     return (
         <>
             <div className="renderTomorrowWeatherData" key={index}>

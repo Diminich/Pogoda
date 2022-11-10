@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunkMiddleware from 'redux-thunk';
 import bodySearchCityReducer from "./bodySearchCity-reducer";
 import headerReducer from "./header-reducer";

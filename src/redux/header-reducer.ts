@@ -34,10 +34,10 @@ const headerReducer = (
 
 export const actionHeader = {
   setLanguage: (setLanguage: string) =>
-    ({
-      type: SET_LANGUAGE,
-      setLanguage,
-    } as const),
+  ({
+    type: SET_LANGUAGE,
+    setLanguage,
+  } as const),
 };
 
 export default headerReducer;

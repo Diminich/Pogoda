@@ -3,7 +3,7 @@ import { IntlShape } from "react-intl";
 import { SearchButton, SearchInput } from '../../../styled/searchInputStyled';
 import { i18nFuction } from "../../../utils";
 
-interface RenderSearchInputProps {
+interface SearchInputProps {
     intl: IntlShape;
     onSearchCity: () => void;
     cityName: string;
@@ -13,9 +13,10 @@ interface RenderSearchInputProps {
     pressEnter: (e: KeyboardEvent<HTMLDivElement>) => void;
 }
 
-export const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, pressEnter }) => {
+
+export const SearchInputDetails: React.FC<SearchInputProps> = ({ intl, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, pressEnter }) => {
     return (
-        <>
+        <div className='searchInput'>
             <SearchInput
                 autoComplete="off"
                 focused={false}
@@ -36,6 +37,6 @@ export const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, onSe
                 {i18nFuction(intl, 'body.searchButton')}
             </SearchButton>
 
-        </>
+        </div>
     )
 };

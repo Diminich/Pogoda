@@ -1,13 +1,26 @@
-import { useIntl } from "react-intl";
+import { IntlShape, useIntl } from "react-intl";
 import { ChangeEvent, useEffect, KeyboardEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestCityWeatherData } from "../../../redux/bodySearchCity-reducer";
 import { AppStateType } from '../../../redux/redux-store';
 import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
 import { searchInputError } from "./searchInputError";
-import { RenderSearchInput } from "./renderSearchInput/RenderSearchInput";
 
-export const SearchInput: React.FC = () => {
+interface SearchInputProps {
+    intl: IntlShape;
+    onSearchCity: () => void;
+    cityName: string;
+    isLoading: boolean;
+    changeNameCity: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    isActiveError: boolean;
+    pressEnter: (e: KeyboardEvent<HTMLDivElement>) => void;
+}
+
+interface SearchInputContainerProps {
+    renderSearchInput: (props: SearchInputProps) => React.ReactElement
+}
+
+export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({ renderSearchInput }) => {
     const cityName = useSelector<AppStateType, string>(state => state.bodySearchCityPage.cityName);
     const error = useSelector<AppStateType, number>(state => state.bodySearchCityPage.error);
     const isActiveError = useSelector<AppStateType, boolean>(state => state.bodySearchCityPage.isActiveError);
@@ -39,16 +52,5 @@ export const SearchInput: React.FC = () => {
 
     searchInputError(dispatch, error);
 
-    return (
-        <div className='searchInput'>
-            <RenderSearchInput
-                intl={intl}
-                changeNameCity={changeNameCity}
-                cityName={cityName}
-                isLoading={isLoading}
-                onSearchCity={onSearchCity}
-                isActiveError={isActiveError}
-                pressEnter={pressEnter} />
-        </div>
-    )
+    return renderSearchInput({ intl, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, pressEnter });
 };

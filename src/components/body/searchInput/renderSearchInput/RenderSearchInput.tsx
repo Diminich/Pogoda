@@ -13,7 +13,7 @@ interface RenderSearchInputProps {
     pressEnter: (e: KeyboardEvent<HTMLDivElement>) => void;
 }
 
-export const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, pressEnter}) => {
+export const RenderSearchInput: React.FC<RenderSearchInputProps> = ({ intl, onSearchCity, cityName, isLoading, changeNameCity, isActiveError, pressEnter }) => {
     return (
         <>
             <SearchInput

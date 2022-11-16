@@ -1,16 +1,15 @@
+import { Link, useParams } from "react-router-dom";
+import { Span } from "../../../../htmlTags/Span";
 
-import { Link } from 'react-router-dom';
-import { Span } from '../../../htmlTags/Span';
-
-interface RenderByttonsToggleWeatherProps {
+interface ButtonsToggleWeatherDetailsProps {
     nameButton: string;
     path: string;
-    pathId: string;
     textButton: string;
     index: number;
 }
 
-export const RenderByttonsToggleWeather: React.FC<RenderByttonsToggleWeatherProps> = ({ nameButton, path, pathId, textButton, index }) => {
+export const ButtonsToggleWeatherDetails: React.FC<ButtonsToggleWeatherDetailsProps> = ({ nameButton, path, textButton, index }) => {
+    const { pathId = '' } = useParams();
 
     return (
         <Link key={index} to={path}>

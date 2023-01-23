@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestCityWeatherData } from '../../../redux/bodySearchCity-reducer';
 import { actionHeader } from '../../../redux/header-reducer';
 import { AppStateType } from '../../../redux/redux-store';
-import { LanguagesSelect } from '../../styled/headerSelectStyled';
+import { LanguagesSelect } from '../../styled/header/headerSelectStyled';
 
 export const HeaderSelect: React.FC = () => {
     const dispatch = useDispatch();

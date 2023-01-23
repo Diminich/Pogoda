@@ -3,26 +3,9 @@ import { CityDailyWeatherData, CityCurrentWeatherData, CityHourlyWeatherData } f
 import { AppStateType } from '../../../redux/redux-store';
 import { useParams } from 'react-router-dom';
 import React from 'react';
-
-interface TodayWetherDataProps {
-    currentWeatherData: CityCurrentWeatherData[];
-    hourlyWetherData: CityHourlyWeatherData[];
-    pathId: string;
-    currentLanguage: string;
-}
-
-interface TomorrowWetherDataProps {
-    dailyWeatherData: CityDailyWeatherData[];
-    hourlyWetherData: CityHourlyWeatherData[];
-    pathId: string;
-    currentLanguage: string;
-}
-
-interface DailyWetherDataProps {
-    dailyWeatherData: CityDailyWeatherData[];
-    currentLanguage: string;
-}
-
+import { TomorrowWetherDataProps } from './tomorrowWetherData/TomorrowWeatherData';
+import { TodayWetherDataProps } from './todayWether/TodayWether';
+import { DailyWetherDataProps } from './dailyWetherData/DailyWetherData';
 
 interface WeatherDataContainerProps {
     renderTodayWeather: (props: TodayWetherDataProps) => React.ReactElement;

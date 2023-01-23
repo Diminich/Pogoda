@@ -22,5 +22,4 @@ export const LanguagesSelect = styled(Select)`
             }
         }
     }
-}
 `

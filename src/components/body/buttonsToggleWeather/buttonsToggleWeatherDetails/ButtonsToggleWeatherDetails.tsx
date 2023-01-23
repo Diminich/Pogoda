@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { Span } from "../../../../htmlTags/Span";
+import { Span } from "../../../htmlTags/Span";
 
 interface ButtonsToggleWeatherDetailsProps {
     nameButton: string;
@@ -12,7 +12,7 @@ export const ButtonsToggleWeatherDetails: React.FC<ButtonsToggleWeatherDetailsPr
     const { pathId = '' } = useParams();
 
     return (
-        <Link key={index} to={path}>
+        <Link key={index} to={path} className='button'>
             <Span
                 className={nameButton === pathId ? 'buttonsToggleWeather__active' : 'buttonsToggleWeather__default'}
                 text={textButton}

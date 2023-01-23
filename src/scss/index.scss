@@ -1,8 +1,15 @@
 @import "header/header.scss";
 @import "body/body.scss";
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
+  position: relative;
   height: 100vh;
-  width: 100vw;
-  background-image: url(./../icons/goluboy-fon.jpg);
+  max-width: 100vw;
+  background: url(./../icons/goluboy-fon.jpg) no-repeat center center fixed;
+  background-size: cover;
 }

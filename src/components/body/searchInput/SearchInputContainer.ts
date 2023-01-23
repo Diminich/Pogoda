@@ -1,20 +1,11 @@
-import { IntlShape, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import { ChangeEvent, useEffect, KeyboardEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestCityWeatherData } from "../../../redux/bodySearchCity-reducer";
 import { AppStateType } from '../../../redux/redux-store';
 import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
 import { searchInputError } from "./searchInputError";
-
-interface SearchInputProps {
-    intl: IntlShape;
-    onSearchCity: () => void;
-    cityName: string;
-    isLoading: boolean;
-    changeNameCity: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    isActiveError: boolean;
-    pressEnter: (e: KeyboardEvent<HTMLDivElement>) => void;
-}
+import { SearchInputProps } from "./searchInputDetails/SearchInputDetails";
 
 interface SearchInputContainerProps {
     renderSearchInput: (props: SearchInputProps) => React.ReactElement

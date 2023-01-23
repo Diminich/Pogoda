@@ -1,7 +1,7 @@
 import { CityDailyWeatherData } from '../../../../redux/reducersTypes/reducersTypes';
 import { RenderDailyWeatherDetails } from './dailyWeatherDetails/RenderDailyWeatherDetails';
 
-interface DailyWetherDataProps {
+export interface DailyWetherDataProps {
     dailyWeatherData: CityDailyWeatherData[];
     currentLanguage: string;
 }

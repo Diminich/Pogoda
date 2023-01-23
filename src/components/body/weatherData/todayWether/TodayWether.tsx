@@ -2,7 +2,7 @@ import { CityCurrentWeatherData, CityHourlyWeatherData } from '../../../../redux
 import { TodayWeatherByHourles } from '../todayWeatherByHourles/TodayWeatherByHouers';
 import { TodayWeatherDetails } from './todayWetherDetails/TodayWetherDetails';
 
-interface TodayWetherDataProps {
+export interface TodayWetherDataProps {
     currentWeatherData: CityCurrentWeatherData[];
     hourlyWetherData: CityHourlyWeatherData[];
     pathId: string;

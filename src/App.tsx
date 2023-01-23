@@ -1,6 +1,5 @@
 import { RoutesComponents } from './routes/RoutesComponents';
 import { Header } from './components/header/Header';
-import 'antd/dist/antd.css';
 import './scss/index.scss';
 import { IntlProvider } from 'react-intl';
 import { useSelector } from 'react-redux';

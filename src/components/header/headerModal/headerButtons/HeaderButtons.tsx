@@ -1,25 +1,30 @@
-import { Dispatch, SetStateAction } from 'react';
-import { IntlShape } from 'react-intl';
-import { Span } from '../../../htmlTags/Span';
-// import { slide as BurgerMenu } from 'react-burger-menu';
+import { Dispatch, SetStateAction } from "react";
+import { useIntl } from "react-intl";
+import { nameButtonsHeader } from "../../../constants"
+import { HeaderButtonsDetails } from "./headerButtonsDetails/HeaderButtonsDetails";
 
 interface HeaderButtonsProps {
-    intl: IntlShape;
-    setIsModalVisibleModalLoginSignIn: Dispatch<SetStateAction<boolean>>
-    setIsModalVisibleModalLoginSignUp: Dispatch<SetStateAction<boolean>>
+    setVisibleModalLogin: Dispatch<SetStateAction<boolean>>;
+    setNameModalLogin: Dispatch<SetStateAction<string>>;
 }
 
-export const HeaderButtons: React.FC<HeaderButtonsProps> = ({ intl, setIsModalVisibleModalLoginSignIn, setIsModalVisibleModalLoginSignUp }) => {
+export const HeaderButtons: React.FC<HeaderButtonsProps> = ({ setVisibleModalLogin, setNameModalLogin }) => {
+    const intl = useIntl();
     return (
-        // <div style={{ height: '100%', width: '100%' }}>
-        // // <BurgerMenu styles={styles}>
-        // //     <a href="/">Пошел в попу</a>
-        // // </BurgerMenu>
-        // // {/* </div> */}
         <div className='headerButton'>
-            <Span className='headerButton__button' onClickSpan={() => setIsModalVisibleModalLoginSignIn(true)} text={intl.formatMessage({ id: 'header.signIn' })} />
-            <Span className='headerButton__button' onClickSpan={() => setIsModalVisibleModalLoginSignUp(true)} text={intl.formatMessage({ id: 'header.signUp' })} />
+            {nameButtonsHeader(intl).map(({ nameButton, textButton }, index) => <HeaderButtonsDetails
+                setVisibleModalLogin={setVisibleModalLogin}
+                setNameModalLogin={setNameModalLogin}
+                nameButton={nameButton}
+                textButton={textButton}
+                index={index} />)}
         </div>
-
     )
-};
+}
+
+// <div style={{ height: '100%', width: '100%' }}>
+    // // <BurgerMenu styles={styles}>
+    // //     <a href="/">!!!</a>
+    // // </BurgerMenu>
+    // // {/* </div> */}
+    // <div className='headerButton'>

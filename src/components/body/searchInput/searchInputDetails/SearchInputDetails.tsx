@@ -1,9 +1,9 @@
 import { KeyboardEvent } from "react";
 import { IntlShape } from "react-intl";
-import { SearchButton, SearchInput } from '../../../styled/searchInputStyled';
+import { SearchButton, SearchInput } from '../../../styled/body/searchInputStyled';
 import { i18nFuction } from "../../../utils";
 
-interface SearchInputProps {
+export interface SearchInputProps {
     intl: IntlShape;
     onSearchCity: () => void;
     cityName: string;

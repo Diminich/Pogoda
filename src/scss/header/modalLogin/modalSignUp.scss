@@ -1,0 +1,43 @@
+.modalSignUp {
+  height: 100%;
+  width: 100%;
+
+  .modalHeader {
+    font-size: xxx-large;
+  }
+
+  .modalInput {
+    height: 10%;
+    width: 60%;
+    padding-left: 15px;
+    border-radius: 20px;
+    border: 1px solid gray;
+    font-weight: bold;
+    outline: none;
+  }
+
+  .errorMessageLogin {
+    position: absolute;
+    top: 38%;
+    left: 19%;
+    color: red;
+  }
+
+  .errorMessagePassword {
+    @extend .errorMessageLogin;
+    top: 58%;
+  }
+
+  .errorMessagePasswordAgain {
+    @extend .errorMessageLogin;
+    top: 79%;
+  }
+
+  .modalButtons {
+    height: 10%;
+    width: 63%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

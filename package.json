@@ -1,7 +1,7 @@
 {
   "name": "pogoda",
   "version": "0.1.0",
-  "homepage": "https://diminich.github.io/Pogoda",
+  "homepage": "https://Diminich.github.io/Pogoda",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",

@@ -1,21 +1,4 @@
 {
-  "header.signIn": "Войти",
-  "header.signUp": "Зарегистрироваться",
-  "header.buttonSignIn": "Войти",
-  "header.buttonSignUp": "Зарегистрироваться",
-  "header.buttonCancelSignIn": "Отмена",
-  "header.buttonCancelSignUp": "Отмена",
-  "header.inputLogin": "Логин",
-  "header.inputPassword": "Пароль",
-  "header.inputPasswordAgain": "Повторите пароль",
-  
-  "header.inputErrorSignIn": "Неправильное имя пользователя или пароль",
-
-  "header.inputErrorSignUp": "Такой логин уже существует",
-  "header.inputPasswordErrorSignUp": "Пароли не совпадают",
-  "header.inputErrorFieldFilingSignUp": "Поле обязательно к заполнению",
-  "header.inputPasswordErrorLengthSignUp": "Минимум 6 символов",
-
   "body.search": "Поиск города...",
   "body.searchButton": "Поиск",
   "body.error": "Город не найден",

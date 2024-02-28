@@ -9,9 +9,6 @@ export type TranslateLanguagesType = {
 };
 
 type TranslateLanguage = {
-  "header.signIn": string;
-  "header.signUp": string;
-
   "body.search": string;
 };
 

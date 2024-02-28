@@ -3,9 +3,9 @@ import { ChangeEvent, useEffect, KeyboardEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestCityWeatherData } from "../../../redux/bodySearchCity-reducer";
 import { AppStateType } from '../../../redux/redux-store';
-import { actionBodySearchCity } from '../../../redux/bodySearchCity-reducer';
 import { searchInputError } from "./searchInputError";
 import { SearchInputProps } from "./searchInputDetails/SearchInputDetails";
+import { isLoadingAction, setCityNameAction } from "../../../redux/actions/bodySearchCityActions";
 
 interface SearchInputContainerProps {
     renderSearchInput: (props: SearchInputProps) => React.ReactElement
@@ -27,18 +27,18 @@ export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({ rend
 
     const onSearchCity = () => {
         if (cityName) {
-            dispatch(actionBodySearchCity.isLoading(true));
+            dispatch(isLoadingAction(true));
         }
     };
 
     const pressEnter = (e: KeyboardEvent<HTMLDivElement>) => {
         if (e.key === 'Enter') {
-            dispatch(actionBodySearchCity.isLoading(true));
+            dispatch(isLoadingAction(true));
         }
     };
 
     const changeNameCity = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        dispatch(actionBodySearchCity.setCityName(e.currentTarget.value));
+        dispatch(setCityNameAction(e.currentTarget.value));
     };
 
     searchInputError(dispatch, error);

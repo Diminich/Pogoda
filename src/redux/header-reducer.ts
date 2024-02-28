@@ -2,7 +2,7 @@ import { InitialStateHeaderType } from "./reducersTypes/reducersTypes";
 import messages_ru from "./../i18n/ru.json";
 import messages_en from "./../i18n/en.json";
 import { createReducer } from "@reduxjs/toolkit";
-import { setLanguage } from "./actions/headerActions";
+import { setLanguageAction } from "./actions/headerActions";
 
 const initialState: InitialStateHeaderType = {
   currentLanguage: "en",
@@ -13,7 +13,7 @@ const initialState: InitialStateHeaderType = {
 };
 
 const headerReducer = createReducer(initialState, (builder) => {
-  builder.addCase(setLanguage, (state, action) => {
+  builder.addCase(setLanguageAction, (state, action) => {
     state.currentLanguage = action.payload
   })
 });

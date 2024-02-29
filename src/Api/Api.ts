@@ -14,7 +14,7 @@ export const cityApi = {
   getCityHoursData(
     lat: number | undefined,
     lon: number | undefined,
-    languages: string,
+    languages: string
   ) {
     return instance.get(
       `onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&lang=${languages}&appid=${apiKey}`

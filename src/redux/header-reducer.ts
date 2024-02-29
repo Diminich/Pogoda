@@ -14,8 +14,8 @@ const initialState: InitialStateHeaderType = {
 
 const headerReducer = createReducer(initialState, (builder) => {
   builder.addCase(setLanguageAction, (state, action) => {
-    state.currentLanguage = action.payload
-  })
+    state.currentLanguage = action.payload;
+  });
 });
 
 export default headerReducer;

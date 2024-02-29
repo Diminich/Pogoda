@@ -1,23 +1,26 @@
-import { Dispatch } from "redux";
-import { cityApi } from "../Api/Api";
-import {
-  InitialStateBodySearchCityType,
-} from "./reducersTypes/reducersTypes";
+import { InitialStateBodySearchCityType } from "./reducersTypes/reducersTypes";
 import { createReducer } from "@reduxjs/toolkit";
-import { isActiveErrorAction, isLoadingAction, setCityCurrentWeatherDataAction, setCityDailyWeatherDataAction, setCityHourlyWeatherDataAction, setCityNameAction, setCitySearchCoordsAction, setErrorAction } from "./actions/bodySearchCityActions";
-import { AppStateType } from "./redux-store";
+import {
+  isActiveErrorAction,
+  isLoadingAction,
+  setCityCurrentWeatherDataAction,
+  setCityDailyWeatherDataAction,
+  setCityHourlyWeatherDataAction,
+  setCityNameAction,
+  setCitySearchCoordsAction,
+  setErrorAction,
+} from "./actions/bodySearchCityActions";
 
 const initialState: InitialStateBodySearchCityType = {
-  cityName: '',
+  cityName: "",
   citySearchCoords: null,
   cityCurrentWeatherData: [],
   cityHourlyWeatherData: [],
   cityDailyWeatherData: [],
   isActiveError: false,
   error: 0,
-  isLoading: false
+  isLoading: false,
 };
-
 
 const bodySearchCityReducer = createReducer(initialState, (builder) => {
   builder
@@ -28,7 +31,12 @@ const bodySearchCityReducer = createReducer(initialState, (builder) => {
       state.citySearchCoords = action.payload;
     })
     .addCase(setCityCurrentWeatherDataAction, (state, action) => {
-      state.cityCurrentWeatherData = [{ ...action.payload, ...state.cityDailyWeatherData.find((el) => el)!.temp }];
+      state.cityCurrentWeatherData = [
+        {
+          ...action.payload,
+          ...state.cityDailyWeatherData.find((el) => el)!.temp,
+        },
+      ];
     })
     .addCase(setCityHourlyWeatherDataAction, (state, action) => {
       state.cityHourlyWeatherData = [...action.payload.slice(1)];
@@ -44,32 +52,7 @@ const bodySearchCityReducer = createReducer(initialState, (builder) => {
     })
     .addCase(isLoadingAction, (state, action) => {
       state.isLoading = action.payload;
-    })
+    });
 });
-
-export const requestCityWeatherData = () => {
-  return async (dispatch: Dispatch, getState: () => AppStateType) => {
-    try {
-      const currentWetherData = await cityApi.getCityCurrentWeatherData(getState().bodySearchCityPage.cityName);
-      dispatch(setCitySearchCoordsAction(currentWetherData.data.coord));
-      const { lat, lon } = getState().bodySearchCityPage.citySearchCoords || {};
-      const languages = getState().headerReducerPage.currentLanguage;
-      const cityData = await cityApi.getCityHoursData(
-        lat,
-        lon,
-        languages
-      );
-      dispatch(setCityHourlyWeatherDataAction(cityData.data.hourly));
-      dispatch(setCityDailyWeatherDataAction(cityData.data.daily));
-      dispatch(setCityCurrentWeatherDataAction(cityData.data.current));
-      dispatch(isLoadingAction(false));
-      dispatch(setErrorAction(0));
-    } catch (error: any) {
-      const statusCode = Number(error.message.match(/\d+/));
-      dispatch(isLoadingAction(false));
-      dispatch(setErrorAction(statusCode));
-    }
-  };
-};
 
 export default bodySearchCityReducer;

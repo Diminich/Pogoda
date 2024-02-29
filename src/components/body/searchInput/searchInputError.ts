@@ -1,16 +1,15 @@
 import { Dispatch } from "redux";
-import { actionBodySearchCity } from "../../../redux/bodySearchCity-reducer";
+import { isActiveErrorAction } from "../../../redux/actions/bodySearchCityActions";
 
 export const searchInputError = (dispatch: Dispatch, error: number) => {
-    switch (error) {
-        case 404: {
-            dispatch(actionBodySearchCity.isActiveError(true));
-            break;
-        }
-
-        default: {
-            dispatch(actionBodySearchCity.isActiveError(false));
-
-        }
+  switch (error) {
+    case 404: {
+      dispatch(isActiveErrorAction(true));
+      break;
     }
-}
+
+    default: {
+      dispatch(isActiveErrorAction(false));
+    }
+  }
+};

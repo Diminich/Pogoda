@@ -10,6 +10,7 @@ import {
   setCitySearchCoordsAction,
   setErrorAction,
 } from "./actions/bodySearchCityActions";
+import { formatTime, refactorParams } from "../components/utils";
 
 const initialState: InitialStateBodySearchCityType = {
   cityName: "",
@@ -39,7 +40,17 @@ const bodySearchCityReducer = createReducer(initialState, (builder) => {
       ];
     })
     .addCase(setCityHourlyWeatherDataAction, (state, action) => {
-      state.cityHourlyWeatherData = [...action.payload.slice(1)];
+      state.cityHourlyWeatherData = [
+        ...action.payload
+          .map((el) => {
+            return {
+              ...el,
+              timeUTC: formatTime(el.dt, "HH:mm"),
+              temp: refactorParams({ refactorTemp: el.temp }).refactorTemp,
+            };
+          })
+          .slice(1),
+      ];
     })
     .addCase(setCityDailyWeatherDataAction, (state, action) => {
       state.cityDailyWeatherData = action.payload.slice(0, -1);

@@ -23,8 +23,8 @@ export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({
       <div className="tomorrowWetherData__wrapperRenderTomorrowWetherData">
         {dailyWeatherData.slice(1, 2).map((weatherDetails, index) => (
           <TomorrowWeatherDetails
+            key={index}
             details={weatherDetails}
-            index={index}
             currentLanguage={currentLanguage}
           />
         ))}

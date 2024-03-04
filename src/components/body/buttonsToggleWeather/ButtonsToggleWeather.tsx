@@ -10,10 +10,10 @@ export const ButtonsToggleWeather: React.FC = () => {
       {nameButtonsToggleWether(intl).map(
         ({ nameButton, path, textButton }, index) => (
           <ButtonsToggleWeatherDetails
+            key={index}
             nameButton={nameButton}
             path={path}
             textButton={textButton}
-            index={index}
           />
         )
       )}

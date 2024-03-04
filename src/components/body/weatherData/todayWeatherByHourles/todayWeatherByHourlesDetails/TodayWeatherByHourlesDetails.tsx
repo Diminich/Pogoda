@@ -1,18 +1,17 @@
 import { Span } from "../../../../htmlTags/Span";
 
 interface TodayWeatherByHourlesDetailsProps {
-  spanId: number;
   icon: string;
-  refactorTemp: { [key: string]: number };
+  temp: number;
   timeUTC: string;
 }
 
 export const TodayWeatherByHourlesDetails: React.FC<
   TodayWeatherByHourlesDetailsProps
-> = ({ spanId, icon, refactorTemp, timeUTC }) => {
+> = ({ icon, temp, timeUTC }) => {
   return (
-    <div key={spanId} className="footerWetherData__renderFooterWetherData">
-      <Span text={refactorTemp.temp} specialCharacters={"\u00b0"} />
+    <div className="footerWetherData__renderFooterWetherData">
+      <Span text={temp} specialCharacters={"\u00b0"} />
       <img
         className="icon"
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}

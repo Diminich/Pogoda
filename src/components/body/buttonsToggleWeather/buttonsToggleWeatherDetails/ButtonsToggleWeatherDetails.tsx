@@ -5,16 +5,15 @@ interface ButtonsToggleWeatherDetailsProps {
   nameButton: string;
   path: string;
   textButton: string;
-  index: number;
 }
 
 export const ButtonsToggleWeatherDetails: React.FC<
   ButtonsToggleWeatherDetailsProps
-> = ({ nameButton, path, textButton, index }) => {
+> = ({ nameButton, path, textButton }) => {
   const { pathId = "" } = useParams();
 
   return (
-    <Link key={index} to={path} className="button">
+    <Link to={path} className="button">
       <Span
         className={
           nameButton === pathId

@@ -1,5 +1,4 @@
 import { CityHourlyWeatherData } from "../../../../redux/reducersTypes/reducersTypes";
-import { formatTime, refactorParams } from "../../../utils";
 import { TodayWeatherByHourlesDetails } from "./todayWeatherByHourlesDetails/TodayWeatherByHourlesDetails";
 
 interface TodayWeatherByHourlesProps {
@@ -11,43 +10,37 @@ export const TodayWeatherByHourles: React.FC<TodayWeatherByHourlesProps> = ({
   weatherData,
   path,
 }) => {
-  let endFirstDayIndex = weatherData.findIndex(
-    ({ dt }) => formatTime(dt, "HH:mm") === "06:00"
-  );
-  const endSecondDayIndex = weatherData
-    .slice(++endFirstDayIndex)
-    .findIndex(({ dt }) => formatTime(dt, "HH:mm") === "06:00");
+  const findEndDayIndex = (weatherData: CityHourlyWeatherData[]) => {
+    let index = weatherData.findIndex(({ timeUTC }) => timeUTC === "06:00");
+    return ++index;
+  };
+  const today = weatherData.filter((_, index) => {
+    return findEndDayIndex(weatherData) <= 10
+      ? index < 10
+      : index < findEndDayIndex(weatherData);
+  });
+  const tomorrow = weatherData
+    .slice(findEndDayIndex(today))
+    .filter((_, index, currentArr) => {
+      return index < findEndDayIndex(currentArr);
+    });
+  const returnDay = (day: CityHourlyWeatherData[]) => {
+    return day.map(({ timeUTC, temp, weather }, index) => {
+      const [{ icon }] = weather;
+      return (
+        <TodayWeatherByHourlesDetails
+          key={index}
+          icon={icon}
+          temp={temp}
+          timeUTC={timeUTC}
+        />
+      );
+    });
+  };
+
   return (
     <div className="footerWetherData">
-      {weatherData.map(({ dt, temp, weather }, index) => {
-        const [{ icon }] = weather;
-        const timeUTC = formatTime(dt, "HH:mm");
-        const refactorTemp = refactorParams({ temp: temp });
-
-        if (index < endFirstDayIndex && path === "today") {
-          return (
-            <TodayWeatherByHourlesDetails
-              spanId={index}
-              icon={icon}
-              refactorTemp={refactorTemp}
-              timeUTC={timeUTC}
-            />
-          );
-        } else if (
-          index >= endFirstDayIndex &&
-          index <= endSecondDayIndex + endFirstDayIndex &&
-          path === "tomorrow"
-        ) {
-          return (
-            <TodayWeatherByHourlesDetails
-              spanId={index}
-              icon={icon}
-              refactorTemp={refactorTemp}
-              timeUTC={timeUTC}
-            />
-          );
-        }
-      })}
+      {path === "today" ? returnDay(today) : returnDay(tomorrow)}
     </div>
   );
 };

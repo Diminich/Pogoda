@@ -5,13 +5,11 @@ import { formatTime, i18nFuction, refactorParams } from "../../../../utils";
 
 interface todayWeatherDetaelsProps {
   details: CityCurrentWeatherData;
-  index: number;
   currentLanguage: string;
 }
 
 export const TodayWeatherDetails: React.FC<todayWeatherDetaelsProps> = ({
   details,
-  index,
   currentLanguage,
 }) => {
   const intl = useIntl();
@@ -26,7 +24,7 @@ export const TodayWeatherDetails: React.FC<todayWeatherDetaelsProps> = ({
 
   return (
     <>
-      <div key={index} className="renderTodayWeatherData">
+      <div className="renderTodayWeatherData">
         <Span className="time" text={timeUTC} />
         <div>
           <Span

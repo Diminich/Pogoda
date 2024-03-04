@@ -75,6 +75,7 @@ export type CityCurrentWeatherData = {
 
 export type CityHourlyWeatherData = {
   dt: number;
+  timeUTC: string;
   temp: number;
   feels_like: number;
   pressure: number;

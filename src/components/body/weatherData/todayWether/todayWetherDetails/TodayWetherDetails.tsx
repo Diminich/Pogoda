@@ -14,7 +14,7 @@ export const TodayWeatherDetails: React.FC<todayWeatherDetaelsProps> = ({
 }) => {
   const intl = useIntl();
   const [{ description, icon }] = details.weather;
-  const timeUTC = formatTime(details.dt, "MMMM, HH:mm", currentLanguage);
+  const timeUTC = formatTime(details.dt, "D MMMM, HH:mm", currentLanguage);
   const refactorTemp = refactorParams({
     day: details.day,
     night: details.night,

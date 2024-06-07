@@ -24,3 +24,10 @@ export const refactorParams = ({ ...params }) => {
 
   return refactorTemp;
 };
+
+export const upperCaseFirstLetter = (str: string) => {
+  return str
+    .split("")
+    .map((el, index) => (index === 0 ? el.toUpperCase() : el))
+    .join("");
+};

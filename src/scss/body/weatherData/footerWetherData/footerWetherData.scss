@@ -17,7 +17,12 @@
     margin-left: 20px;
 
     .icon {
-      height: 50%;
+      height: 70px;
+      width: 70px
     }
+  }
+
+  @include mediaTablet {
+    font-size: x-large;
   }
 }

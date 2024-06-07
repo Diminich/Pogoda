@@ -26,7 +26,7 @@ export const TodayWeatherDetails: React.FC<todayWeatherDetaelsProps> = ({
     <>
       <div className="renderTodayWeatherData">
         <Span className="time" text={timeUTC} />
-        <div>
+        <div className="wrapperTodatTemp">
           <Span
             className="tempDay"
             text={`${i18nFuction(intl, "body.day")} ${refactorTemp.day}`}
@@ -39,10 +39,10 @@ export const TodayWeatherDetails: React.FC<todayWeatherDetaelsProps> = ({
             specialCharacters={"\u00b0"}
           />
         </div>
-        <div className="wrapperTodayTemp">
-          <Span className="todayTemp" text={refactorTemp.currentTemp} />
+        <div className="wrapperCurrentTodayTemp">
+          <Span className="currentTemp" text={refactorTemp.currentTemp} />
           <Span
-            className="specialCharactersTodayTemp"
+            className="specialCharactersCurrentTemp"
             specialCharacters={"\u2103"}
           />
         </div>

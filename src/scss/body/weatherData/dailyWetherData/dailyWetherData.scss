@@ -1,66 +1,92 @@
+@import "../../../mixins/wetherDataMixins";
+
 .weatherDataDaily {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  @include weatherData;
+  height: 53%;
   align-items: center;
-  justify-content: space-between;
   color: white;
 
-  .collWetherData {
+  .wrapperRenderDailyWetherData {
+    @include wrapperRenderWatherData;
     height: 20%;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .wrpperTimeDescription {
-    height: 100%;
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .time {
-      color: black;
-      font-weight: 400;
-      font-size: large;
-    }
-
-    .description {
-      @extend .time;
-      color: gray;
-    }
-  }
-
-  .wrapperIconTemp {
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    .iconWether {
-      height: 65px;
-      width: 65px;
-    }
-
-    .wrapperTempDay {
-      width: 20%;
+    
+    .wrapperTimeDescription {
+      height: 100%;
+      width: 50%;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+
+      .time {
+        @include time;
+        font-size: 18px;
+
+        @include mediaTablet {
+          font-size: 24px;
+        }
+
+        @include mediaMobile {
+          font-size: 18px;
+        }
+      }
+
+      .description {
+        @extend .time;
+        color: white;
+      }
+    }
+
+    .wrapperIconTemp {
+      width: 20%;
+      display: flex;
+      align-items: center;
       justify-content: space-around;
-      align-items: flex-end;
 
-      .tempDay {
-        color: black;
-        font-weight: 400;
-        font-size: large;
+      .iconWether {
+        position: relative;
+        right: 30px;
+        height: 80px;
+        width: 80px;
+
+        @include mediaMobile {
+          height: 70px;
+          width: 70px;
+        }
       }
 
-      .tempNight {
-        @extend .tempDay;
-        color: rgb(74, 73, 73);
+      .wrapperTempDay {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-end;
+
+        .tempDay {
+          color: black;
+          font-size: 18px;
+
+          @include mediaTablet {
+            font-size: 24px;
+          }
+
+          @include mediaMobile {
+            font-size: 18px;
+          }
+        }
+
+        .tempNight {
+          @extend .tempDay;
+          color: white;
+        }
       }
+
+      @include mediaMobile {
+        width: 25%;
+      }
+    }
+
+    @include mediaTablet {
+      height: 100%;
     }
   }
 }

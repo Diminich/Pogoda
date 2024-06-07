@@ -1,7 +1,10 @@
-import { MenuItem } from "@mui/material";
+// import { MenuItem } from "@mui/material";
 import { useSelector } from "react-redux";
 import { AppStateType, useAppDispath } from "../../../redux/redux-store";
-import { LanguagesSelect } from "../../styled/header/headerSelectStyled";
+import {
+  LanguagesSelect,
+  LanguagexMenuitem,
+} from "../../styled/header/headerSelectStyled";
 import { setLanguageAction } from "../../../redux/actions/headerActions";
 import { changeLanguages } from "../../../redux/asyncThunk/asyncThunk";
 
@@ -20,13 +23,13 @@ export const HeaderSelect: React.FC = () => {
 
   return (
     <LanguagesSelect
-      autoWidth={true}
+      // autoWidth={true}
       value={currentLanguage}
       onChange={setCurrentLanguage}
-      IconComponent={() => null}
+      inputProps={{ IconComponent: () => null }}
     >
-      <MenuItem value="ru">RU</MenuItem>
-      <MenuItem value="en">EN</MenuItem>
+      <LanguagexMenuitem value="ru">RU</LanguagexMenuitem>
+      <LanguagexMenuitem value="en">EN</LanguagexMenuitem>
     </LanguagesSelect>
   );
 };

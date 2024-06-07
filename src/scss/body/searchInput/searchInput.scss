@@ -1,4 +1,4 @@
-@import "../../mixins";
+@import "../../variables/bodyVariables";
 
 .searchInput {
   height: $body-searchInput-height;
@@ -8,4 +8,9 @@
   justify-content: space-around;
   position: relative;
   top: 0px;
+
+  @include mediaTablet {
+    width: 80%;
+    margin: 0 0 15px;
+  }
 }

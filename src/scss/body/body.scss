@@ -1,7 +1,9 @@
 @import "weatherData/weatherData.scss";
 @import "searchInput/searchInput.scss";
 @import "byttonsToggleWeather/byttonsToggleWeather.scss";
-@import "../mixins";
+@import "../variables/bodyVariables";
+@import "../variables/headerVariables";
+
 
 .Body {
   height: $body-height;
@@ -11,4 +13,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include mediaTablet {
+    top: $header-height - 10px;
+  }
 }

@@ -1,49 +1,70 @@
 import LoadingButton from "@mui/lab/LoadingButton";
-import styled from "styled-components";
+import { styled } from "@mui/styles";
 import { TextField } from "@mui/material";
 
-export const SearchButton = styled(LoadingButton)`
-  &.MuiLoadingButton-root {
-    height: 80%;
-    width: 15%;
-    background-color: rgba(0, 0, 0, 0);
-    border: 1px solid white;
-    border-radius: 10px;
-    color: white;
+export const SearchButton = styled(LoadingButton)({
+  "&.MuiLoadingButton-root": {
+    height: "80%",
+    width: "15%",
+    backgroundColor: "rgba(0, 0, 0, 0)",
+    border: "1px solid white",
+    borderRadius: "10px",
+    color: "white",
 
-    &:hover {
-      background-color: rgba(0, 0, 0, 0);
-    }
-  }
-`;
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0)",
+    },
 
-export const SearchInput = styled(TextField)`
-  &.MuiFormControl-root {
-    height: 80%;
-    width: 65%;
-    background: white;
-    border-radius: 20px;
+    "@media (max-width: 999px)": {
+      display: "flex",
+    },
 
-    & .MuiInputBase-root {
-      height: 100%;
-      padding-left: 5px;
+    "@media (max-width: 650px)": {
+      width: "25%",
+    },
+  },
+});
 
-      & .MuiOutlinedInput-notchedOutline {
-        border-style: none;
-      }
-    }
+export const SearchInput = styled(TextField)({
+  "&.MuiFormControl-root": {
+    height: "80%",
+    width: "65%",
+    background: "white",
+    borderRadius: "20px",
 
-    & .Mui-error {
-      border: 1px solid #d32f2f;
-      border-radius: 20px;
-    }
+    "& .MuiInputBase-root": {
+      height: "100%",
+      paddingLeft: "5px",
 
-    & .MuiFormHelperText-root {
-      border: none;
-      position: absolute;
-      top: 45px;
-      left: 5px;
-      font-size: medium;
-    }
-  }
-`;
+      "@media (max-width: 999px)": {
+        fontSize: "18px",
+      },
+
+      "& .MuiOutlinedInput-notchedOutline": {
+        borderStyle: "none",
+      },
+    },
+
+    "& .Mui-error": {
+      border: "1px solid #d32f2f",
+      borderRadius: "20px",
+    },
+
+    "& .MuiFormHelperText-root": {
+      border: "none",
+      position: "absolute",
+      top: "45px",
+      left: "5px",
+      fontSize: "16px",
+
+      "@media (max-width: 999px)": {
+        top: "auto",
+        bottom: "50px",
+        left: "135px",
+        border: "none",
+        position: "absolute",
+        fontSize: "24px",
+      },
+    },
+  },
+});

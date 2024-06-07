@@ -22,8 +22,8 @@ export const RenderDailyWeatherDetails: React.FC<
   });
 
   return (
-    <div key={index} className="collWetherData">
-      <div className="wrpperTimeDescription">
+    <div key={index} className="wrapperRenderDailyWetherData">
+      <div className="wrapperTimeDescription">
         <Span className="time" text={timeUTC} />
         <Span className="description" text={description} />
       </div>

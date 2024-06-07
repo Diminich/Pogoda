@@ -1,7 +1,9 @@
 @import "weatherData/weatherData.scss";
 @import "searchInput/searchInput.scss";
 @import "byttonsToggleWeather/byttonsToggleWeather.scss";
-@import "../mixins";
+@import "../variables/bodyVariables";
+@import "../variables/headerVariables";
+
 
 .Body {
   height: $body-height;

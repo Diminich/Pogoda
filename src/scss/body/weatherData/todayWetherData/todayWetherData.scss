@@ -1,16 +1,10 @@
+@import "../../../mixins/wetherDataMixins";
+
 .todayWeatherData {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
+  @include weatherData;
 
   &__wrapperRenderTodayWetherData {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+    @include wrapperRenderWatherData;
 
     .renderTodayWeatherData {
       @extend .todayWeatherData;
@@ -22,9 +16,7 @@
       color: white;
 
       .time {
-        color: black;
-        font-weight: 400;
-        font-size: 24px;
+        @include time;
 
         @include mediaMobile {
           font-size: 19px;
@@ -88,8 +80,7 @@
       justify-content: space-between;
 
       .iconWether {
-        height: 150px;
-        width: 150px;
+        @include iconWetherData;
       }
 
       .descriptionWetherText {

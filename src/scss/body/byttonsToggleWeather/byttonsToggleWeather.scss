@@ -15,8 +15,12 @@
     justify-content: center;
     color: white;
     font-weight: bold;
-    font-size: large;
+    font-size: 18px;
     cursor: pointer;
+
+    @include mediaTablet {
+      font-size: 22px;
+    }
   }
 
   &__active {
@@ -29,6 +33,10 @@
       width: 100%;
       border-bottom: 3px solid white;
       position: absolute;
+    }
+
+    @include mediaTablet {
+      font-size: 22px;
     }
   }
 

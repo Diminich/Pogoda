@@ -10,7 +10,11 @@ import {
   setCitySearchCoordsAction,
   setErrorAction,
 } from "./actions/bodySearchCityActions";
-import { formatTime, refactorParams } from "../components/utils";
+import {
+  formatTime,
+  refactorParams,
+  upperCaseFirstLetter,
+} from "../components/utils";
 
 const initialState: InitialStateBodySearchCityType = {
   cityName: "",
@@ -35,25 +39,54 @@ const bodySearchCityReducer = createReducer(initialState, (builder) => {
       state.cityCurrentWeatherData = [
         {
           ...action.payload,
-          ...state.cityDailyWeatherData.find((el) => el)!.temp,
+          ...state.cityDailyWeatherData.find(
+            (dailyWeatherData) => dailyWeatherData
+          )!.temp,
+          weather: action.payload.weather.map((weather) => {
+            return {
+              ...weather,
+              description: upperCaseFirstLetter(weather.description),
+            };
+          }),
         },
       ];
     })
     .addCase(setCityHourlyWeatherDataAction, (state, action) => {
       state.cityHourlyWeatherData = [
         ...action.payload
-          .map((el) => {
+          .map((hourlyWeatherData) => {
             return {
-              ...el,
-              timeUTC: formatTime(el.dt, "HH:mm"),
-              temp: refactorParams({ refactorTemp: el.temp }).refactorTemp,
+              ...hourlyWeatherData,
+              timeUTC: formatTime(hourlyWeatherData.dt, "HH:mm"),
+              temp: refactorParams({ refactorTemp: hourlyWeatherData.temp })
+                .refactorTemp,
+              weather: hourlyWeatherData.weather.map((weather) => {
+                return {
+                  ...weather,
+                  description: upperCaseFirstLetter(weather.description),
+                };
+              }),
             };
           })
           .slice(1),
       ];
     })
     .addCase(setCityDailyWeatherDataAction, (state, action) => {
-      state.cityDailyWeatherData = action.payload.slice(0, -1);
+      state.cityDailyWeatherData = [
+        ...action.payload
+          .map((dailyWeatherData) => {
+            return {
+              ...dailyWeatherData,
+              weather: dailyWeatherData.weather.map((weather) => {
+                return {
+                  ...weather,
+                  description: upperCaseFirstLetter(weather.description),
+                };
+              }),
+            };
+          })
+          .slice(0, -1),
+      ];
     })
     .addCase(isActiveErrorAction, (state, action) => {
       state.isActiveError = action.payload;

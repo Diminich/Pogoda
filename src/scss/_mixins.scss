@@ -3,3 +3,18 @@ $body-height: calc(100% - $header-height);
 
 $body-searchInput-height: 70px;
 $body-buttonsToggleWeather-height: 50px;
+
+$tablet: 999px;
+$mobile: 650px;
+
+@mixin mediaTablet {
+  @media screen and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin mediaMobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}

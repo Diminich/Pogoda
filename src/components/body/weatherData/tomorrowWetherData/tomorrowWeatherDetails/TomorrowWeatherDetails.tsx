@@ -23,7 +23,7 @@ export const TomorrowWeatherDetails: React.FC<TomorrowWeatherDetailsProps> = ({
     <>
       <div className="renderTomorrowWeatherData">
         <Span className="time" text={timeUTC} />
-        <div>
+        <div className="wrapperTodatTemp">
           <Span
             className="tempDay"
             text={`${i18nFuction(intl, "body.day")} ${refactorTemp.day}`}

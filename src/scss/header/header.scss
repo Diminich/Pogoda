@@ -10,4 +10,8 @@
   right: 0px;
   left: 0px;
   padding-left: 15px;
+
+  @include mediaTablet {
+    height: $header-height - 10px;
+  }
 }

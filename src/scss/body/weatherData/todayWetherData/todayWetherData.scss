@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
 
   &__wrapperRenderTodayWetherData {
     height: 100%;
@@ -14,64 +14,94 @@
 
     .renderTodayWeatherData {
       @extend .todayWeatherData;
-      height: 100%;
+      height: 80%;
       width: 30%;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
+      margin-top: 15px;
       color: white;
 
       .time {
         color: black;
         font-weight: 400;
-        font-size: x-large;
+        font-size: 24px;
+
+        @include mediaMobile {
+          font-size: 19px;
+        }
       }
 
-      .tempDay {
-        @extend .time;
-        color: white;
+      .wrapperTodatTemp {
+        .tempDay {
+          @extend .time;
+          color: white;
+        }
+
+        .braillePattern {
+          @extend .tempDay;
+          font-size: 16px;
+          margin-left: 3px;
+        }
+
+        @include mediaMobile {
+          display: flex;
+          flex-direction: column;
+        }
       }
 
-      .braillePattern {
-        @extend .tempDay;
-        font-size: medium;
-        margin-left: 3px;
-      }
-
-      .wrapperTodayTemp {
+      .wrapperCurrentTodayTemp {
         height: 20%;
         display: flex;
 
-        .todayTemp {
+        .currentTemp {
           @extend .tempDay;
           font-weight: 600;
-          font-size: 80px;
+          font-size: 60px;
+
+          @include mediaMobile {
+            font-size: 50px;
+          }
         }
 
-        .specialCharactersTodayTemp {
-          font-size: 55px;
+        .specialCharactersCurrentTemp {
+          font-size: 35px;
+
+          @include mediaTablet {
+            font-size: 25px;
+          }
         }
       }
 
       .feelsLike {
-        @extend .tempDay;
+        @extend .time;
+        color: white;
+      }
+
+      @include mediaTablet {
+        height: 60%;
       }
     }
 
     .renderTodayIconData {
       @extend .renderTodayWeatherData;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
 
       .iconWether {
-        height: 50%;
-        width: 35%;
-        margin-top: 5%;
+        height: 150px;
+        width: 150px;
       }
 
       .descriptionWetherText {
-        font-weight: 400;
-        font-size: x-large;
-        margin-top: 15%;
+        font-size: 24px;
+
+        @include mediaMobile {
+          font-size: 19px;
+        }
+      }
+
+      @include mediaTablet {
+        justify-content: space-between;
       }
     }
   }

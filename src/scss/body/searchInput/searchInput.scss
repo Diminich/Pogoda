@@ -1,7 +1,4 @@
-@import "../../variables/bodyVariables";
-
 .searchInput {
-  height: $body-searchInput-height;
   width: 60%;
   display: flex;
   align-items: center;
@@ -11,6 +8,5 @@
 
   @include mediaTablet {
     width: 80%;
-    margin: 0 0 15px;
   }
 }

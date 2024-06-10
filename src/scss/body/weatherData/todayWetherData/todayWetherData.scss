@@ -83,8 +83,10 @@
         @include iconWetherData;
 
         @include mediaMobile {
-          height: 100px;
-          width: 100px;
+          height: 140px;
+          width: 140px;
+          position: relative;
+          top: 50px;
         }
       }
 

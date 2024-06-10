@@ -1,13 +1,14 @@
 import { Dispatch, UnknownAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { cityApi } from "../../Api/Api";
 import {
-  isLoadingAction,
+  isLoadingWeatherDataAction,
   setCityCurrentWeatherDataAction,
   setCityDailyWeatherDataAction,
   setCityHourlyWeatherDataAction,
   setCitySearchCoordsAction,
   setErrorAction,
 } from "../actions/bodySearchCityActions";
+import { isloadingLanguageAction } from "../actions/headerActions";
 import { AppStateType } from "../redux-store";
 import { GetThunkAPI } from "@reduxjs/toolkit/dist/createAsyncThunk";
 
@@ -24,7 +25,7 @@ type thunkApi = GetThunkAPI<{
 
 const errorMessage = (error: Error, dispatch: Dispatch<UnknownAction>) => {
   const statusCode = Number(error.message.match(/\d+/));
-  dispatch(isLoadingAction(false));
+  dispatch(isLoadingWeatherDataAction(false));
   dispatch(setErrorAction(statusCode));
 };
 
@@ -36,10 +37,10 @@ const getData = async ({ getState, dispatch }: thunkApi) => {
     dispatch(setCityHourlyWeatherDataAction(cityData.data.hourly));
     dispatch(setCityDailyWeatherDataAction(cityData.data.daily));
     dispatch(setCityCurrentWeatherDataAction(cityData.data.current));
-    dispatch(isLoadingAction(false));
+    dispatch(isLoadingWeatherDataAction(false));
     dispatch(setErrorAction(0));
-  } catch (e) {
-    errorMessage(e as Error, dispatch);
+  } catch (error) {
+    errorMessage(error as Error, dispatch);
   }
 };
 
@@ -54,8 +55,8 @@ export const getWeatherData = createAsyncThunk<
     );
     thunkApi.dispatch(setCitySearchCoordsAction(data.coord));
     getData(thunkApi);
-  } catch (e) {
-    errorMessage(e as Error, thunkApi.dispatch);
+  } catch (error) {
+    errorMessage(error as Error, thunkApi.dispatch);
   }
 });
 
@@ -64,5 +65,11 @@ export const changeLanguages = createAsyncThunk<
   void,
   { state: AppStateType }
 >("changeLanguages", async (_, thunkApi) => {
-  getData(thunkApi);
+  try {
+    await getData(thunkApi);
+    thunkApi.dispatch(isloadingLanguageAction(false));
+  } catch (error) {
+    errorMessage(error as Error, thunkApi.dispatch);
+  }
+
 });

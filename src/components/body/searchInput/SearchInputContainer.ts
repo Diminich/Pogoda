@@ -5,7 +5,7 @@ import { AppStateType, useAppDispath } from "../../../redux/redux-store";
 import { searchInputError } from "./searchInputError";
 import { SearchInputProps } from "./searchInputDetails/SearchInputDetails";
 import {
-  isLoadingAction,
+  isLoadingWeatherDataAction,
   setCityNameAction,
 } from "../../../redux/actions/bodySearchCityActions";
 import { getWeatherData } from "../../../redux/asyncThunk/asyncThunk";
@@ -26,27 +26,27 @@ export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({
   const isActiveError = useSelector<AppStateType, boolean>(
     (state) => state.bodySearchCityPage.isActiveError
   );
-  const isLoading = useSelector<AppStateType, boolean>(
-    (state) => state.bodySearchCityPage.isLoading
+  const isLoadingWeatherData = useSelector<AppStateType, boolean>(
+    (state) => state.bodySearchCityPage.isLoadingWeatherData
   );
   const dispatch = useAppDispath();
   const intl = useIntl();
 
   useEffect(() => {
-    if (isLoading) {
+    if (isLoadingWeatherData) {
       dispatch(getWeatherData());
     }
-  }, [isLoading, dispatch]);
+  }, [isLoadingWeatherData, dispatch]);
 
   const onSearchCity = () => {
     if (cityName) {
-      dispatch(isLoadingAction(true));
+      dispatch(isLoadingWeatherDataAction(true));
     }
   };
 
   const pressEnter = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {
-      dispatch(isLoadingAction(true));
+      dispatch(isLoadingWeatherDataAction(true));
     }
   };
 
@@ -62,7 +62,7 @@ export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({
     intl,
     onSearchCity,
     cityName,
-    isLoading,
+    isLoadingWeatherData,
     changeNameCity,
     isActiveError,
     pressEnter,

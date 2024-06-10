@@ -2,7 +2,7 @@ import { InitialStateBodySearchCityType } from "./reducersTypes/reducersTypes";
 import { createReducer } from "@reduxjs/toolkit";
 import {
   isActiveErrorAction,
-  isLoadingAction,
+  isLoadingWeatherDataAction,
   setCityCurrentWeatherDataAction,
   setCityDailyWeatherDataAction,
   setCityHourlyWeatherDataAction,
@@ -24,7 +24,7 @@ const initialState: InitialStateBodySearchCityType = {
   cityDailyWeatherData: [],
   isActiveError: false,
   error: 0,
-  isLoading: false,
+  isLoadingWeatherData: false,
 };
 
 const bodySearchCityReducer = createReducer(initialState, (builder) => {
@@ -94,8 +94,8 @@ const bodySearchCityReducer = createReducer(initialState, (builder) => {
     .addCase(setErrorAction, (state, action) => {
       state.error = action.payload;
     })
-    .addCase(isLoadingAction, (state, action) => {
-      state.isLoading = action.payload;
+    .addCase(isLoadingWeatherDataAction, (state, action) => {
+      state.isLoadingWeatherData = action.payload;
     });
 });
 

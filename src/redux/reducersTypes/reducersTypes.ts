@@ -1,6 +1,7 @@
 export type InitialStateHeaderType = {
   currentLanguage: string;
   messages: TranslateLanguagesType;
+  isLoadingLanguages: boolean;
 };
 
 export type TranslateLanguagesType = {
@@ -20,7 +21,7 @@ export type InitialStateBodySearchCityType = {
   cityDailyWeatherData: CityDailyWeatherData[];
   isActiveError: boolean;
   error: number;
-  isLoading: boolean;
+  isLoadingWeatherData: boolean;
 };
 
 export type CitySearchCoordsType = {

@@ -20,4 +20,4 @@ export const setCityDailyWeatherDataAction = createAction<
 >("SET_CITY_DATA_DAILY");
 export const isActiveErrorAction = createAction<boolean>("IS_ACTIVE_ERROR");
 export const setErrorAction = createAction<number>("SET_ERROR");
-export const isLoadingAction = createAction<boolean>("IS_LOADING");
+export const isLoadingWeatherDataAction = createAction<boolean>("IS_LOADING_WEATHER_DATA");

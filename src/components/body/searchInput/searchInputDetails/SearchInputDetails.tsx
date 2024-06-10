@@ -10,7 +10,7 @@ export interface SearchInputProps {
   intl: IntlShape;
   onSearchCity: () => void;
   cityName: string;
-  isLoading: boolean;
+  isLoadingWeatherData: boolean;
   changeNameCity: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -22,7 +22,7 @@ export const SearchInputDetails: React.FC<SearchInputProps> = ({
   intl,
   onSearchCity,
   cityName,
-  isLoading,
+  isLoadingWeatherData,
   changeNameCity,
   isActiveError,
   pressEnter,
@@ -42,7 +42,7 @@ export const SearchInputDetails: React.FC<SearchInputProps> = ({
       <SearchButton
         onClick={onSearchCity}
         disabled={cityName === ""}
-        loading={isLoading}
+        loading={isLoadingWeatherData}
         loadingPosition="center"
         variant="contained"
       >

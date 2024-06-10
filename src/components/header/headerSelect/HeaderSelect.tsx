@@ -1,29 +1,38 @@
-// import { MenuItem } from "@mui/material";
 import { useSelector } from "react-redux";
 import { AppStateType, useAppDispath } from "../../../redux/redux-store";
 import {
   LanguagesSelect,
   LanguagexMenuitem,
 } from "../../styled/header/headerSelectStyled";
-import { setLanguageAction } from "../../../redux/actions/headerActions";
+import {
+  isloadingLanguageAction,
+  setLanguageAction,
+} from "../../../redux/actions/headerActions";
 import { changeLanguages } from "../../../redux/asyncThunk/asyncThunk";
+import { useLayoutEffect } from "react";
 
 export const HeaderSelect: React.FC = () => {
   const dispatch = useAppDispath();
-  const cityName = useSelector<AppStateType, string>(
-    (state) => state.bodySearchCityPage.cityName
+  const isLoadingLanguage = useSelector<AppStateType, boolean>(
+    (state) => state.headerReducerPage.isLoadingLanguages
   );
   const currentLanguage = useSelector<AppStateType, string>(
     (state) => state.headerReducerPage.currentLanguage
   );
+
+  useLayoutEffect(() => {
+    if (isLoadingLanguage) {
+      dispatch(changeLanguages());
+    }
+  }, [currentLanguage]);
+
   const setCurrentLanguage = (e: any) => {
     dispatch(setLanguageAction(e.target.value as string));
-    cityName !== "" && dispatch(changeLanguages());
+    dispatch(isloadingLanguageAction(true));
   };
 
   return (
     <LanguagesSelect
-      // autoWidth={true}
       value={currentLanguage}
       onChange={setCurrentLanguage}
       inputProps={{ IconComponent: () => null }}

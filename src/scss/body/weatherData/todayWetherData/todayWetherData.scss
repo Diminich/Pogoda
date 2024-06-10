@@ -81,6 +81,11 @@
 
       .iconWether {
         @include iconWetherData;
+
+        @include mediaMobile {
+          height: 100px;
+          width: 100px;
+        }
       }
 
       .descriptionWetherText {

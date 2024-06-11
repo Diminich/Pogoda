@@ -18,3 +18,12 @@ export const nameButtonsToggleWether = (intl: IntlShape) => [
     textButton: i18nFuction(intl, "body.daily"),
   },
 ];
+
+export const languages = [
+  { value: "ru", langugae: "RU" },
+  { value: "en", langugae: "EN" },
+];
+
+export const mediaHeight = "@media (min-height: 999px)";
+export const mediaTablet = "@media (max-width: 999px)";
+export const mediaMobile = "@media (max-width: 375px)";

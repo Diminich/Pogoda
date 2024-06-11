@@ -9,4 +9,12 @@
   @include mediaTablet {
     width: 80%;
   }
+
+  @include mediaMobile {
+    height: 8%;
+  }
+
+  @include mediaHeaght {
+    height: 6%;
+  }
 }

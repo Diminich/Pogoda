@@ -1,14 +1,22 @@
 $tablet: 999px;
-$mobile: 650px;
+$mobile: 375px;
 
 @mixin mediaTablet {
-    @media screen and (max-width: $tablet) {
-      @content;
-    }
+  @media screen and (max-width: $tablet) {
+    @content;
   }
-  
-  @mixin mediaMobile {
-    @media screen and (max-width: $mobile) {
-      @content;
-    }
+}
+
+@mixin mediaMobile {
+  @media screen and (max-width: $mobile) {
+    @content;
   }
+}
+
+
+
+@mixin mediaHeaght {
+  @media screen and (min-height: $tablet) {
+    @content;
+  }
+}

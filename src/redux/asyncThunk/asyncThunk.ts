@@ -41,6 +41,7 @@ const getData = async ({ getState, dispatch }: thunkApi) => {
     dispatch(setErrorAction(0));
   } catch (error) {
     errorMessage(error as Error, dispatch);
+    dispatch(isLoadingWeatherDataAction(false));
   }
 };
 
@@ -69,7 +70,9 @@ export const changeLanguages = createAsyncThunk<
     await getData(thunkApi);
     thunkApi.dispatch(isloadingLanguageAction(false));
   } catch (error) {
+    debugger
     errorMessage(error as Error, thunkApi.dispatch);
+    thunkApi.dispatch(isloadingLanguageAction(false));
   }
 
 });

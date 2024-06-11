@@ -12,15 +12,10 @@
       width: 30%;
       flex-direction: column;
       justify-content: space-between;
-      margin-top: 15px;
       color: white;
 
       .time {
         @include time;
-
-        @include mediaMobile {
-          font-size: 19px;
-        }
       }
 
       .wrapperTodatTemp {
@@ -33,6 +28,11 @@
           @extend .tempDay;
           font-size: 16px;
           margin-left: 3px;
+        }
+
+        @include mediaTablet {
+          display: flex;
+          flex-direction: column;
         }
 
         @include mediaMobile {
@@ -68,25 +68,21 @@
         @extend .time;
         color: white;
       }
-
-      @include mediaTablet {
-        height: 60%;
-      }
     }
 
     .renderTodayIconData {
       @extend .renderTodayWeatherData;
       align-items: center;
-      justify-content: space-between;
 
       .iconWether {
         @include iconWetherData;
+        position: relative;
+        top: 5%;
 
         @include mediaMobile {
-          height: 140px;
-          width: 140px;
-          position: relative;
-          top: 50px;
+          height: 100px;
+          width: 100px;
+          right: 10%;
         }
       }
 
@@ -96,11 +92,27 @@
         @include mediaMobile {
           font-size: 19px;
         }
+
+        @include mediaHeaght {
+          font-size: 34px;
+        }
       }
 
       @include mediaTablet {
         justify-content: space-between;
       }
+    }
+
+    @include mediaTablet {
+      height: 50%;
+    }
+
+    @include mediaMobile {
+      max-height: 80%;
+    }
+
+    @include mediaHeaght {
+      height: 42%;
     }
   }
 }

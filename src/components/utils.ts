@@ -28,6 +28,6 @@ export const refactorParams = ({ ...params }) => {
 export const upperCaseFirstLetter = (str: string) => {
   return str
     .split("")
-    .map((el, index) => (index === 0 ? el.toUpperCase() : el))
+    .map((letter, index) => (index === 0 ? letter.toUpperCase() : letter))
     .join("");
 };

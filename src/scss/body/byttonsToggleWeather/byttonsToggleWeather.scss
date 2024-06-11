@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-around;
   position: relative;
-  margin: 5px 0 0 0;
+  top: 10px;
 
   &__default {
     height: 100%;
@@ -17,7 +17,15 @@
     cursor: pointer;
 
     @include mediaTablet {
-      font-size: 22px;
+      font-size: 24px;
+    }
+
+    @include mediaMobile {
+      font-size: 20px;
+    }
+
+    @include mediaHeaght {
+      font-size: 34px;
     }
   }
 
@@ -34,7 +42,15 @@
     }
 
     @include mediaTablet {
-      font-size: 22px;
+      font-size: 24px;
+    }
+
+    @include mediaMobile {
+      font-size: 20px;
+    }
+
+    @include mediaHeaght {
+      font-size: 34px;
     }
   }
 

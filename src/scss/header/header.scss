@@ -2,17 +2,10 @@
 @import "../mixins/mediaMixins";
 
 .header {
-  height: $header-height;
+  height: 8%;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  left: 0px;
+  justify-content: flex-start;
   padding-left: 15px;
-
-  @include mediaTablet {
-    height: $header-height - 10px;
-  }
 }

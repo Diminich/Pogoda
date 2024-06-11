@@ -36,7 +36,7 @@ export const TomorrowWeatherDetails: React.FC<TomorrowWeatherDetailsProps> = ({
             specialCharacters={"\u00b0"}
           />
         </div>
-        <Span className="descriptoin" text={description} />
+        <Span className="descriptionWetherText" text={description} />
       </div>
       <div className="renderTomorrowIconData">
         <img

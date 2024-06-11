@@ -5,11 +5,14 @@
   height: 53%;
   align-items: center;
   color: white;
+  top: 5px;
 
   .wrapperRenderDailyWetherData {
-    @include wrapperRenderWatherData;
     height: 20%;
-    
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
     .wrapperTimeDescription {
       height: 100%;
       width: 50%;
@@ -52,6 +55,11 @@
           height: 70px;
           width: 70px;
         }
+
+        @include mediaHeaght {
+          height: 120px;
+          width: 120px;
+        }
       }
 
       .wrapperTempDay {
@@ -72,6 +80,10 @@
           @include mediaMobile {
             font-size: 18px;
           }
+
+          @include mediaHeaght {
+            font-size: 34px;
+          }
         }
 
         .tempNight {
@@ -87,6 +99,10 @@
   }
 
   @include mediaTablet {
-    height: 100%;
+    height: 90%;
+  }
+
+  @include mediaHeaght {
+    height: 90%;
   }
 }

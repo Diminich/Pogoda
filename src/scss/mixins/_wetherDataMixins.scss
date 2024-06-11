@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+  position: relative;
 }
 
 @mixin wrapperRenderWatherData {
@@ -12,14 +13,29 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
+  position: relative;
+  top: 5%;
 }
 
 @mixin time {
   color: black;
   font-size: 24px;
+
+  @include mediaMobile {
+    font-size: 19px;
+  }
+
+  @include mediaHeaght {
+    font-size: 34px;
+  }
 }
 
 @mixin iconWetherData {
   height: 150px;
   width: 150px;
+
+  @include mediaHeaght {
+    height: 250px;
+    width: 250px;
+  }
 }

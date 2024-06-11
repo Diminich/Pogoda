@@ -16,18 +16,38 @@
     color: white;
     margin-left: 20px;
 
+    .temp {
+      @include mediaHeaght {
+        font-size: 30px;
+      }
+    }
+
     .icon {
       height: 70px;
-      width: 70px
+      width: 70px;
+
+      @include mediaHeaght {
+        height: 100px;
+        width: 100px;
+      }
+    }
+
+    .time {
+      @extend .temp;
     }
   }
 
   @include mediaTablet {
+    height: 20%;
+    font-size: 19px;
+  }
+
+  @include mediaMobile {
     height: 25%;
     font-size: 19px;
   }
 
-//   @include mediaMobile {
-   
-//   }
+  @include mediaHeaght {
+    height: 20%;
+  }
 }

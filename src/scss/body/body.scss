@@ -8,13 +8,8 @@
 .Body {
   height: $body-height;
   width: 100%;
-  position: absolute;
-  top: $header-height;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @include mediaTablet {
-    top: $header-height - 10px;
-  }
 }

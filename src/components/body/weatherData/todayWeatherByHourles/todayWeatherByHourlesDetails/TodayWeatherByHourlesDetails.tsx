@@ -11,13 +11,13 @@ export const TodayWeatherByHourlesDetails: React.FC<
 > = ({ icon, temp, timeUTC }) => {
   return (
     <div className="footerWetherData__renderFooterWetherData">
-      <Span text={temp} specialCharacters={"\u00b0"} />
+      <Span className="temp" text={temp} specialCharacters={"\u00b0"} />
       <img
         className="icon"
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="iconWether"
       />
-      <Span text={timeUTC} />
+      <Span className='time' text={timeUTC} />
     </div>
   );
 };

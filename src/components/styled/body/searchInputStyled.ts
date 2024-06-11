@@ -1,6 +1,7 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import { styled } from "@mui/styles";
 import { TextField } from "@mui/material";
+import { mediaHeight, mediaMobile, mediaTablet } from "../../constants";
 
 export const SearchButton = styled(LoadingButton)({
   "&.MuiLoadingButton-root": {
@@ -15,12 +16,19 @@ export const SearchButton = styled(LoadingButton)({
       backgroundColor: "rgba(0, 0, 0, 0)",
     },
 
-    "@media (max-width: 999px)": {
-      display: "flex",
+    [mediaTablet]: {
+      width: "30%",
+      fontSize: "20px",
     },
 
-    "@media (max-width: 650px)": {
-      width: "25%",
+    [mediaMobile]: {
+      width: "30%",
+      fontSize: "16px",
+    },
+
+    [mediaHeight]: {
+      width: "24%",
+      fontSize: "26px",
     },
   },
 });
@@ -36,8 +44,12 @@ export const SearchInput = styled(TextField)({
       height: "100%",
       paddingLeft: "5px",
 
-      "@media (max-width: 999px)": {
-        fontSize: "18px",
+      [mediaTablet]: {
+        fontSize: "20px",
+      },
+
+      [mediaHeight]: {
+        fontSize: "26px",
       },
 
       "& .MuiOutlinedInput-notchedOutline": {
@@ -57,7 +69,7 @@ export const SearchInput = styled(TextField)({
       left: "5px",
       fontSize: "16px",
 
-      "@media (max-width: 999px)": {
+      [mediaTablet]: {
         top: "auto",
         bottom: "50px",
         left: "135px",

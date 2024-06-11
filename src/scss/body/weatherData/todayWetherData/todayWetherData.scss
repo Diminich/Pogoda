@@ -107,9 +107,9 @@
       height: 50%;
     }
 
-    @include mediaMobile {
-      max-height: 80%;
-    }
+    // @include mediaMobile {
+    //   min-height: 65%;
+    // }
 
     @include mediaHeaght {
       height: 42%;

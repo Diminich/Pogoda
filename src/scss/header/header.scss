@@ -2,7 +2,7 @@
 @import "../mixins/mediaMixins";
 
 .header {
-  height: 8%;
+  height: $header-height;
   position: relative;
   display: flex;
   align-items: center;

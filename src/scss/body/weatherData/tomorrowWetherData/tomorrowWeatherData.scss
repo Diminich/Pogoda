@@ -8,7 +8,7 @@
 
     .renderTomorrowWeatherData {
       @extend .tomorrowWetherData;
-      height: 45%;
+      height: 50%;
       width: 30%;
       flex-direction: column;
       color: white;
@@ -18,6 +18,10 @@
 
         @include mediaTablet {
           font-size: 19px;
+        }
+
+        @include mediaHeaght {
+          font-size: 34px;
         }
       }
 
@@ -55,6 +59,10 @@
           font-size: 34px;
         }
       }
+
+      // @include mediaMobile {
+      //   height: 60%;
+      // }
     }
 
     .renderTomorrowIconData {

@@ -2,7 +2,6 @@
 
 .weatherDataDaily {
   @include weatherData;
-  height: 53%;
   align-items: center;
   color: white;
   top: 5px;
@@ -96,10 +95,6 @@
         width: 25%;
       }
     }
-  }
-
-  @include mediaTablet {
-    height: 90%;
   }
 
   @include mediaHeaght {

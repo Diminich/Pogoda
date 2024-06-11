@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding-top: 10px;
+  margin-bottom: 10px;
 
   &__default {
     height: 100%;
@@ -16,7 +16,7 @@
     cursor: pointer;
 
     @include mediaTablet {
-      font-size: 24px;
+      font-size: 18px;
     }
 
     @include mediaMobile {
@@ -41,7 +41,7 @@
     }
 
     @include mediaTablet {
-      font-size: 24px;
+      font-size: 18px;
     }
 
     @include mediaMobile {

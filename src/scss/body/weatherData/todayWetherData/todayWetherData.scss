@@ -79,11 +79,11 @@
         position: relative;
         top: 5%;
 
-        @include mediaMobile {
-          height: 100px;
-          width: 100px;
-          right: 10%;
-        }
+        // @include mediaMobile {
+        //   height: 100px;
+        //   width: 100px;
+        //   right: 10%;
+        // }
       }
 
       .descriptionWetherText {
@@ -103,9 +103,9 @@
       }
     }
 
-    @include mediaTablet {
-      height: 50%;
-    }
+    // @include mediaTablet {
+    //   height: 50%;
+    // }
 
     // @include mediaMobile {
     //   min-height: 65%;

@@ -17,8 +17,8 @@ export const SearchButton = styled(LoadingButton)({
     },
 
     [mediaTablet]: {
-      width: "30%",
-      fontSize: "20px",
+      width: "25%",
+      fontSize: "15px",
     },
 
     [mediaMobile]: {

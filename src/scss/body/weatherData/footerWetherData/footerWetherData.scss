@@ -20,11 +20,20 @@
       @include mediaHeaght {
         font-size: 30px;
       }
+
+      @include mediaMobile {
+        font-size: 16px;
+      }
     }
 
     .icon {
       height: 70px;
       width: 70px;
+
+      @include mediaMobile {
+        height: 40px;
+        width: 40px;
+      }
 
       @include mediaHeaght {
         height: 100px;

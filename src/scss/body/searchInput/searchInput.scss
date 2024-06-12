@@ -1,17 +1,17 @@
 .searchInput {
+  height: 45px;
   width: 60%;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: 10px;
 
   @include mediaTablet {
-    height: 8%;
+    // height: 8%;
     width: 80%;
   }
 
   @include mediaMobile {
-    height: 8%;
+    // height: 10%;
   }
 
   @include mediaHeaght {

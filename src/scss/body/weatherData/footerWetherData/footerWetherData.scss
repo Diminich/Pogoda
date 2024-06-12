@@ -22,13 +22,18 @@
       }
 
       @include mediaMobile {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
 
     .icon {
       height: 70px;
       width: 70px;
+
+      @include mediaTablet {
+        height: 50px;
+        width: 50px;
+      }
 
       @include mediaMobile {
         height: 40px;
@@ -47,13 +52,11 @@
   }
 
   @include mediaTablet {
-    height: 20%;
-    font-size: 19px;
+    height: 40%;
   }
 
   @include mediaMobile {
-    height: 25%;
-    font-size: 19px;
+    height: 35%;
   }
 
   @include mediaHeaght {

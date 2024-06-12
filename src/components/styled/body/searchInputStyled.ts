@@ -23,7 +23,7 @@ export const SearchButton = styled(LoadingButton)({
 
     [mediaMobile]: {
       width: "30%",
-      fontSize: "16px",
+      fontSize: "14px",
     },
 
     [mediaHeight]: {
@@ -45,7 +45,7 @@ export const SearchInput = styled(TextField)({
       paddingLeft: "5px",
 
       [mediaTablet]: {
-        fontSize: "20px",
+        fontSize: "18px",
       },
 
       [mediaHeight]: {

@@ -2,8 +2,6 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { styled } from "@mui/styles";
 import { mediaHeight, mediaMobile, mediaTablet } from "../../constants";
 
-
-
 export const LanguageButton = styled(Button)({
   "&.MuiButton-root": {
     minWidth: "0px",
@@ -16,11 +14,16 @@ export const LanguageButton = styled(Button)({
     },
 
     [mediaTablet]: {
-      fontSize: "19px",
+      height: "65%",
+      width: "40px",
     },
 
     [mediaMobile]: {
-      fontSize: "16px",
+      // height: "70%",
+
+      // height: 80%;
+      //   width: 11%;
+      //   font-size: 14px;
     },
 
     [mediaHeight]: {

@@ -23,11 +23,11 @@
         font-size: 18px;
 
         @include mediaTablet {
-          font-size: 24px;
+          font-size: 18px;
         }
 
         @include mediaMobile {
-          font-size: 18px;
+          font-size: 14px;
         }
       }
 
@@ -46,12 +46,17 @@
       .iconWether {
         position: relative;
         right: 30px;
-        height: 80px;
-        width: 80px;
+        height: 60px;
+        width: 60px;
+
+        @include mediaTablet {
+          height: 50px;
+          width: 50px;
+        }
 
         @include mediaMobile {
-          height: 70px;
-          width: 70px;
+          height: 40px;
+          width: 40px;
         }
 
         @include mediaHeaght {
@@ -72,11 +77,11 @@
           font-size: 18px;
 
           @include mediaTablet {
-            font-size: 24px;
+            font-size: 18px;
           }
 
           @include mediaMobile {
-            font-size: 18px;
+            font-size: 14px;
           }
 
           @include mediaHeaght {

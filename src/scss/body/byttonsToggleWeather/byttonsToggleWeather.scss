@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-bottom: 10px;
+  padding-top: 2%;
 
   &__default {
     height: 100%;
@@ -20,7 +20,7 @@
     }
 
     @include mediaMobile {
-      font-size: 20px;
+      font-size: 14px;
     }
 
     @include mediaHeaght {
@@ -45,7 +45,7 @@
     }
 
     @include mediaMobile {
-      font-size: 20px;
+      font-size: 14px;
     }
 
     @include mediaHeaght {

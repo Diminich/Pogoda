@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+  padding-top: 2%;
 }
 
 @mixin wrapperRenderWatherData {
@@ -19,7 +20,7 @@
   font-size: 24px;
 
   @include mediaMobile {
-    font-size: 19px;
+    font-size: 14px;
   }
 
   @include mediaHeaght {

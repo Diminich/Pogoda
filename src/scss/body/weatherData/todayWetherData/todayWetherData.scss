@@ -8,14 +8,21 @@
 
     .renderTodayWeatherData {
       @extend .todayWeatherData;
-      height: 80%;
+      height: 70%;
       width: 30%;
       flex-direction: column;
       justify-content: space-between;
       color: white;
+      // max-height: 40%;
+      // min-height: 55%;
+      row-gap: 10px;
 
       .time {
         @include time;
+
+        @include mediaTablet {
+          font-size: 18px;
+        }
       }
 
       .wrapperTodatTemp {
@@ -50,8 +57,12 @@
           font-weight: 600;
           font-size: 60px;
 
+          @include mediaTablet {
+            font-size: 30px;
+          }
+
           @include mediaMobile {
-            font-size: 50px;
+            font-size: 35px;
           }
         }
 
@@ -59,7 +70,11 @@
           font-size: 35px;
 
           @include mediaTablet {
-            font-size: 25px;
+            font-size: 20px;
+          }
+
+          @include mediaMobile {
+            font-size: 20px;
           }
         }
       }
@@ -79,18 +94,22 @@
         position: relative;
         top: 5%;
 
-        // @include mediaMobile {
-        //   height: 100px;
-        //   width: 100px;
-        //   right: 10%;
-        // }
+        @include mediaMobile {
+          height: 100px;
+          width: 100px;
+          // right: 10%;
+        }
       }
 
       .descriptionWetherText {
         font-size: 24px;
 
+        @include mediaTablet {
+          font-size: 18px;
+        }
+
         @include mediaMobile {
-          font-size: 19px;
+          font-size: 14px;
         }
 
         @include mediaHeaght {
@@ -99,7 +118,7 @@
       }
 
       @include mediaTablet {
-        justify-content: space-between;
+        // justify-content: space-between;
       }
     }
 

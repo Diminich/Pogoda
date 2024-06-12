@@ -8,14 +8,14 @@
 
     .renderTodayWeatherData {
       @extend .todayWeatherData;
-      height: 70%;
+      // height: 45%;
       width: 30%;
       flex-direction: column;
       justify-content: space-between;
       color: white;
       // max-height: 40%;
       // min-height: 55%;
-      row-gap: 10px;
+      // row-gap: 10px;
 
       .time {
         @include time;
@@ -108,10 +108,6 @@
           font-size: 18px;
         }
 
-        @include mediaMobile {
-          font-size: 14px;
-        }
-
         @include mediaHeaght {
           font-size: 34px;
         }
@@ -130,8 +126,8 @@
     //   min-height: 65%;
     // }
 
-    @include mediaHeaght {
-      height: 42%;
-    }
+    // @include mediaHeaght {
+    //   height: 42%;
+    // }
   }
 }

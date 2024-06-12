@@ -54,11 +54,7 @@
         color: white;
         // font-size: 32px;
         @include mediaTablet {
-          font-size: 19px;
-        }
-
-        @include mediaMobile {
-          font-size: 14px;
+          font-size: 18px;
         }
 
         @include mediaHeaght {
@@ -75,9 +71,9 @@
       height: 100%;
       width: 30%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      position: relative;
-      top: 5%;
+      align-items: center;
 
       .iconWether {
         @include iconWetherData;
@@ -94,8 +90,8 @@
     //   height: 70%;
     // }
 
-    @include mediaHeaght {
-      height: 65%;
-    }
+    // @include mediaHeaght {
+    //   height: 65%;
+    // }
   }
 }

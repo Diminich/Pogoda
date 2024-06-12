@@ -1,10 +1,11 @@
 .footerWetherData {
-  height: 40%;
+  // height: 25%;
   width: 100%;
   border-top: 2px solid white;
   display: flex;
   align-items: center;
   overflow: auto;
+  padding-top: 10px;
 
   &__renderFooterWetherData {
     height: 100%;
@@ -14,16 +15,16 @@
     align-items: center;
     justify-content: space-around;
     color: white;
-    margin-left: 20px;
+    padding-left: 20px;
 
     .temp {
       @include mediaHeaght {
         font-size: 30px;
       }
 
-      @include mediaMobile {
-        font-size: 14px;
-      }
+      // @include mediaMobile {
+      //   font-size: 14px;
+      // }
     }
 
     .icon {
@@ -51,15 +52,15 @@
     }
   }
 
-  @include mediaTablet {
-    height: 40%;
-  }
+  // @include mediaTablet {
+  //   height: 40%;
+  // }
 
-  @include mediaMobile {
-    height: 35%;
-  }
+  // @include mediaMobile {
+  //   height: 20%;
+  // }
 
-  @include mediaHeaght {
-    height: 20%;
-  }
+  // @include mediaHeaght {
+  //   height: 20%;
+  // }
 }

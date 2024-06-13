@@ -21,7 +21,15 @@
         @include time;
 
         @include mediaTablet {
+          font-size: 24px;
+        }
+
+        @include mediaMobile {
           font-size: 18px;
+        }
+
+        @include mediaHeaght {
+          font-size: 34px;
         }
       }
 
@@ -58,11 +66,11 @@
           font-size: 60px;
 
           @include mediaTablet {
-            font-size: 30px;
+            font-size: 45px;
           }
 
           @include mediaMobile {
-            font-size: 35px;
+            font-size: 30px;
           }
         }
 
@@ -105,7 +113,11 @@
         font-size: 24px;
 
         @include mediaTablet {
-          font-size: 18px;
+          font-size: 24px;
+        }
+
+        @include mediaMobile {
+          font-size:18px;
         }
 
         @include mediaHeaght {

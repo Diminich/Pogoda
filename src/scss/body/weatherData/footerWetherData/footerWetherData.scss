@@ -1,5 +1,5 @@
 .footerWetherData {
-  // height: 25%;
+  min-height: 18%;
   width: 100%;
   border-top: 2px solid white;
   display: flex;
@@ -19,12 +19,12 @@
 
     .temp {
       @include mediaHeaght {
-        font-size: 30px;
+        font-size: 28px;
       }
 
-      // @include mediaMobile {
-      //   font-size: 14px;
-      // }
+      @include mediaMobile {
+        font-size: 14px;
+      }
     }
 
     .icon {
@@ -32,18 +32,18 @@
       width: 70px;
 
       @include mediaTablet {
-        height: 50px;
-        width: 50px;
+        height: 60px;
+        width: 60px;
       }
 
       @include mediaMobile {
-        height: 40px;
-        width: 40px;
+        height: 35px;
+        width: 35px;
       }
 
       @include mediaHeaght {
-        height: 100px;
-        width: 100px;
+        height: 80px;
+        width: 80px;
       }
     }
 

@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Pogoda/static/css/main.6341f1ce.css",
-    "main.js": "/Pogoda/static/js/main.70f2570b.js",
+    "main.css": "/Pogoda/static/css/main.7f44f72e.css",
+    "main.js": "/Pogoda/static/js/main.024ee6e5.js",
     "static/js/488.9e7078cb.chunk.js": "/Pogoda/static/js/488.9e7078cb.chunk.js",
     "static/media/goluboy-fon.jpg": "/Pogoda/static/media/goluboy-fon.d0fddde84022db50b7b8.jpg",
     "index.html": "/Pogoda/index.html",
-    "main.6341f1ce.css.map": "/Pogoda/static/css/main.6341f1ce.css.map",
-    "main.70f2570b.js.map": "/Pogoda/static/js/main.70f2570b.js.map",
+    "main.7f44f72e.css.map": "/Pogoda/static/css/main.7f44f72e.css.map",
+    "main.024ee6e5.js.map": "/Pogoda/static/js/main.024ee6e5.js.map",
     "488.9e7078cb.chunk.js.map": "/Pogoda/static/js/488.9e7078cb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6341f1ce.css",
-    "static/js/main.70f2570b.js"
+    "static/css/main.7f44f72e.css",
+    "static/js/main.024ee6e5.js"
   ]
 }

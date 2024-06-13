@@ -1,4 +1,4 @@
-@import "../../../mixins/wetherDataMixins";
+@import "../../../mixins/bodyMixins/wetherDataMixin";
 
 .tomorrowWetherData {
   @include weatherData;

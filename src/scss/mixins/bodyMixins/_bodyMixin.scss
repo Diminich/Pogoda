@@ -1,0 +1,3 @@
+@mixin bodyHeight($setHeight) {
+  height: calc(100% - $setHeight);
+}

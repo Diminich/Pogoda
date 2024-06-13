@@ -1,15 +1,17 @@
 @import "weatherData/weatherData.scss";
 @import "searchInput/searchInput.scss";
 @import "buttonsToggleWeather/buttonsToggleWeather.scss";
-@import "../variables/bodyVariables";
-@import "../variables/headerVariables";
-
+@import "../mixins/bodyMixins/bodyMixin";
 
 .Body {
-  height: $body-height;
+  @include bodyHeight(60px);
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include mediaHeight {
+    @include bodyHeight(80px);
+  }
 }

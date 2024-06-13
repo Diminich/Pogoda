@@ -2,7 +2,7 @@ import {
   CityDailyWeatherData,
   CityHourlyWeatherData,
 } from "../../../../redux/reducersTypes/reducersTypes";
-import { TodayWeatherByHourles } from "../todayWeatherByHourles/TodayWeatherByHouers";
+import { TodayWeatherByHours } from "../todayWeatherByHours/TodayWeatherByHours";
 import { TomorrowWeatherDetails } from "./tomorrowWeatherDetails/TomorrowWeatherDetails";
 
 export interface TomorrowWetherDataProps {
@@ -29,7 +29,7 @@ export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({
           />
         ))}
       </div>
-      <TodayWeatherByHourles weatherData={hourlyWetherData} path={pathId} />
+      <TodayWeatherByHours weatherData={hourlyWetherData} path={pathId} />
     </div>
   );
 };

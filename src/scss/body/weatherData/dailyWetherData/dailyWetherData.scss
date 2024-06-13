@@ -30,7 +30,7 @@
           font-size: 14px;
         }
 
-        @include mediaHeaght {
+        @include mediaHeight {
           font-size: 34px;
         }
       }
@@ -63,7 +63,7 @@
           width: 40px;
         }
 
-        @include mediaHeaght {
+        @include mediaHeight {
           height: 100px;
           width: 100px;
         }
@@ -88,7 +88,7 @@
             font-size: 14px;
           }
 
-          @include mediaHeaght {
+          @include mediaHeight {
             font-size: 34px;
           }
         }
@@ -105,7 +105,7 @@
     }
   }
 
-  @include mediaHeaght {
+  @include mediaHeight {
     height: 90%;
   }
 }

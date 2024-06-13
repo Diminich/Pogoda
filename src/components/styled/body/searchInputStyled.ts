@@ -65,17 +65,26 @@ export const SearchInput = styled(TextField)({
     "& .MuiFormHelperText-root": {
       border: "none",
       position: "absolute",
-      top: "45px",
-      left: "5px",
+      bottom: "95%",
+      left: "10%",
       fontSize: "16px",
 
       [mediaTablet]: {
-        top: "auto",
-        bottom: "50px",
-        left: "135px",
-        border: "none",
-        position: "absolute",
-        fontSize: "24px",
+        bottom: "90%",
+        left: "12%",
+        fontSize: "20px",
+      },
+
+      [mediaMobile]: {
+        bottom: "95%",
+        left: "12%",
+        fontSize: "16px",
+      },
+
+      [mediaHeight]: {
+        bottom: "95%",
+        left: "10%",
+        fontSize: "26px",
       },
     },
   },

@@ -1,12 +1,12 @@
 import { CityHourlyWeatherData } from "../../../../redux/reducersTypes/reducersTypes";
-import { TodayWeatherByHourlesDetails } from "./todayWeatherByHourlesDetails/TodayWeatherByHourlesDetails";
+import { TodayWeatherByHoursDetails } from "./todayWeatherByHoursDetails/TodayWeatherByHoursDetails";
 
-interface TodayWeatherByHourlesProps {
+interface TodayWeatherByHoursProps {
   weatherData: CityHourlyWeatherData[];
   path: string;
 }
 
-export const TodayWeatherByHourles: React.FC<TodayWeatherByHourlesProps> = ({
+export const TodayWeatherByHours: React.FC<TodayWeatherByHoursProps> = ({
   weatherData,
   path,
 }) => {
@@ -28,7 +28,7 @@ export const TodayWeatherByHourles: React.FC<TodayWeatherByHourlesProps> = ({
     return day.map(({ timeUTC, temp, weather }, index) => {
       const [{ icon }] = weather;
       return (
-        <TodayWeatherByHourlesDetails
+        <TodayWeatherByHoursDetails
           key={index}
           icon={icon}
           temp={temp}

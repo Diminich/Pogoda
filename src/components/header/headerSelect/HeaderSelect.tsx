@@ -6,7 +6,7 @@ import {
   LanguagesMenuItem,
 } from "../../styled/header/headerSelectStyled";
 import {
-  isloadingLanguageAction,
+  isLoadingLanguageAction,
   setLanguageAction,
 } from "../../../redux/actions/headerActions";
 import { changeLanguages } from "../../../redux/asyncThunk/asyncThunk";
@@ -38,7 +38,7 @@ export const HeaderSelect: React.FC = () => {
   const setLanguage = (language: string) => {
     dispatch(setLanguageAction(language));
     if (language !== currentLanguage) {
-      dispatch(isloadingLanguageAction(true));
+      dispatch(isLoadingLanguageAction(true));
     }
     setAnchorEl(null);
   };
@@ -53,10 +53,10 @@ export const HeaderSelect: React.FC = () => {
         open={!!anchorEl}
         onClose={handleClose}
       >
-        {languages.map(({ langugae, value }, index) => {
+        {languages.map(({ language, value }, index) => {
           return (
             <LanguagesMenuItem key={index} onClick={() => setLanguage(value)}>
-              {langugae}
+              {language}
             </LanguagesMenuItem>
           );
         })}

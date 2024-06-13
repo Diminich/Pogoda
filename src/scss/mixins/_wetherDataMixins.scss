@@ -8,8 +8,7 @@
   padding-top: 2%;
 }
 
-@mixin wrapperRenderWatherData {
-  // height: 100%;
+@mixin wrapperRenderWeatherData {
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -23,7 +22,7 @@
     font-size: 14px;
   }
 
-  @include mediaHeaght {
+  @include mediaHeight {
     font-size: 34px;
   }
 }
@@ -32,7 +31,7 @@
   height: 150px;
   width: 150px;
 
-  @include mediaHeaght {
+  @include mediaHeight {
     height: 250px;
     width: 250px;
   }

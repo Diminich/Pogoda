@@ -2,7 +2,7 @@ import moment from "moment";
 import { IntlShape } from "react-intl";
 import "moment/locale/ru";
 
-export const i18nFuction = (intl: IntlShape, str: string) => {
+export const i18Function = (intl: IntlShape, str: string) => {
   return intl.formatMessage({ id: str });
 };
 

@@ -1,13 +1,13 @@
 import { Span } from "../../../../htmlTags/Span";
 
-interface TodayWeatherByHourlesDetailsProps {
+interface TodayWeatherByHoursDetailsProps {
   icon: string;
   temp: number;
   timeUTC: string;
 }
 
-export const TodayWeatherByHourlesDetails: React.FC<
-  TodayWeatherByHourlesDetailsProps
+export const TodayWeatherByHoursDetails: React.FC<
+  TodayWeatherByHoursDetailsProps
 > = ({ icon, temp, timeUTC }) => {
   return (
     <div className="footerWetherData__renderFooterWetherData">

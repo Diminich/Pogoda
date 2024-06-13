@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   overflow: auto;
-  padding-top: 10px;
+  padding-top: 2%;
 
   &__renderFooterWetherData {
     height: 100%;
@@ -18,7 +18,7 @@
     padding-left: 20px;
 
     .temp {
-      @include mediaHeaght {
+      @include mediaHeight {
         font-size: 28px;
       }
 
@@ -41,7 +41,7 @@
         width: 35px;
       }
 
-      @include mediaHeaght {
+      @include mediaHeight {
         height: 80px;
         width: 80px;
       }
@@ -51,16 +51,4 @@
       @extend .temp;
     }
   }
-
-  // @include mediaTablet {
-  //   height: 40%;
-  // }
-
-  // @include mediaMobile {
-  //   height: 20%;
-  // }
-
-  // @include mediaHeaght {
-  //   height: 20%;
-  // }
 }

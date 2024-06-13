@@ -6,15 +6,10 @@
   justify-content: space-around;
 
   @include mediaTablet {
-    // height: 8%;
     width: 80%;
   }
 
-  @include mediaMobile {
-    // height: 10%;
-  }
-
-  @include mediaHeaght {
-    height: 6%;
+  @include mediaHeight {
+    height: 70px;
   }
 }

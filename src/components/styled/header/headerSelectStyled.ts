@@ -14,15 +14,12 @@ export const LanguageButton = styled(Button)({
     },
 
     [mediaTablet]: {
-      fontSize: "18px",
-      // height: "65%",
-      // width: "40px",
+      maxWidth: "12%",
+      fontSize: "16px",
     },
 
     [mediaMobile]: {
-      // height: "70%",
-      // height: 80%;
-      //   width: 11%;
+      maxWidth: "14%",
       fontSize: "14px",
     },
 
@@ -32,16 +29,25 @@ export const LanguageButton = styled(Button)({
   },
 });
 
-export const LanguagesMenu = styled(Menu)({});
+export const LanguagesMenu = styled(Menu)({
+  "& .MuiMenu-paper": {
+    [mediaTablet]: {
+      maxWidth: "12%",
+    },
+
+    [mediaMobile]: {
+      maxWidth: "14%",
+    },
+  },
+});
 
 export const LanguagesMenuItem = styled(MenuItem)({
   "&.MuiMenuItem-root": {
-    // width: "40px",
     display: "flex",
     justifyContent: "center",
 
     [mediaTablet]: {
-      fontSize: "18px",
+      fontSize: "16px",
     },
 
     [mediaMobile]: {

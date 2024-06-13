@@ -4,7 +4,7 @@
   @include weatherData;
 
   &__wrapperRenderTomorrowWetherData {
-    @include wrapperRenderWatherData;
+    @include wrapperRenderWeatherData;
 
     .renderTomorrowWeatherData {
       @extend .tomorrowWetherData;
@@ -21,12 +21,12 @@
           font-size: 18px;
         }
 
-        @include mediaHeaght {
+        @include mediaHeight {
           font-size: 34px;
         }
       }
 
-      .wrapperTodatTemp {
+      .wrapperTodayTemp {
         .tempDay {
           @extend .time;
           color: white;
@@ -52,19 +52,14 @@
       .descriptionWetherText {
         @extend .time;
         color: white;
-        // font-size: 32px;
         @include mediaTablet {
           font-size: 18px;
         }
 
-        @include mediaHeaght {
+        @include mediaHeight {
           font-size: 34px;
         }
       }
-
-      // @include mediaMobile {
-      //   height: 60%;
-      // }
     }
 
     .renderTomorrowIconData {
@@ -81,17 +76,5 @@
         width: 100px;
       }
     }
-
-    // @include mediaTablet {
-    //   height: 55%;
-    // }
-
-    // @include mediaMobile {
-    //   height: 70%;
-    // }
-
-    // @include mediaHeaght {
-    //   height: 65%;
-    // }
   }
 }

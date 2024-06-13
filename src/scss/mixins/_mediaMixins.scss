@@ -1,4 +1,3 @@
-
 $tablet: 999px;
 $mobile: 375px;
 
@@ -16,7 +15,7 @@ $mobile: 375px;
 
 
 
-@mixin mediaHeaght {
+@mixin mediaHeight {
   @media screen and (min-height: $tablet) {
     @content;
   }

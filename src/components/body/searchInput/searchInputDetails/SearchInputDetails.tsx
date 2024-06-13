@@ -4,7 +4,7 @@ import {
   SearchButton,
   SearchInput,
 } from "../../../styled/body/searchInputStyled";
-import { i18nFuction } from "../../../utils";
+import { i18Function } from "../../../utils";
 
 export interface SearchInputProps {
   intl: IntlShape;
@@ -33,11 +33,11 @@ export const SearchInputDetails: React.FC<SearchInputProps> = ({
         autoComplete="off"
         focused={false}
         error={isActiveError}
-        placeholder={i18nFuction(intl, "body.search")}
+        placeholder={i18Function(intl, "body.search")}
         value={cityName}
         onKeyPress={(e) => pressEnter(e)}
         onChange={(e) => changeNameCity(e)}
-        helperText={isActiveError && i18nFuction(intl, "body.error")}
+        helperText={isActiveError && i18Function(intl, "body.error")}
       />
       <SearchButton
         onClick={onSearchCity}
@@ -46,7 +46,7 @@ export const SearchInputDetails: React.FC<SearchInputProps> = ({
         loadingPosition="center"
         variant="contained"
       >
-        {i18nFuction(intl, "body.searchButton")}
+        {i18Function(intl, "body.searchButton")}
       </SearchButton>
     </div>
   );

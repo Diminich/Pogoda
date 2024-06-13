@@ -8,7 +8,7 @@ import {
   setCitySearchCoordsAction,
   setErrorAction,
 } from "../actions/bodySearchCityActions";
-import { isloadingLanguageAction } from "../actions/headerActions";
+import { isLoadingLanguageAction } from "../actions/headerActions";
 import { AppStateType } from "../redux-store";
 import { GetThunkAPI } from "@reduxjs/toolkit/dist/createAsyncThunk";
 
@@ -68,11 +68,11 @@ export const changeLanguages = createAsyncThunk<
 >("changeLanguages", async (_, thunkApi) => {
   try {
     await getData(thunkApi);
-    thunkApi.dispatch(isloadingLanguageAction(false));
+    thunkApi.dispatch(isLoadingLanguageAction(false));
   } catch (error) {
     debugger
     errorMessage(error as Error, thunkApi.dispatch);
-    thunkApi.dispatch(isloadingLanguageAction(false));
+    thunkApi.dispatch(isLoadingLanguageAction(false));
   }
 
 });

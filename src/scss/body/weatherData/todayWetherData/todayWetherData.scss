@@ -4,18 +4,14 @@
   @include weatherData;
 
   &__wrapperRenderTodayWetherData {
-    @include wrapperRenderWatherData;
+    @include wrapperRenderWeatherData;
 
     .renderTodayWeatherData {
       @extend .todayWeatherData;
-      // height: 45%;
       width: 30%;
       flex-direction: column;
       justify-content: space-between;
       color: white;
-      // max-height: 40%;
-      // min-height: 55%;
-      // row-gap: 10px;
 
       .time {
         @include time;
@@ -28,12 +24,12 @@
           font-size: 18px;
         }
 
-        @include mediaHeaght {
+        @include mediaHeight {
           font-size: 34px;
         }
       }
 
-      .wrapperTodatTemp {
+      .wrapperTodayTemp {
         .tempDay {
           @extend .time;
           color: white;
@@ -105,7 +101,6 @@
         @include mediaMobile {
           height: 100px;
           width: 100px;
-          // right: 10%;
         }
       }
 
@@ -120,26 +115,10 @@
           font-size:18px;
         }
 
-        @include mediaHeaght {
+        @include mediaHeight {
           font-size: 34px;
         }
       }
-
-      @include mediaTablet {
-        // justify-content: space-between;
-      }
     }
-
-    // @include mediaTablet {
-    //   height: 50%;
-    // }
-
-    // @include mediaMobile {
-    //   min-height: 65%;
-    // }
-
-    // @include mediaHeaght {
-    //   height: 42%;
-    // }
   }
 }

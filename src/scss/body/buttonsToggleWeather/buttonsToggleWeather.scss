@@ -1,12 +1,9 @@
-@import "../../variables/bodyVariables";
-
 .buttonsToggleWeather {
-  height: $body-buttonsToggleWeather-height;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  position: relative;
+  padding-top: 2%;
 
   &__default {
     height: 100%;
@@ -19,7 +16,15 @@
     cursor: pointer;
 
     @include mediaTablet {
-      font-size: 22px;
+      font-size: 18px;
+    }
+
+    @include mediaMobile {
+      font-size: 14px;
+    }
+
+    @include mediaHeight {
+      font-size: 34px;
     }
   }
 
@@ -36,7 +41,15 @@
     }
 
     @include mediaTablet {
-      font-size: 22px;
+      font-size: 18px;
+    }
+
+    @include mediaMobile {
+      font-size: 14px;
+    }
+
+    @include mediaHeight {
+      font-size: 34px;
     }
   }
 

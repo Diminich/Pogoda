@@ -1,10 +1,11 @@
 .footerWetherData {
-  height: 40%;
+  min-height: 18%;
   width: 100%;
   border-top: 2px solid white;
   display: flex;
   align-items: center;
   overflow: auto;
+  padding-top: 2%;
 
   &__renderFooterWetherData {
     height: 100%;
@@ -14,15 +15,40 @@
     align-items: center;
     justify-content: space-around;
     color: white;
-    margin-left: 20px;
+    padding-left: 20px;
+
+    .temp {
+      @include mediaHeight {
+        font-size: 28px;
+      }
+
+      @include mediaMobile {
+        font-size: 14px;
+      }
+    }
 
     .icon {
       height: 70px;
-      width: 70px
-    }
-  }
+      width: 70px;
 
-  @include mediaTablet {
-    font-size: x-large;
+      @include mediaTablet {
+        height: 60px;
+        width: 60px;
+      }
+
+      @include mediaMobile {
+        height: 35px;
+        width: 35px;
+      }
+
+      @include mediaHeight {
+        height: 80px;
+        width: 80px;
+      }
+    }
+
+    .time {
+      @extend .temp;
+    }
   }
 }

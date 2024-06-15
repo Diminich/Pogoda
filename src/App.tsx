@@ -7,11 +7,11 @@ import { AppStateType } from './redux/redux-store';
 
 export const App: React.FC = () => {
   const currentLanguage = useSelector<AppStateType, string>(state => state.headerReducerPage.currentLanguage);
-  const messegesLanguages = useSelector<AppStateType, any>(state => state.headerReducerPage.messages);
+  const messagesLanguages = useSelector<AppStateType, any>(state => state.headerReducerPage.messages);
 
   return (
     <div className='App'>
-      <IntlProvider locale={currentLanguage} messages={messegesLanguages[currentLanguage]}>
+      <IntlProvider locale={currentLanguage} messages={messagesLanguages[currentLanguage]}>
         <Header />
         <RoutesComponents />
       </IntlProvider>

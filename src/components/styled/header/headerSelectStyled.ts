@@ -1,41 +1,61 @@
-import { MenuItem, Select } from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
 import { styled } from "@mui/styles";
+import { mediaHeight, mediaMobile, mediaTablet } from "../../constants";
 
-export const LanguagesSelect = styled(Select)({
-  "&.MuiInputBase-root": {
-    height: "75%",
+export const LanguageButton = styled(Button)({
+  "&.MuiButton-root": {
+    minWidth: "0px",
     border: "1px solid white",
     borderRadius: "10px",
-    color: "white",
-    transition:
-      "background-color 5ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+    backgroundColor: "rgba(0, 0, 0, 0)",
 
     "&:hover": {
-      boxShadow:
-        "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
-      transition:
-        "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+      backgroundColor: "rgba(0, 0, 0, 0)",
     },
 
-    "&:active": {
-      boxShadow:
-        "0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)",
+    [mediaTablet]: {
+      maxWidth: "12%",
+      fontSize: "16px",
     },
 
-    "& .MuiSelect-select.MuiSelect-outlined": {
-      marginLeft: "4px",
-      paddingRight: "18px",
+    [mediaMobile]: {
+      maxWidth: "14%",
+      fontSize: "14px",
     },
 
-    "& .MuiOutlinedInput-notchedOutline": {
-      borderStyle: "none",
+    [mediaHeight]: {
+      fontSize: "24px",
     },
   },
 });
 
-export const LanguagexMenuitem = styled(MenuItem)({
+export const LanguagesMenu = styled(Menu)({
+  "& .MuiMenu-paper": {
+    [mediaTablet]: {
+      maxWidth: "12%",
+    },
+
+    [mediaMobile]: {
+      maxWidth: "14%",
+    },
+  },
+});
+
+export const LanguagesMenuItem = styled(MenuItem)({
   "&.MuiMenuItem-root": {
     display: "flex",
     justifyContent: "center",
+
+    [mediaTablet]: {
+      fontSize: "16px",
+    },
+
+    [mediaMobile]: {
+      fontSize: "14px",
+    },
+
+    [mediaHeight]: {
+      fontSize: "24px",
+    },
   },
 });

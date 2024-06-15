@@ -1,44 +1,66 @@
 import { useSelector } from "react-redux";
 import { AppStateType, useAppDispath } from "../../../redux/redux-store";
 import {
-  LanguagesSelect,
-  LanguagexMenuitem,
+  LanguageButton,
+  LanguagesMenu,
+  LanguagesMenuItem,
 } from "../../styled/header/headerSelectStyled";
 import {
-  isloadingLanguageAction,
+  isLoadingLanguageAction,
   setLanguageAction,
 } from "../../../redux/actions/headerActions";
 import { changeLanguages } from "../../../redux/asyncThunk/asyncThunk";
-import { useLayoutEffect } from "react";
+import { MouseEvent, useLayoutEffect, useState } from "react";
+import { languages } from "../../constants";
 
 export const HeaderSelect: React.FC = () => {
   const dispatch = useAppDispath();
-  const isLoadingLanguage = useSelector<AppStateType, boolean>(
-    (state) => state.headerReducerPage.isLoadingLanguages
-  );
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
   const currentLanguage = useSelector<AppStateType, string>(
     (state) => state.headerReducerPage.currentLanguage
   );
 
   useLayoutEffect(() => {
-    if (isLoadingLanguage) {
+    if (currentLanguage) {
       dispatch(changeLanguages());
     }
-  }, [currentLanguage]);
+  }, [currentLanguage, dispatch]);
 
-  const setCurrentLanguage = (e: any) => {
-    dispatch(setLanguageAction(e.target.value as string));
-    dispatch(isloadingLanguageAction(true));
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const setLanguage = (language: string) => {
+    dispatch(setLanguageAction(language));
+    if (language !== currentLanguage) {
+      dispatch(isLoadingLanguageAction(true));
+    }
+    setAnchorEl(null);
   };
 
   return (
-    <LanguagesSelect
-      value={currentLanguage}
-      onChange={setCurrentLanguage}
-      inputProps={{ IconComponent: () => null }}
-    >
-      <LanguagexMenuitem value="ru">RU</LanguagexMenuitem>
-      <LanguagexMenuitem value="en">EN</LanguagexMenuitem>
-    </LanguagesSelect>
+    <>
+      <LanguageButton variant="contained" onClick={(e) => handleClick(e)}>
+        {currentLanguage}
+      </LanguageButton>
+      <LanguagesMenu
+        anchorEl={anchorEl}
+        open={!!anchorEl}
+        onClose={handleClose}
+      >
+        {languages.map(({ language, value }, index) => {
+          return (
+            <LanguagesMenuItem key={index} onClick={() => setLanguage(value)}>
+              {language}
+            </LanguagesMenuItem>
+          );
+        })}
+      </LanguagesMenu>
+    </>
   );
 };

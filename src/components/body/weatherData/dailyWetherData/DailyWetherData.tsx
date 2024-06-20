@@ -14,8 +14,8 @@ export const DailyWetherData: React.FC<DailyWetherDataProps> = ({
     <div className="weatherDataDaily">
       {dailyWeatherData.map((weatherDetails, index) => (
         <RenderDailyWeatherDetails
+          key={index}
           details={weatherDetails}
-          index={index}
           currentLanguage={currentLanguage}
         />
       ))}

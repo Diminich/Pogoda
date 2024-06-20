@@ -6,7 +6,7 @@ import {
 } from "../../../styled/body/searchInputStyled";
 import { i18Function } from "../../../utils";
 
-export interface SearchInputProps {
+export interface SearchInputDetailsProps {
   intl: IntlShape;
   onSearchCity: () => void;
   cityName: string;
@@ -18,7 +18,7 @@ export interface SearchInputProps {
   pressEnter: (e: KeyboardEvent<HTMLDivElement>) => void;
 }
 
-export const SearchInputDetails: React.FC<SearchInputProps> = ({
+export const SearchInputDetails: React.FC<SearchInputDetailsProps> = ({
   intl,
   onSearchCity,
   cityName,

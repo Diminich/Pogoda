@@ -11,10 +11,6 @@ export const formatTime = (time: number, format: string, language?: string) => {
   return moment(time * 1000).format(format);
 };
 
-export const formatCalendar = () => {
-  return moment().calendar(null, { sameDay: "[Today]" });
-};
-
 export const refactorParams = ({ ...params }) => {
   let refactorTemp: { [key: string]: number } = {};
 

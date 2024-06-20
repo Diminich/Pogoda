@@ -1,5 +1,15 @@
 import { IntlShape } from "react-intl";
 import { i18Function } from "./utils";
+import moment from "moment";
+
+moment.updateLocale("ru", {
+  weekdays:
+    "Воскресенье_Понедельник_Вторник_Среду_Четверг_Пятница_Суббота".split("_"),
+  months:
+    "Январь_Февраль_Март_Апрель_Май_Июнь_Июль_Август_Сентябрь_Октябрь_Ноябрь_Декабрь".split(
+      "_"
+    ),
+});
 
 export const nameButtonsToggleWether = (intl: IntlShape) => [
   {

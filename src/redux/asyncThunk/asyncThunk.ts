@@ -10,18 +10,6 @@ import {
 } from "../actions/bodySearchCityActions";
 import { isLoadingLanguageAction } from "../actions/headerActions";
 import { AppStateType } from "../redux-store";
-import { GetThunkAPI } from "@reduxjs/toolkit/dist/createAsyncThunk";
-
-type thunkApi = GetThunkAPI<{
-  state: AppStateType;
-  dispatch?: Dispatch<UnknownAction> | undefined;
-  extra?: unknown;
-  rejectValue?: unknown;
-  serializedErrorType?: unknown;
-  pendingMeta?: unknown;
-  fulfilledMeta?: unknown;
-  rejectedMeta?: unknown;
-}>;
 
 const errorMessage = (error: Error, dispatch: Dispatch<UnknownAction>) => {
   const statusCode = Number(error.message.match(/\d+/));
@@ -29,35 +17,38 @@ const errorMessage = (error: Error, dispatch: Dispatch<UnknownAction>) => {
   dispatch(setErrorAction(statusCode));
 };
 
-const getData = async ({ getState, dispatch }: thunkApi) => {
-  try {
-    const { lat, lon } = getState().bodySearchCityPage.citySearchCoords || {};
-    const languages = getState().headerReducerPage.currentLanguage;
-    const cityData = await cityApi.getCityHoursData(lat, lon, languages);
-    dispatch(setCityHourlyWeatherDataAction(cityData.data.hourly));
-    dispatch(setCityDailyWeatherDataAction(cityData.data.daily));
-    dispatch(setCityCurrentWeatherDataAction(cityData.data.current));
-    dispatch(isLoadingWeatherDataAction(false));
-    dispatch(setErrorAction(0));
-  } catch (error) {
-    errorMessage(error as Error, dispatch);
-    dispatch(isLoadingWeatherDataAction(false));
+const getWeatherData = createAsyncThunk<void, void, { state: AppStateType }>(
+  "getData",
+  async (_, { getState, dispatch }) => {
+    try {
+      const { lat, lon } = getState().bodySearchCityPage.citySearchCoords || {};
+      const languages = getState().headerReducerPage.currentLanguage;
+      const cityData = await cityApi.getCityHoursData(lat, lon, languages);
+      dispatch(setCityHourlyWeatherDataAction(cityData.data.hourly));
+      dispatch(setCityDailyWeatherDataAction(cityData.data.daily));
+      dispatch(setCityCurrentWeatherDataAction(cityData.data.current));
+      dispatch(isLoadingWeatherDataAction(false));
+      dispatch(setErrorAction(0));
+    } catch (error) {
+      errorMessage(error as Error, dispatch);
+      dispatch(isLoadingWeatherDataAction(false));
+    }
   }
-};
+);
 
-export const getWeatherData = createAsyncThunk<
+export const getCityCoords = createAsyncThunk<
   void,
   void,
   { state: AppStateType }
->("getCoords", async (_, thunkApi) => {
+>("getCoords", async (_, { getState, dispatch }) => {
   try {
     const { data } = await cityApi.getCityCurrentWeatherData(
-      thunkApi.getState().bodySearchCityPage.cityName
+      getState().bodySearchCityPage.cityName
     );
-    thunkApi.dispatch(setCitySearchCoordsAction(data.coord));
-    getData(thunkApi);
+    dispatch(setCitySearchCoordsAction(data.coord));
+    dispatch(getWeatherData());
   } catch (error) {
-    errorMessage(error as Error, thunkApi.dispatch);
+    errorMessage(error as Error, dispatch);
   }
 });
 
@@ -65,14 +56,14 @@ export const changeLanguages = createAsyncThunk<
   void,
   void,
   { state: AppStateType }
->("changeLanguages", async (_, thunkApi) => {
+>("changeLanguages", async (_, { getState, dispatch }) => {
   try {
-    await getData(thunkApi);
-    thunkApi.dispatch(isLoadingLanguageAction(false));
+    if (getState().bodySearchCityPage.cityName) {
+      dispatch(getWeatherData());
+    }
+    dispatch(isLoadingLanguageAction(false));
   } catch (error) {
-    debugger
-    errorMessage(error as Error, thunkApi.dispatch);
-    thunkApi.dispatch(isLoadingLanguageAction(false));
+    errorMessage(error as Error, dispatch);
+    dispatch(isLoadingLanguageAction(false));
   }
-
 });

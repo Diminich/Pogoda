@@ -1,5 +1,5 @@
 import { SearchInputDetails } from "./searchInput/searchInputDetails/SearchInputDetails";
-import { SearchInputContainer } from "./searchInput/SearchInputContainer";
+import { SearchInput } from "./searchInput/SearchInput";
 import { DailyWetherData } from "./weatherData/dailyWetherData/DailyWetherData";
 import { TodayWeather } from "./weatherData/todayWether/TodayWether";
 import { TomorrowWetherData } from "./weatherData/tomorrowWetherData/TomorrowWeatherData";
@@ -20,8 +20,8 @@ export const Body: React.FC = () => {
 
   return (
     <div className="Body">
-      <SearchInputContainer
-        renderSearchInput={(props) => <SearchInputDetails {...props} />}
+      <SearchInput
+        renderSearchInputDetails={(props) => <SearchInputDetails {...props} />}
       />
       {isLoadingChangeLanguage ? (
         <Loading size={50} />

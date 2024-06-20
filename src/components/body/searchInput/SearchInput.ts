@@ -3,19 +3,19 @@ import { ChangeEvent, useEffect, KeyboardEvent } from "react";
 import { useSelector } from "react-redux";
 import { AppStateType, useAppDispath } from "../../../redux/redux-store";
 import { searchInputError } from "./searchInputError";
-import { SearchInputProps } from "./searchInputDetails/SearchInputDetails";
+import { SearchInputDetailsProps } from "./searchInputDetails/SearchInputDetails";
 import {
   isLoadingWeatherDataAction,
   setCityNameAction,
 } from "../../../redux/actions/bodySearchCityActions";
-import { getWeatherData } from "../../../redux/asyncThunk/asyncThunk";
+import { getCityCoords } from "../../../redux/asyncThunk/asyncThunk";
 
-interface SearchInputContainerProps {
-  renderSearchInput: (props: SearchInputProps) => React.ReactElement;
+interface SearchInputProps {
+  renderSearchInputDetails: (props: SearchInputDetailsProps) => React.ReactElement;
 }
 
-export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({
-  renderSearchInput,
+export const SearchInput: React.FC<SearchInputProps> = ({
+  renderSearchInputDetails,
 }) => {
   const cityName = useSelector<AppStateType, string>(
     (state) => state.bodySearchCityPage.cityName
@@ -34,9 +34,13 @@ export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({
 
   useEffect(() => {
     if (isLoadingWeatherData) {
-      dispatch(getWeatherData());
+      dispatch(getCityCoords());
     }
   }, [isLoadingWeatherData, dispatch]);
+
+  useEffect(() => {
+    searchInputError(dispatch, error);
+  }, [error, dispatch]);
 
   const onSearchCity = () => {
     if (cityName) {
@@ -56,9 +60,7 @@ export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({
     dispatch(setCityNameAction(e.currentTarget.value));
   };
 
-  searchInputError(dispatch, error);
-
-  return renderSearchInput({
+  return renderSearchInputDetails({
     intl,
     onSearchCity,
     cityName,

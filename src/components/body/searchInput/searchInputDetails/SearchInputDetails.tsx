@@ -4,7 +4,7 @@ import {
   SearchButton,
   SearchInput,
 } from "../../../styled/body/searchInputStyled";
-import { i18Function } from "../../../utils";
+import { i18Function } from "../../../componentsUtils";
 
 export interface SearchInputDetailsProps {
   intl: IntlShape;

@@ -10,11 +10,6 @@ import {
   setCitySearchCoordsAction,
   setErrorAction,
 } from "./actions/bodySearchCityActions";
-import {
-  formatTime,
-  refactorParams,
-  upperCaseFirstLetter,
-} from "../components/utils";
 
 const initialState: InitialStateBodySearchCityType = {
   cityName: "",
@@ -36,57 +31,13 @@ const bodySearchCityReducer = createReducer(initialState, (builder) => {
       state.citySearchCoords = action.payload;
     })
     .addCase(setCityCurrentWeatherDataAction, (state, action) => {
-      state.cityCurrentWeatherData = [
-        {
-          ...action.payload,
-          ...state.cityDailyWeatherData.find(
-            (dailyWeatherData) => dailyWeatherData
-          )!.temp,
-          weather: action.payload.weather.map((weather) => {
-            return {
-              ...weather,
-              description: upperCaseFirstLetter(weather.description),
-            };
-          }),
-        },
-      ];
+      state.cityCurrentWeatherData = action.payload;
     })
     .addCase(setCityHourlyWeatherDataAction, (state, action) => {
-      state.cityHourlyWeatherData = [
-        ...action.payload
-          .map((hourlyWeatherData) => {
-            return {
-              ...hourlyWeatherData,
-              timeUTC: formatTime(hourlyWeatherData.dt, "HH:mm"),
-              temp: refactorParams({ refactorTemp: hourlyWeatherData.temp })
-                .refactorTemp,
-              weather: hourlyWeatherData.weather.map((weather) => {
-                return {
-                  ...weather,
-                  description: upperCaseFirstLetter(weather.description),
-                };
-              }),
-            };
-          })
-          .slice(1),
-      ];
+      state.cityHourlyWeatherData = action.payload;
     })
     .addCase(setCityDailyWeatherDataAction, (state, action) => {
-      state.cityDailyWeatherData = [
-        ...action.payload
-          .map((dailyWeatherData) => {
-            return {
-              ...dailyWeatherData,
-              weather: dailyWeatherData.weather.map((weather) => {
-                return {
-                  ...weather,
-                  description: upperCaseFirstLetter(weather.description),
-                };
-              }),
-            };
-          })
-          .slice(0, -1),
-      ];
+      state.cityDailyWeatherData = action.payload;
     })
     .addCase(isActiveErrorAction, (state, action) => {
       state.isActiveError = action.payload;

@@ -36,10 +36,10 @@ export const HeaderSelect: React.FC = () => {
   };
 
   const setLanguage = (language: string) => {
-    dispatch(setLanguageAction(language));
     if (language !== currentLanguage) {
       dispatch(isLoadingLanguageAction(true));
     }
+    dispatch(setLanguageAction(language));
     setAnchorEl(null);
   };
 

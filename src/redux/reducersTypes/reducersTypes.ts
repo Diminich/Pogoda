@@ -101,6 +101,8 @@ type Feels_likeType = {
 
 export type CityDailyWeatherData = {
   dt: number;
+  day: number;
+  night: number;
   sunrise: number;
   sunset: number;
   moonrise: number;

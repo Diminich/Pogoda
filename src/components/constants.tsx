@@ -1,5 +1,5 @@
 import { IntlShape } from "react-intl";
-import { i18Function } from "./utils";
+import { i18Function } from "./componentsUtils";
 import moment from "moment";
 
 moment.updateLocale("ru", {

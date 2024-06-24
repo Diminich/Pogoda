@@ -1,7 +1,7 @@
 import { useIntl } from "react-intl";
 import { CityDailyWeatherData } from "../../../../../redux/reducersTypes/reducersTypes";
 import { Span } from "../../../../htmlTags/Span";
-import { formatTime, i18Function, refactorParams } from "../../../../utils";
+import { formatTime, i18Function } from "../../../../componentsUtils";
 
 interface TomorrowWeatherDetailsProps {
   details: CityDailyWeatherData;
@@ -15,10 +15,7 @@ export const TomorrowWeatherDetails: React.FC<TomorrowWeatherDetailsProps> = ({
   const intl = useIntl();
   const [{ description, icon }] = details.weather;
   const timeUTC = formatTime(details.dt, "dddd, MMMM D", currentLanguage);
-  const refactorTemp = refactorParams({
-    day: details.temp.day,
-    night: details.temp.night,
-  });
+
   return (
     <>
       <div className="renderTomorrowWeatherData">
@@ -26,13 +23,13 @@ export const TomorrowWeatherDetails: React.FC<TomorrowWeatherDetailsProps> = ({
         <div className="wrapperTodayTemp">
           <Span
             className="tempDay"
-            text={`${i18Function(intl, "body.day")} ${refactorTemp.day}`}
+            text={`${i18Function(intl, "body.day")} ${details.day}`}
             specialCharacters={"\u00b0"}
           />
           <Span className="braillePattern" specialCharacters={"\u2802"} />
           <Span
             className="tempDay"
-            text={`${i18Function(intl, "body.night")} ${refactorTemp.night}`}
+            text={`${i18Function(intl, "body.night")} ${details.night}`}
             specialCharacters={"\u00b0"}
           />
         </div>

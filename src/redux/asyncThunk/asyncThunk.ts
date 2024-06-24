@@ -10,6 +10,11 @@ import {
 } from "../actions/bodySearchCityActions";
 import { isLoadingLanguageAction } from "../actions/headerActions";
 import { AppStateType } from "../redux-store";
+import {
+  refactorCurrentWeatherData,
+  refactorDailyWeatherData,
+  refactorHourlyWeatherData,
+} from "../reduxUtils";
 
 const errorMessage = (error: Error, dispatch: Dispatch<UnknownAction>) => {
   const statusCode = Number(error.message.match(/\d+/));
@@ -24,9 +29,21 @@ const getWeatherData = createAsyncThunk<void, void, { state: AppStateType }>(
       const { lat, lon } = getState().bodySearchCityPage.citySearchCoords || {};
       const languages = getState().headerReducerPage.currentLanguage;
       const cityData = await cityApi.getCityHoursData(lat, lon, languages);
-      dispatch(setCityHourlyWeatherDataAction(cityData.data.hourly));
-      dispatch(setCityDailyWeatherDataAction(cityData.data.daily));
-      dispatch(setCityCurrentWeatherDataAction(cityData.data.current));
+      dispatch(
+        setCityHourlyWeatherDataAction(
+          refactorHourlyWeatherData(cityData.data.hourly)
+        )
+      );
+      dispatch(
+        setCityDailyWeatherDataAction(
+          refactorDailyWeatherData(cityData.data.daily)
+        )
+      );
+      dispatch(
+        setCityCurrentWeatherDataAction(
+          refactorCurrentWeatherData(cityData.data.current, cityData.data.daily)
+        )
+      );
       dispatch(isLoadingWeatherDataAction(false));
       dispatch(setErrorAction(0));
     } catch (error) {

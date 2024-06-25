@@ -28,20 +28,19 @@ const getWeatherData = createAsyncThunk<void, void, { state: AppStateType }>(
     try {
       const { lat, lon } = getState().bodySearchCityPage.citySearchCoords || {};
       const languages = getState().headerReducerPage.currentLanguage;
-      const cityData = await cityApi.getCityHoursData(lat, lon, languages);
-      dispatch(
-        setCityHourlyWeatherDataAction(
-          refactorHourlyWeatherData(cityData.data.hourly)
-        )
+      const { hourly, daily, current } = await cityApi.getCityHoursData(
+        lat,
+        lon,
+        languages
       );
+
       dispatch(
-        setCityDailyWeatherDataAction(
-          refactorDailyWeatherData(cityData.data.daily)
-        )
+        setCityHourlyWeatherDataAction(refactorHourlyWeatherData(hourly))
       );
+      dispatch(setCityDailyWeatherDataAction(refactorDailyWeatherData(daily)));
       dispatch(
         setCityCurrentWeatherDataAction(
-          refactorCurrentWeatherData(cityData.data.current, cityData.data.daily)
+          refactorCurrentWeatherData(current, daily)
         )
       );
       dispatch(isLoadingWeatherDataAction(false));
@@ -59,10 +58,10 @@ export const getCityCoords = createAsyncThunk<
   { state: AppStateType }
 >("getCoords", async (_, { getState, dispatch }) => {
   try {
-    const { data } = await cityApi.getCityCurrentWeatherData(
+    const coord = await cityApi.getCityCurrentWeatherData(
       getState().bodySearchCityPage.cityName
     );
-    dispatch(setCitySearchCoordsAction(data.coord));
+    dispatch(setCitySearchCoordsAction(coord));
     dispatch(getWeatherData());
   } catch (error) {
     errorMessage(error as Error, dispatch);

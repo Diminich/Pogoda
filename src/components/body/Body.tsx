@@ -13,7 +13,7 @@ export const Body: React.FC = () => {
   const isLoadingChangeLanguage = useSelector<AppStateType, boolean>(
     (state) => state.headerReducerPage.isLoadingLanguages
   );
-  debugger
+
   const isLoadingWeatherData = useSelector<AppStateType, boolean>(
     (state) => state.bodySearchCityPage.isLoadingWeatherData
   );

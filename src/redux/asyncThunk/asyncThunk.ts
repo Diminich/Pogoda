@@ -10,6 +10,11 @@ import {
 } from "../actions/bodySearchCityActions";
 import { isLoadingLanguageAction } from "../actions/headerActions";
 import { AppStateType } from "../redux-store";
+import {
+  refactorCurrentWeatherData,
+  refactorDailyWeatherData,
+  refactorHourlyWeatherData,
+} from "../reduxUtils";
 
 const errorMessage = (error: Error, dispatch: Dispatch<UnknownAction>) => {
   const statusCode = Number(error.message.match(/\d+/));
@@ -23,10 +28,21 @@ const getWeatherData = createAsyncThunk<void, void, { state: AppStateType }>(
     try {
       const { lat, lon } = getState().bodySearchCityPage.citySearchCoords || {};
       const languages = getState().headerReducerPage.currentLanguage;
-      const cityData = await cityApi.getCityHoursData(lat, lon, languages);
-      dispatch(setCityHourlyWeatherDataAction(cityData.data.hourly));
-      dispatch(setCityDailyWeatherDataAction(cityData.data.daily));
-      dispatch(setCityCurrentWeatherDataAction(cityData.data.current));
+      const { hourly, daily, current } = await cityApi.getCityHoursData(
+        lat,
+        lon,
+        languages
+      );
+
+      dispatch(
+        setCityHourlyWeatherDataAction(refactorHourlyWeatherData(hourly))
+      );
+      dispatch(setCityDailyWeatherDataAction(refactorDailyWeatherData(daily)));
+      dispatch(
+        setCityCurrentWeatherDataAction(
+          refactorCurrentWeatherData(current, daily)
+        )
+      );
       dispatch(isLoadingWeatherDataAction(false));
       dispatch(setErrorAction(0));
     } catch (error) {
@@ -42,10 +58,10 @@ export const getCityCoords = createAsyncThunk<
   { state: AppStateType }
 >("getCoords", async (_, { getState, dispatch }) => {
   try {
-    const { data } = await cityApi.getCityCurrentWeatherData(
+    const coord = await cityApi.getCityCurrentWeatherData(
       getState().bodySearchCityPage.cityName
     );
-    dispatch(setCitySearchCoordsAction(data.coord));
+    dispatch(setCitySearchCoordsAction(coord));
     dispatch(getWeatherData());
   } catch (error) {
     errorMessage(error as Error, dispatch);
@@ -59,7 +75,7 @@ export const changeLanguages = createAsyncThunk<
 >("changeLanguages", async (_, { getState, dispatch }) => {
   try {
     if (getState().bodySearchCityPage.cityName) {
-      dispatch(getWeatherData());
+      await dispatch(getWeatherData());
     }
     dispatch(isLoadingLanguageAction(false));
   } catch (error) {

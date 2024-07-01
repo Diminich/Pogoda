@@ -1,6 +1,6 @@
 import { CityDailyWeatherData } from "../../../../../redux/reducersTypes/reducersTypes";
 import { Span } from "../../../../htmlTags/Span";
-import { formatTime, refactorParams } from "../../../../utils";
+import { formatTime } from "../../../../componentsUtils";
 
 interface RenderDailyWeatherDetailsProps {
   details: CityDailyWeatherData;
@@ -12,10 +12,6 @@ export const RenderDailyWeatherDetails: React.FC<
 > = ({ details, currentLanguage }) => {
   const [{ description, icon }] = details.weather;
   const timeUTC = formatTime(details.dt, "dddd, MMMM D", currentLanguage);
-  const refactorTemp = refactorParams({
-    day: details.temp.day,
-    night: details.temp.night,
-  });
 
   return (
     <div className="wrapperRenderDailyWetherData">
@@ -32,12 +28,12 @@ export const RenderDailyWeatherDetails: React.FC<
         <div className="wrapperTempDay">
           <Span
             className="tempDay"
-            text={refactorTemp.day}
+            text={details.day}
             specialCharacters={"\u00b0"}
           />
           <Span
             className="tempNight"
-            text={refactorTemp.night}
+            text={details.night}
             specialCharacters={"\u00b0"}
           />
         </div>

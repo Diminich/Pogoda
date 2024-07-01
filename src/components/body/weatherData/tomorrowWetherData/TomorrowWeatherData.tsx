@@ -29,7 +29,7 @@ export const TomorrowWetherData: React.FC<TomorrowWetherDataProps> = ({
           />
         ))}
       </div>
-      <TodayWeatherByHours weatherData={hourlyWetherData} path={pathId} />
+      {!!hourlyWetherData.length && <TodayWeatherByHours weatherData={hourlyWetherData} path={pathId} />}
     </div>
   );
 };

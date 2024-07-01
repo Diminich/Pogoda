@@ -14,8 +14,8 @@ const apiKey = "2326447fbf060bf923b3e5cd782514e1";
 
 interface GetCityData {
   current: CityCurrentWeatherData;
-  daily: CityHourlyWeatherData;
-  hourly: CityDailyWeatherData;
+  daily: CityDailyWeatherData[];
+  hourly: CityHourlyWeatherData[];
   lat: number;
   lon: number;
   timezone: string;

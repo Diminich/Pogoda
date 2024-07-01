@@ -75,7 +75,7 @@ export const changeLanguages = createAsyncThunk<
 >("changeLanguages", async (_, { getState, dispatch }) => {
   try {
     if (getState().bodySearchCityPage.cityName) {
-      dispatch(getWeatherData());
+      await dispatch(getWeatherData());
     }
     dispatch(isLoadingLanguageAction(false));
   } catch (error) {

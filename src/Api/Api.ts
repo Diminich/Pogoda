@@ -1,5 +1,10 @@
 import axios from "axios";
-import { CitySearchCoordsType } from "../redux/reducersTypes/reducersTypes";
+import {
+  CityCurrentWeatherData,
+  CityDailyWeatherData,
+  CityHourlyWeatherData,
+  CitySearchCoordsType,
+} from "../redux/reducersTypes/reducersTypes";
 
 const instance = axios.create({
   baseURL: "https://api.openweathermap.org/data/2.5/",
@@ -8,9 +13,9 @@ const instance = axios.create({
 const apiKey = "2326447fbf060bf923b3e5cd782514e1";
 
 interface GetCityData {
-  current: any;
-  daily: any;
-  hourly: any;
+  current: CityCurrentWeatherData;
+  daily: CityHourlyWeatherData;
+  hourly: CityDailyWeatherData;
   lat: number;
   lon: number;
   timezone: string;
